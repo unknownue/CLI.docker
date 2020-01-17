@@ -15,10 +15,10 @@ RUN apt update && apt upgrade -y && apt clean && \
     apt install -y --no-install-recommends git wget curl p7zip-full build-essential ca-certificates gettext
 
 # Install Nerd Fonts
-WORKDIR /root/fonts/
+WORKDIR /root/.fonts/
 RUN apt install -y --no-install-recommends fontconfig && \
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Ubuntu.zip && \
-    7z x Ubuntu.zip && rm Ubuntu.zip && mv ./* ~/.fonts && \
+    7z x Ubuntu.zip && rm Ubuntu.zip && \
     fc-cache -fv
 
 WORKDIR /root/dev
@@ -32,18 +32,18 @@ RUN ln -sf python3.7 /usr/bin/python && ln -sf pip3 /usr/bin/pip
 COPY system/.bash_profile ~/.bash_profile
 
 # Install Neovim
-RUN apt install -y --no-install-recommends neovim python3-neovim && mkdir ~/.config/nvim \
+RUN apt install -y --no-install-recommends neovim python3-neovim && mkdir -p ~/.config/nvim/ && \
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-COPY vim/init.vim ~/.config/nvim/init.vim
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+COPY nvim/init.vim ~/.config/nvim/init.vim
 
 # Install fish shell
 COPY fish/plugin.yaml ~/.config/chips/plugin.yaml
 COPY fish/config.fish ~/.config/fish/config.fish
 RUN apt install -y --no-install-recommends fish && \
     curl -Lo ~/.local/bin/chips --create-dirs \
-    https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux \
-    ; and chmod +x ~/.local/bin/chips && chips        
+    https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
+    chmod +x ~/.local/bin/chips && ~/.local/bin/chips
 
 # clean up
 RUN apt autoremove -y && apt clean
