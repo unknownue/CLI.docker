@@ -47,5 +47,5 @@ RUN apt install -y --no-install-recommends fish && \
 
 # clean up
 RUN apt autoremove -y && apt clean
-    
+
 CMD ["fish"]
