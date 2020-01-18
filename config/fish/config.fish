@@ -42,7 +42,7 @@
 
 
 # source ~/.bash_profile
-set -g fish_user_paths "/usr/local/opt/gettext/bin" $fish_user_paths
+# set -g fish_user_paths "/usr/local/opt/gettext/bin" $fish_user_paths
 
 # Config for starship https://github.com/starship/starship
 # eval (starship init fish)
