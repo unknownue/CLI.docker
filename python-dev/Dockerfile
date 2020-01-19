@@ -39,4 +39,3 @@ RUN pip install pynvim jedi yapf pylint --no-cache-dir && \
 
 WORKDIR  /root/dev/
 RUN rm -r /home/pydev-build
-
