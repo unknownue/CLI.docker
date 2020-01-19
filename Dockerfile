@@ -36,10 +36,14 @@ RUN curl -Lo ~/.local/bin/chips --create-dirs \
     ~/.local/bin/chips && \
     cp -r /home/arch-build/config/fish/functions/. ~/.config/fish/functions/    
 
+WORKDIR /root/dev
+
 # Config tmux
 # https://github.com/tmux-plugins/tpm/issues/6
-RUN tmux start-server && \
+RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
+    tmux start-server && \
     tmux new-session -d && \
+    sleep 1 && \
     bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
     tmux kill-server
 
@@ -47,8 +51,6 @@ RUN tmux start-server && \
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     nvim +slient +VimEnter +PlugInstall +qall
-
-WORKDIR /root/dev
 
 # Clean package cache
 RUN pacman -R git wget binutils fakeroot --noconfirm && \
