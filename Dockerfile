@@ -30,13 +30,13 @@ WORKDIR /home/arch-build/nerd-fonts-hack/
 USER unknownue
 RUN echo -e "unknownue" | makepkg -S -si --noconfirm
 USER root
+WORKDIR /home/arch-build
 RUN curl -Lo ~/.local/bin/chips --create-dirs \
     https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
     chmod +x ~/.local/bin/chips && \
     ~/.local/bin/chips && \
-    cp -r /home/arch-build/config/fish/functions/. ~/.config/fish/functions/    
-
-WORKDIR /root/dev
+    cp -r /home/arch-build/config/fish/functions/. ~/.config/fish/functions/  && \
+    rm -r nerd-fonts-hack
 
 # Config tmux
 # https://github.com/tmux-plugins/tpm/issues/6
@@ -50,11 +50,11 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
 # Config vimplug for neovim
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
+    cat ~/.config/nvim/plug-config.vim >> ~/.config/nvim/init.vim && \
     nvim +slient +VimEnter +PlugInstall +qall
 
 # Clean package cache
-RUN pacman -R git wget binutils fakeroot --noconfirm && \
-    echo -e "Y\nY" | pacman -Scc && \
+RUN echo -e "Y\nY" | pacman -Scc && \
     rm -r /home/arch-build
 
 CMD ["fish"]
