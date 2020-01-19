@@ -26,12 +26,17 @@ WORKDIR /home/pydev-build
 #     pip3 install --upgrade pips && \
 #     rm get-pip.py
 
-RUN pacman -S python python-pip python-setuptools --noconfirm
+RUN pacman -S gcc python python-pip python-setuptools --noconfirm && \
+    echo -e "Y\nY" | pacman -Scc
 
 # https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/
 
-COPY python-dev/. ~/home/pydev-build/nvim/
-RUN pip install pynvim jedi yapf pylint --no-cache-dir
-RUN sed -i '10r ~/home/pydev-build/nvim/plug.vim' ~/.config/nvim/init.vim && \
-    cat ~/home/pydev-build/nvim/config.vim >> ~/.config/nvim/init.vim && \
+COPY python-dev/. /home/pydev-build/nvim/
+RUN pip install pynvim jedi yapf pylint --no-cache-dir && \
+    sed -i '10r /home/pydev-build/nvim/plug.vim' ~/.config/nvim/init.vim && \
+    cat /home/pydev-build/nvim/config.vim >> ~/.config/nvim/init.vim && \
     nvim +slient +VimEnter +PlugInstall +qall
+
+WORKDIR  /root/dev/
+RUN rm -r /home/pydev-build
+

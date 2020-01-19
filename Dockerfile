@@ -8,7 +8,8 @@ LABEL license="MIT"
 WORKDIR /home/arch-build
 RUN pacman -Syy && \
     pacman -S sudo binutils fakeroot git wget fish neovim tmux --noconfirm && \
-    pacman -S fontconfig xorg-mkfontscale xorg-mkfontdir --noconfirm
+    pacman -S fontconfig xorg-mkfontscale xorg-mkfontdir --noconfirm && \
+    echo -e "Y\nY" | pacman -Scc
 
 # Copy files to image
 COPY config/ ./config/
@@ -53,8 +54,7 @@ RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     cat ~/.config/nvim/plug-config.vim >> ~/.config/nvim/init.vim && \
     nvim +slient +VimEnter +PlugInstall +qall
 
-# Clean package cache
-RUN echo -e "Y\nY" | pacman -Scc && \
-    rm -r /home/arch-build
+WORKDIR /root/
+RUN rm -r /home/arch-build
 
 CMD ["fish"]
