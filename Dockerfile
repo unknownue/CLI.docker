@@ -7,7 +7,7 @@ LABEL license="MIT"
 
 WORKDIR /home/arch-build
 RUN pacman -Syy && \
-    pacman -S sudo binutils fakeroot git wget fish neovim --noconfirm && \
+    pacman -S sudo binutils fakeroot git wget fish neovim tmux --noconfirm && \
     pacman -S fontconfig xorg-mkfontscale xorg-mkfontdir --noconfirm
 
 # Copy files to image
@@ -36,21 +36,23 @@ RUN curl -Lo ~/.local/bin/chips --create-dirs \
     ~/.local/bin/chips && \
     cp -r /home/arch-build/config/fish/functions/. ~/.config/fish/functions/    
 
+# Config tmux
+# https://github.com/tmux-plugins/tpm/issues/6
+RUN tmux start-server && \
+    tmux new-session -d && \
+    bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
+    tmux kill-server
+
 # Config vimplug for neovim
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
-    nvim :PlugInstall +qall
-    
-# Install command line tools
-WORKDIR /home/arch-build/
-RUN wget https://github.com/bootandy/dust/releases/download/v0.4.3/dust-v0.4.3-x86_64-unknown-linux-gnu.tar.gz && \
-    tar -xvf dust-v0.4.3-x86_64-unknown-linux-gnu.tar.gz && \
-    mv dust /usr/local/bin/
+    nvim +slient +VimEnter +PlugInstall +qall
 
 WORKDIR /root/dev
 
 # Clean package cache
-RUN echo -e "Y\nY" | pacman -Scc && \
+RUN pacman -R git wget binutils fakeroot --noconfirm && \
+    echo -e "Y\nY" | pacman -Scc && \
     rm -r /home/arch-build
 
 CMD ["fish"]
