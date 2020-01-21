@@ -1,5 +1,5 @@
 
-FROM python-dev AS torch-dev
+FROM arch/python-dev AS arch/torch-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A pytorch environment with personal configuration in docker."
@@ -9,7 +9,7 @@ LABEL license="MIT"
 
 WORKDIR /root/dev
 
-RUN pip install torch==1.4.0 torchvision=0.5.0 --no-cache-dir && \
+RUN pip install torch==1.4.0 torchvision==0.5.0 --no-cache-dir && \
     pip install visdom==0.1.8.9 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0 --no-cache-dir
 
 # Configure visom download scripts

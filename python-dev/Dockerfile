@@ -1,5 +1,5 @@
 
-FROM arch-base AS python-dev
+FROM arch/base AS arch/python-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A python development environment with personal configuration in docker."

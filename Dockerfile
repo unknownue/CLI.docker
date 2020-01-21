@@ -1,5 +1,6 @@
 
-FROM archlinux:20200106 AS arch-base
+# -----------------------------------------------------------------------------------
+FROM archlinux:20200106 AS arch/base
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A command-line environment with personal configuration in docker."
@@ -58,3 +59,11 @@ WORKDIR /root/
 RUN rm -r /home/arch-build
 
 CMD ["fish"]
+# -----------------------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------------------
+FROM arch/base AS arch/nvim
+WORKDIR /root/dev
+RUN nvim .
+# -----------------------------------------------------------------------------------
