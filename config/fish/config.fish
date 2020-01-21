@@ -100,4 +100,3 @@ egrep "^export " ~/.bash_profile | while read e
             set -xg $var $value
         end
 end
-

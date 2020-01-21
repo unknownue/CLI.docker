@@ -1,6 +1,6 @@
 
 # -----------------------------------------------------------------------------------
-FROM archlinux:20200106 AS arch/base
+FROM archlinux:20200106 AS arch-base
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A command-line environment with personal configuration in docker."
@@ -40,6 +40,9 @@ RUN curl -Lo ~/.local/bin/chips --create-dirs \
     cp -r /home/arch-build/config/fish/functions/. ~/.config/fish/functions/  && \
     rm -r nerd-fonts-hack
 
+# Config Fish shell
+RUK curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+
 # Config tmux
 # https://github.com/tmux-plugins/tpm/issues/6
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
@@ -63,7 +66,7 @@ CMD ["fish"]
 
 
 # -----------------------------------------------------------------------------------
-FROM arch/base AS arch/nvim
+FROM arch-base AS arch-nvim
 WORKDIR /root/dev
-RUN nvim .
+CMD ["nvim", "."]
 # -----------------------------------------------------------------------------------
