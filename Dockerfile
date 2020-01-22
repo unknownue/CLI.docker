@@ -41,7 +41,7 @@ RUN curl -Lo ~/.local/bin/chips --create-dirs \
     rm -r nerd-fonts-hack
 
 # Config Fish shell
-RUK curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+RUN curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 # Config tmux
 # https://github.com/tmux-plugins/tpm/issues/6
@@ -55,7 +55,6 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
 # Config vimplug for neovim
 RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
-    cat ~/.config/nvim/plug-config.vim >> ~/.config/nvim/init.vim && \
     nvim +slient +VimEnter +PlugInstall +qall
 
 WORKDIR /root/

@@ -7,7 +7,7 @@ set encoding=UTF-8
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Development Customize
-
+source ~/.config/nvim/dev-plug.vim
 
 " Apperance
 Plug 'joshdick/onedark.vim'    " One Dark theme for vim
@@ -29,31 +29,24 @@ Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
 "Plug 'tmhedberg/SimpylFold'          " Code folding
 
-" Plug vim-airline config
-let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1
-
-" Plug vim-slash
-noremap <plug>(slash-after) zz
-
 call plug#end()
 " ----------------------------------------------------------------------------------
 " Vim-plug End
 " ##################################################################################
 
 
-syntax on
-colorscheme onedark
-
 " ##################################################################################
 " Default configuration for neovim
+
+syntax on
+colorscheme onedark
 
 " Support Copy text from vim to system clipboard(Ctrl + C on Visual mode)
 vmap <C-c> :w !pbcopy<CR><CR>
 
 " Show line number as relative number
 set relativenumber
-set nu
+set number
 augroup relative_numbser
     autocmd!
     autocmd InsertEnter * :set norelativenumber
@@ -91,3 +84,11 @@ set smartcase     " turn on smartcase
     endif
 "endif
 " ##################################################################################
+
+" Load Development Plug config
+source ~/.config/nvim/plug-config.vim
+source ~/.config/nvim/dev-plug-config.vim
+
+" Load keymapping
+source ~/.config/nvim/colemak.vim
+source ~/.config/nvim/dev-plug-colemak.vim

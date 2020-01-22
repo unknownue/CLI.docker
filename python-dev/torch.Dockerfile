@@ -1,5 +1,5 @@
 
-FROM arch/python-dev AS arch/torch-dev
+FROM arch/python-dev AS arch-torch-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A pytorch environment with personal configuration in docker."

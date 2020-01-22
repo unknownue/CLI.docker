@@ -1,5 +1,5 @@
 
-FROM arch/base AS arch/python-dev
+FROM arch/base AS arch-python-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A python development environment with personal configuration in docker."
@@ -33,8 +33,9 @@ RUN pacman -S gcc python python-pip python-setuptools --noconfirm && \
 
 COPY python-dev/. /home/pydev-build/nvim/
 RUN pip install pynvim jedi yapf pylint --no-cache-dir && \
-    sed -i '10r /home/pydev-build/nvim/plug.vim' ~/.config/nvim/init.vim && \
-    cat /home/pydev-build/nvim/config.vim >> ~/.config/nvim/init.vim && \
+    mv /home/pydev-build/nvim/dev-plug.vim ~/.config/nvim/dev-plug.vim && \
+    mv /home/pydev-build/nvim/dev-plug-config.vim ~/.config/nvim/dev-plug-config.vim && \ 
+    mv /home/pydev-build/nvim/dev-plug-colemak.vim ~/.config/nvim/dev-plug-colemak.vim && \
     nvim +slient +VimEnter +PlugInstall +qall
 
 WORKDIR  /root/dev/
