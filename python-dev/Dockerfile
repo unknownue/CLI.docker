@@ -26,7 +26,8 @@ WORKDIR /home/pydev-build
 #     pip3 install --upgrade pips && \
 #     rm get-pip.py
 
-RUN pacman -S gcc python python-pip python-setuptools --noconfirm && \
+RUN pacman -Syy && \
+    pacman -S gcc python python-pip python-setuptools --noconfirm && \
     echo -e "Y\nY" | pacman -Scc
 
 # https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/

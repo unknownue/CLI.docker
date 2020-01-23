@@ -13,7 +13,7 @@ source ~/.config/nvim/dev-plug.vim
 Plug 'joshdick/onedark.vim'    " One Dark theme for vim
 Plug 'preservim/nerdtree'      " A tree explorer plugin for vim.
 Plug 'ryanoasis/vim-devicons'  " Add icons to plugs
-Plug 'pacha/vem-tabline'       " buffer bar for vim
+Plug 'ap/vim-buftabline'       " buffer bar for vim
 Plug 'vim-airline/vim-airline' " tabline for vim
 Plug 'vim-airline/vim-airline-themes' " theme for vim-ariline
 
