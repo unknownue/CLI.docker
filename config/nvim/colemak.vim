@@ -69,6 +69,8 @@ nnoremap K N| " find previous
 " Unmap key
 " r -> s
 
+" Custom keymapping
+nnoremap <leader>c :set nohlsearch<CR>
 " #################################################################################################
 
 
@@ -81,8 +83,8 @@ nnoremap <c-l> :SidewaysRight<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for vim-buftabline
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+nnoremap <C-k> :bnext<CR>
+nnoremap <C-K> :bprev<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for nerdtree """"""""""""""""""""""""""""""""""""""""""""""
@@ -91,7 +93,7 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plug vim-slash """""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <plug>(slash-after) zz
+" noremap <plug>(slash-after) zz
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for SimpyFold """"""""""""""""""""""""""""""""""""""""""""""

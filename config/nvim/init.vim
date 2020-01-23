@@ -20,7 +20,6 @@ Plug 'vim-airline/vim-airline-themes' " theme for vim-ariline
 " Editor
 Plug 'tpope/vim-repeat'              " Ex version of '.'
 Plug 'andrewradev/sideways.vim'      " Switch function parameters
-Plug 'junegunn/vim-slash'            " Remove highlight when cursor is moved
 Plug 'easymotion/vim-easymotion'     " Vim motion on speed!
 Plug 'haya14busa/incsearch.vim'      " Improved incremental searching for Vim
 Plug 'jiangmiao/auto-pairs'
@@ -29,6 +28,9 @@ Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
 "Plug 'tmhedberg/SimpylFold'          " Code folding
 
+" Unused plug
+" Conflict to colemak.vim
+" Plug 'junegunn/vim-slash'            " Remove highlight when cursor is moved
 call plug#end()
 " ----------------------------------------------------------------------------------
 " Vim-plug End
