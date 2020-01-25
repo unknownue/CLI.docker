@@ -1,15 +1,14 @@
 
 # -----------------------------------------------------------------------------------
-FROM archlinux:20200106 AS arch-base
+FROM greyltc/archlinux:2020-01-22 AS arch-base
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A command-line environment with personal configuration in docker."
 LABEL license="MIT"
 
-WORKDIR /home/arch-build
+WORKDIR /root/arch-build
 RUN pacman -Syy && \
-    pacman -S sudo binutils fakeroot git wget fish neovim tmux --noconfirm && \
-    pacman -S fontconfig xorg-mkfontscale xorg-mkfontdir --noconfirm && \
+    pacman -S binutils fakeroot --noconfirm --needed --clean && \
     echo -e "Y\nY" | pacman -Scc
 
 # Copy files to image
@@ -17,48 +16,42 @@ COPY config/ ./config/
 COPY system/ ./system/
 RUN cp -a config/ ~/.config/ && cp -a system/. ~/
 
-# Add non-root user
-RUN useradd unknownue && \
-    echo -e "unknownue\nunknownue" | passwd unknownue && \
-    usermod -a -G adm unknownue && \
-    echo "unknownue ALL=(ALL)  ALL" > /etc/sudoers
+# Install yay
+# From https://github.com/greyltc/docker-archlinux-aur
+RUN curl https://github.com/greyltc/docker-archlinux-aur/raw/master/add-aur.sh --create-dirs -sLo /usr/sbin/add-aur && \
+    chmod a+x /usr/sbin/add-aur && \
+    add-aur docker
 
-# Install nerd font
-RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
-    mkdir /home/unknownue && \
-    chown -R unknownue nerd-fonts-hack/ && \
-    chown -R unknownue /home/unknownue/
-WORKDIR /home/arch-build/nerd-fonts-hack/
-USER unknownue
-RUN echo -e "unknownue" | makepkg -S -si --noconfirm
-USER root
-WORKDIR /home/arch-build
-RUN curl -Lo ~/.local/bin/chips --create-dirs \
+# Config Fish shell
+RUN pacman -S fish --noconfirm --needed --clean && \
+    curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish && \
+    curl -sLo ~/.local/bin/chips --create-dirs \
     https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
     chmod +x ~/.local/bin/chips && \
     ~/.local/bin/chips && \
-    cp -r /home/arch-build/config/fish/functions/. ~/.config/fish/functions/  && \
-    rm -r nerd-fonts-hack
+    cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/
 
-# Config Fish shell
-RUN curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+# Install nerd font
+# RUN su docker -c 'yay -S --noprogressbar --needed --noconfirm nerd-fonts-hack'
 
 # Config tmux
 # https://github.com/tmux-plugins/tpm/issues/6
-RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
+RUN pacman -S tmux --noconfirm --needed && \
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
     tmux start-server && \
     tmux new-session -d && \
     sleep 1 && \
     bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
     tmux kill-server
 
-# Config vimplug for neovim
-RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+# Config neovim
+RUN pacman -S neovim --noconfirm --needed && \
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     nvim +slient +VimEnter +PlugInstall +qall
 
 WORKDIR /root/
-RUN rm -r /home/arch-build
+RUN rm -r /root/arch-build
 
 CMD ["fish"]
 # -----------------------------------------------------------------------------------
