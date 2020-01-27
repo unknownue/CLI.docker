@@ -10,6 +10,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 source ~/.config/nvim/dev-plug.vim
 
 " Apperance
+Plug 'mhinz/vim-startify'      " Welcome screen for neovim.
 Plug 'joshdick/onedark.vim'    " One Dark theme for vim
 Plug 'preservim/nerdtree'      " A tree explorer plugin for vim.
 Plug 'ryanoasis/vim-devicons'  " Add icons to plugs
