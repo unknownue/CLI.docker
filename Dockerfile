@@ -27,8 +27,10 @@ WORKDIR /tmp
 #     ~/.local/bin/chips && \
 #     cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/
 
-# Install nerd font
-# RUN su docker -c 'yay -S --noprogressbar --needed --noconfirm nerd-fonts-hack'
+# Install Nerd Font
+RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
+    cd nerd-fonts-hack && sudo --user=builduser bash makepkg -si --noconfirm && \
+    cd .. && rm -r nerd-fonts-hack
 
 # Config tmux
 # https://github.com/tmux-plugins/tpm/issues/6

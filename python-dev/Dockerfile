@@ -42,8 +42,8 @@ RUN \
     cp -r config/. ~/.config/ && rm -r config/ && \
     cp -r system/. ~/ && rm -r system/
 
+# Install python
 RUN pacman -Syy && \
-    # install python
     pacman -U --noconfirm python36-3.6.10-1-x86_64.pkg.tar.xz && \
     rm python36-3.6.10-1-x86_64.pkg.tar.xz && \
     ln -sf /usr/bin/python3.6 /usr/bin/python && \
@@ -52,6 +52,11 @@ RUN pacman -Syy && \
     curl https://bootstrap.pypa.io/get-pip.py -sLo get-pip.py && \
     python get-pip.py && \
     rm get-pip.py
+
+# Install Nerd Font
+RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
+    cd nerd-fonts-hack && sudo --user=builduser bash makepkg -si --noconfirm && \
+    cd .. && rm -r nerd-fonts-hack
 
 # Config neovim
 # https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/
