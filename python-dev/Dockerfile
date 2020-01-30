@@ -20,12 +20,20 @@ RUN git clone https://aur.archlinux.org/python36.git && \
     # git clone https://aur.archlinux.org/python37.git && \
     cd python36 && \
     # utilise sudo to builduser in order to make the gss-ntlmssp package
-    sudo --user=builduser bash makepkg -s --noconfirm
+    sudo --user=builduser bash makepkg -s --noconfirm && \
+    mv python36-3.6.10-1-x86_64.pkg.tar.xz python36.pkg.tar.xz
+
+# Install Nerd Font
+RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
+    chmod 777 /tmp/nerd-fonts-hack && \
+    cd nerd-fonts-hack && sudo --user=builduser bash makepkg -s --noconfirm && \
+    mv nerd-fonts-hack-2.0.0-1-any.pkg.tar.xz nerd-fonts-hack.pkg.tar.xz
 # -----------------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------------
 FROM archlinux/base:20200106 AS arch-python-dev
-COPY --from=install-env ["/tmp/python36/python36-3.6.10-1-x86_64.pkg.tar.xz", "/tmp/python36-3.6.10-1-x86_64.pkg.tar.xz"]
+COPY --from=install-env ["/tmp/python36/python36.pkg.tar.xz", "/tmp/python36.pkg.tar.xz"]
+COPY --from=install-env ["/tmp/nerd-fonts-hack/nerd-fonts-hack.pkg.tar.xz", "/tmp/nerd-fonts-hack.pkg.tar.xz"]
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A python development environment with personal configuration in docker."
@@ -44,8 +52,8 @@ RUN \
 
 # Install python
 RUN pacman -Syy && \
-    pacman -U --noconfirm python36-3.6.10-1-x86_64.pkg.tar.xz && \
-    rm python36-3.6.10-1-x86_64.pkg.tar.xz && \
+    pacman -U --noconfirm python36.pkg.tar.xz && \
+    rm python36.pkg.tar.xz && \
     ln -sf /usr/bin/python3.6 /usr/bin/python && \
     ln -sf /usr/bin/python3.6 /usr/bin/python3 && \
     # Install pip
@@ -54,9 +62,8 @@ RUN pacman -Syy && \
     rm get-pip.py
 
 # Install Nerd Font
-RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
-    cd nerd-fonts-hack && sudo --user=builduser bash makepkg -si --noconfirm && \
-    cd .. && rm -r nerd-fonts-hack
+RUN pacman -U --noconfirm nerd-fonts-hack.pkg.tar.xz && \
+    rm nerd-fonts-hack.pkg.tar.xz
 
 # Config neovim
 # https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/
@@ -65,7 +72,7 @@ RUN pacman -S neovim git --noconfirm --needed && \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     pip install pynvim jedi yapf pylint --no-cache-dir && \
     nvim +slient +VimEnter +PlugInstall +qal && \
-    echo -e "yes" | pacman -Scc
+    echo -e "Y\nY" | pacman -Scc
 
 WORKDIR  /root/dev/
 CMD [ "bash" ]
