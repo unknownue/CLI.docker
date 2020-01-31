@@ -103,6 +103,49 @@ nnoremap <C-K> :bprev<CR>
 " Keymapping for nerdtree """"""""""""""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
 nnoremap <leader>g :NERDTreeToggle<CR>
+
+" open in prew window: j -> y
+let NERDTreeMapActivateNode='y'
+" preview: go -> dy
+let NERDTreeMapPreview='dy'
+" open in new tab: t -> g
+let NERDTreeMapOpenInTab='g'
+" open in new tab silently: T -> G
+let NERDTreeMapOpenInTabSilent='G'
+" open spiit: i -> 'u'
+let NERDTreeMapOpenSplit='u'
+" preview split: gi -> 'du'
+let NERDTreeMapPreviewSplit='du'
+" open vsplit: s -> 'r'
+let NERDTreeMapOpenVSplit='r'
+" preview vsplit: gs -> 'dr'
+let NERDTreeMapPreviewVSplit='dr'
+" Recursively open directory node: O -> 'Y'
+let NERDTreeMapOpenRecursively='Y'
+" Explore selected dir: f -> 'T'
+let NERDTreeMapToggleFilters='T'
+" Explore selected dir: t -> 'f'
+let NERDTreeMapOpenExpl='f'
+
+" Delete bookmark: D -> 'S'
+let NERDTreeMapDeleteBookmark='S'
+
+" Go to root: P -> 'J'
+let NERDTreeMapJumpRoot='J'
+" Go to parent: p -> 'j'
+let NERDTreeMapJumpParent='j'
+
+" Move tree root up a dir: u -> 'l'
+let NERDTreeMapUpdir='l'
+" Move tree root up a dir but leave old root open: U -> 'L'
+let NERDTreeMapUpdirKeepOpen='L'
+" Refresh cursor dir: r -> 'p'
+let NERDTreeMapRefresh='p'
+" Refresh current root: R -> 'P'
+let NERDTreeMapRefreshRoot='P'
+
+" Hidden files: I -> 'U'
+let NERDTreeMapToggleHidden='U'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for nerdcommenter """""""""""""""""""""""""""""""""""""""""

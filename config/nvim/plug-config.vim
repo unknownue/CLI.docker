@@ -15,7 +15,6 @@ let g:airline_powerline_fonts = 1
 "let NERDTreeAutoCenter=1
 
 " Is show hidden files
-let NERDTreeShowHidden=1
 
 " Set NERDTree display width
 "let NERDTreeWinSize=31
@@ -30,9 +29,9 @@ let NERDTreeShowHidden=1
 "let NERDTreeShowBookmarks=1
 
 " Toggle NERDTree on start
-autocmd vimenter * NERDTree
-wincmd w
-autocmd vimEnter * wincmd w
+" autocmd vimenter * NERDTree
+" wincmd w
+" autocmd vimEnter * wincmd w
 
 " Close all NERDTree after the last document was closed.
 " autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
