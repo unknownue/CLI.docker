@@ -46,6 +46,9 @@ call plug#end()
 syntax on
 colorscheme onedark
 
+" Set default split location to bottom
+set splitbelow
+
 " Support Copy text from vim to system clipboard(Ctrl + C on Visual mode)
 vmap <C-c> :w !pbcopy<CR><CR>
 

@@ -39,8 +39,8 @@ let g:jedi#use_splits_not_buffers = "right"
 " Usage:
 "    :Neomake -> check grammer manually
 
-" Set default linter to pylint(need pip install pylint)
-let g:neomake_python_enabled_makers = ['pylint']
+" Set default linter to flask(need pip install flask)
+let g:neomake_python_enabled_makers = ['flask']
 
 " Auto check grammer
 call neomake#configure#automake('nrwi', 500)
