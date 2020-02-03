@@ -1,4 +1,7 @@
 
+" Reload vimrc after saving
+" autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+
 set encoding=UTF-8
 
 " ##################################################################################
@@ -13,7 +16,6 @@ source ~/.config/nvim/dev-plug.vim
 Plug 'mhinz/vim-startify'      " Welcome screen for neovim.
 Plug 'joshdick/onedark.vim'    " One Dark theme for vim
 Plug 'preservim/nerdtree'      " A tree explorer plugin for vim.
-Plug 'ap/vim-buftabline'       " buffer bar for vim
 Plug 'vim-airline/vim-airline' " tabline for vim
 Plug 'vim-airline/vim-airline-themes' " theme for vim-ariline
 
@@ -28,12 +30,10 @@ Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
 "Plug 'tmhedberg/SimpylFold'          " Code folding
 
-" Apperance
-Plug 'ryanoasis/vim-devicons'  " Add icons to plugs
-
 " Unused plug
-" Conflict to colemak.vim
-" Plug 'junegunn/vim-slash'            " Remove highlight when cursor is moved
+" Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
+" Plug 'ap/vim-buftabline' " buffer bar for vim " Replace by smart tab line in vim-airline/vim-airline
+" Plug 'junegunn/vim-slash' " Remove highlight when cursor is moved " Conflict to colemak.vim
 call plug#end()
 " ----------------------------------------------------------------------------------
 " Vim-plug End

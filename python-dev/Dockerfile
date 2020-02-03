@@ -70,7 +70,7 @@ RUN pacman -U --noconfirm nerd-fonts-hack.pkg.tar.xz && \
 RUN pacman -S neovim git --noconfirm --needed && \
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
-    pip install pynvim jedi yapf flask --no-cache-dir && \
+    pip install pynvim jedi yapf flake8 --no-cache-dir && \
     nvim +slient +VimEnter +PlugInstall +qal && \
     echo -e "Y\nY" | pacman -Scc
 

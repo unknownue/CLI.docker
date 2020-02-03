@@ -29,18 +29,18 @@ let g:neoformat_basic_format_trim = 1
 
 " Config for jedi-vim """""""""""""""""""""""""""""""""""""""""""""""
 " disable autocompletion, cause we use deoplete for completion
-let g:jedi#completions_enabled = 0
+" let g:jedi#completions_enabled = 0
 
 " open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
+" let g:jedi#use_splits_not_buffers = "right"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Config for neomake """"""""""""""""""""""""""""""""""""""""""""""""
 " Usage:
 "    :Neomake -> check grammer manually
 
-" Set default linter to flask(need pip install flask)
-let g:neomake_python_enabled_makers = ['flask']
+" Set default linter to flake8(need pip install flake8)
+let g:neomake_python_enabled_makers = ['flake8']
 
 " Auto check grammer
 call neomake#configure#automake('nrwi', 500)

@@ -3,12 +3,31 @@
 " Plugin configuration for common development
 
 " Config for vim-airline """""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='onedark'
+" Color theme
+let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
+" Enable smarter tab line
+" https://github.com/vim-airline/vim-airline#smarter-tab-line
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#whitespace#enabled = 1 " Enable trailing whitespace detection
+
+" https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
+function! AirlineInit()
+  " let g:airline_section_a = airline#section#create(['mode'])
+  let g:airline_section_b = airline#section#create_left(['filetype'])
+  let g:airline_section_c = airline#section#create(['%f', 'readonly'])
+  let g:airline_section_x = airline#section#create([])
+  let g:airline_section_y = airline#section#create_right(['%{getcwd()}'])
+  let g:airline_section_z = airline#section#create(['L%l/%L.C%c'])
+endfunction
+autocmd VimEnter * call AirlineInit()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-" Config for nerdtree """"""""""""""""""""""""""""""""""""""""""""""
+" Config for nerdtree """""""""""""""""""""""""""""""""""""""""""""""
 " show line number
 "let NERDTreeShowLineNumbers=1
 
@@ -29,13 +48,13 @@ let g:airline_powerline_fonts = 1
 "let NERDTreeShowBookmarks=1
 
 " Toggle NERDTree on start
-" autocmd vimenter * NERDTree
-" wincmd w
-" autocmd vimEnter * wincmd w
+autocmd vimenter * NERDTree
+wincmd w
+autocmd vimEnter * wincmd w
 
 " Close all NERDTree after the last document was closed.
 " autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
+" autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Config for vim-multiple-cursors """"""""""""""""""""""""""""""""""

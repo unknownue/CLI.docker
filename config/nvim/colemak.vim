@@ -22,10 +22,6 @@
 " :lmap 	:lnoremap 	:lunmap 	:lmapc[lear] 	Insert, Command-line, Lang-Arg
 " :cmap 	:cnoremap 	:cunmap 	:cmapc[lear] 	Command-line
 
-" Reload vimrc after saving
-" autocmd! BufWritePost $MYVIMRC source $MYVIMRC
-
-
 
 " Up/down/left/right
 " nnoremap h h|xnoremap h h|onoremap h h| " left
@@ -83,7 +79,10 @@ nnoremap g t| onoremap g t| onoremap g t| " -> until char
 nnoremap G T| onoremap G T| onoremap G T| " <- until char
 
 " Custom keymapping
+" unhightlight
 nnoremap <leader>c :set nohlsearch<CR>
+" Toggle line number
+nnoremap <C-i> :set invnumber invrelativenumber<CR>
 " #################################################################################################
 
 
