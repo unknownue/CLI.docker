@@ -28,3 +28,9 @@ Image for PyTorch development
 $ docker build -t arch/torch-dev --target arch-torch-dev -f python-dev/torch.Dockerfile .
 ```
 
+Image for [taichi](https://github.com/taichi-dev/taichi) development
+
+```shell
+$ docker build -t arch/taichi-dev --target taichi-gpu -f python-dev/torch.Dockerfile .
+```
+

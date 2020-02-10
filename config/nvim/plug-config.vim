@@ -21,7 +21,7 @@ function! AirlineInit()
   let g:airline_section_c = airline#section#create(['%f', 'readonly'])
   let g:airline_section_x = airline#section#create([])
   let g:airline_section_y = airline#section#create_right(['%{getcwd()}'])
-  let g:airline_section_z = airline#section#create(['L%l/%L.C%c'])
+  let g:airline_section_z = airline#section#create(['Ln %l/%L.Col %c'])
 endfunction
 autocmd VimEnter * call AirlineInit()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
