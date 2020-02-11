@@ -22,13 +22,19 @@ Image for python development
 $ docker build -t arch/python-dev --target arch-python-dev -f python-dev/Dockerfile .
 ```
 
-Image for PyTorch development
+Image for PyTorch development(GPU)
+
+```shell
+$ docker build -t arch/torch-runtime --target arch-torch-runtime -f python-dev/torch.Dockerfile .
+```
+
+Image for PyTorch development(CPU)
 
 ```shell
 $ docker build -t arch/torch-dev --target arch-torch-dev -f python-dev/torch.Dockerfile .
 ```
 
-Image for [taichi](https://github.com/taichi-dev/taichi) development
+Image for [taichi](https://github.com/taichi-dev/taichi) development(GPU)
 
 ```shell
 $ docker build -t arch/taichi-dev --target taichi-gpu -f python-dev/torch.Dockerfile .

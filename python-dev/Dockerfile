@@ -83,23 +83,34 @@ CMD [ "bash" ]
 FROM arch-python-dev AS arch-torch-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
-LABEL description="A pytorch environment with personal configuration in docker."
+LABEL description="A pytorch environment(CPU) with personal configuration in docker."
 LABEL torch-version="1.4.0"
 LABEL torchvision-version="0.5.0"
 LABEL license="MIT"
 
 WORKDIR /tmp
 
-RUN pip install torch==1.4.0 torchvision==0.5.0 --no-cache-dir && \
+RUN pip install --no-cache-dir torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html && \
+    pip install tensorboard==2.1.0 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0 --no-cache-dir
+
+WORKDIR /root/dev
+CMD [ "bash" ]
+# -----------------------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------------------
+FROM arch-python-dev AS arch-torch-runtime
+
+LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
+LABEL description="A pytorch environment(CPU) with personal configuration in docker."
+LABEL torch-version="1.4.0"
+LABEL torchvision-version="0.5.0"
+LABEL license="MIT"
+
+WORKDIR /tmp
+
+RUN pip install --no-cache-dir torch==1.4.0 torchvision==0.5.0 && \
     pip install tensorboard==2.1.0 visdom==0.1.8.9 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0 --no-cache-dir
-
-# Configure visom download scripts
-RUN git https://github.com/unknownue/mirror-visdom-static.git && \
-    cp -r ./mirror-visdom-static/static/ $(echo "$(pip show visdom | grep Location | grep -o '/.*/*')/visdom") && \
-    rm -r ./mirror-visdom-static/
-
-ENV VISDOM_PORT=8097
-EXPOSE $VISDOM_PORT
 
 WORKDIR /root/dev
 CMD [ "bash" ]
