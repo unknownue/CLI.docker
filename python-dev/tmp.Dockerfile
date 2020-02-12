@@ -35,8 +35,8 @@ LABEL license="MIT"
 WORKDIR /root/dev
 
 COPY /sources.list /etc/apt/sources.list
-RUN apt update && \
-    apt install wget && \
+RUN apt update 
+RUN apt install wget && \
     apt install -y python3.6 python3.6-distutils && \
     ln -sf python3.6 /usr/bin/python && \
     wget https://bootstrap.pypa.io/get-pip.py && \
@@ -51,7 +51,7 @@ RUN pip install pqi --no-cache-dir && \
 RUN pip install --no-cache-dir \
     torch==1.4.0 \
     torchvision==0.5.0 \
-    visdom==0.1.8.9 \
+    tensorboard==2.1.0 \
     scipy==1.3.1 \
     h5py==2.10.0 \
     torchsnooper==0.7.1 \
