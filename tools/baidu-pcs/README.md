@@ -1,8 +1,10 @@
 
-Run [bypy](https://github.com/houtianze/bypy) in docker
+# Run bypy in docker
+See also https://github.com/houtianze/bypy
 
 ## Installation
-Save the authorization code to authorization.txt
+Save the authorization code to `authorization.txt`.
+
 The authorizatied link can be found by:
 ```shell
 $ pip install bypy

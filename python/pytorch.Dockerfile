@@ -45,7 +45,7 @@ WORKDIR /tmp
 # Copy files to image
 COPY config/. config/
 COPY system/. system/
-COPY python-dev/. config/nvim/
+COPY python/. config/nvim/
 RUN \
     cp -r config/. ~/.config/ && rm -r config/ && \
     cp -r system/. ~/ && rm -r system/

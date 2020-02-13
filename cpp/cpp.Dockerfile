@@ -1,0 +1,39 @@
+
+# -----------------------------------------------------------------------------------
+FROM archlinux/base AS cpp-dev
+
+LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
+LABEL description="A C++ development environment with personal configuration in docker."
+LABEL license="MIT"
+
+# Copy files to image
+COPY config/. config/
+COPY system/. system/
+COPY cpp/. config/nvim/
+RUN \
+    cp -r config/. ~/.config/ && rm -r config/ && \
+    cp -r system/. ~/ && rm -r system/
+
+# Update base system
+RUN pacman -Sy --noconfirm --noprogressbar archlinux-keyring && \
+    pacman -Syu --noconfirm --noprogressbar && \
+    pacman-db-upgrade && \
+    echo -e "Y\nY\n" | pacman -Scc
+
+# Install C++ compiler
+RUN      && \
+    echo -e "Y\nY\n" | pacman -Scc
+
+# Config neovim and vim-plug
+RUN pacman -S neovim git --noconfirm --needed && \
+    echo -e "Y\nY\n" | pacman -Scc && \
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
+    nvim +slient +VimEnter +PlugInstall +qal
+
+# Config YouCompleteMe
+# https://github.com/ycm-core/YouCompleteMe
+RUN python ~/.local/share/nvim/plugged/YouCompleteMe/install.py --clang-completer
+
+CMD ["bash"]
+# -----------------------------------------------------------------------------------
