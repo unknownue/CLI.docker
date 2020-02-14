@@ -2,6 +2,6 @@
 " Plugin configuration for C++ development
 
 " Config for 'ycm-core/YouCompleteMe' """""""""""""""""""""""""""""""""
-
+let g:ycm_global_ycm_extra_conf='~/.config/nvim/.ycm_extra_conf.py'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ##################################################################################

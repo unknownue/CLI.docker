@@ -28,7 +28,7 @@ RUN pacman -S clang make cmake python --noconfirm --needed && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Config neovim and vim-plug
-RUN pacman -S neovim git --noconfirm --needed && \
+RUN pacman -S neovim git python-pynvim --noconfirm --needed && \
     echo -e "Y\nY\n" | pacman -Scc && \
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
@@ -47,7 +47,9 @@ LABEL license="MIT"
 # https://github.com/ycm-core/YouCompleteMe
 RUN cd ~/.local/share/nvim/plugged/YouCompleteMe/ && \
     git submodule update --init --recursive && \
-    python install.py --clang-completer
+    python install.py --clang-completer && \
+    cp ~/.local/share/nvim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py \
+    ~/.config/nvim/.ycm_extra_conf.py
 
 CMD ["bash"]
 # -----------------------------------------------------------------------------------
