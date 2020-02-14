@@ -37,7 +37,7 @@ RUN pacman -S neovim git --noconfirm --needed && \
 
 
 # -----------------------------------------------------------------------------------
-FROM cpp-env AS cpp-dev
+FROM unknownue/cpp-env AS cpp-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A C++ development environment with personal configuration in docker."

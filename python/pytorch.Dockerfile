@@ -1,6 +1,6 @@
 
 # -----------------------------------------------------------------------------------
-FROM archlinux/base:20200106 AS install-env
+FROM archlinux/base AS install-env
 
 # Change current root path to tmp directory path
 WORKDIR /tmp
@@ -12,7 +12,7 @@ RUN \
     printf 'root ALL=(ALL) ALL\nbuilduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers && \
     pacman -Syy && \
     pacman -S --noconfirm sudo fakeroot git base-devel libnsl && \
-    echo -e "Y\nY" | pacman -Scc
+    echo -e "Y\nY\n" | pacman -Scc
 
 # Install python
 RUN git clone https://aur.archlinux.org/python36.git && \
@@ -27,13 +27,11 @@ RUN git clone https://aur.archlinux.org/python36.git && \
 RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
     chmod 777 /tmp/nerd-fonts-hack && \
     cd nerd-fonts-hack && sudo --user=builduser bash makepkg -s --noconfirm && \
-    mv nerd-fonts-hack-2.0.0-1-any.pkg.tar.xz nerd-fonts-hack.pkg.tar.xz
+    mv nerd-fonts-hack*.pkg.tar.xz nerd-fonts-hack.pkg.tar.xz
 # -----------------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------------
-FROM archlinux/base:20200106 AS arch-python-dev
-COPY --from=install-env ["/tmp/python36/python36.pkg.tar.xz", "/tmp/python36.pkg.tar.xz"]
-COPY --from=install-env ["/tmp/nerd-fonts-hack/nerd-fonts-hack.pkg.tar.xz", "/tmp/nerd-fonts-hack.pkg.tar.xz"]
+FROM archlinux/base AS arch-python-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A python development environment with personal configuration in docker."
@@ -51,6 +49,7 @@ RUN \
     cp -r system/. ~/ && rm -r system/
 
 # Install python
+COPY --from=install-env ["/tmp/python36/python36.pkg.tar.xz", "/tmp/python36.pkg.tar.xz"]
 RUN pacman -Syy && \
     pacman -U --noconfirm python36.pkg.tar.xz && \
     rm python36.pkg.tar.xz && \
@@ -62,6 +61,7 @@ RUN pacman -Syy && \
     rm get-pip.py
 
 # Install Nerd Font
+COPY --from=install-env ["/tmp/nerd-fonts-hack/nerd-fonts-hack.pkg.tar.xz", "/tmp/nerd-fonts-hack.pkg.tar.xz"]
 RUN pacman -U --noconfirm nerd-fonts-hack.pkg.tar.xz && \
     rm nerd-fonts-hack.pkg.tar.xz
 
@@ -72,7 +72,7 @@ RUN pacman -S neovim git --noconfirm --needed && \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     pip install pynvim jedi yapf flake8 --no-cache-dir && \
     nvim +slient +VimEnter +PlugInstall +qal && \
-    echo -e "Y\nY" | pacman -Scc
+    echo -e "Y\nY\n" | pacman -Scc
 
 WORKDIR  /root/dev/
 CMD [ "bash" ]

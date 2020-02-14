@@ -4,7 +4,7 @@ Python development configuration in docker
 Image for python development
 
 ```shell
-$ docker build -t unknownue/python-dev --target arch-python-dev -f python/Dockerfile .
+$ docker build -t unknownue/python-dev --target arch-python-dev -f python/pytorch.Dockerfile .
 ```
 
 Image for [PyTorch](https://pytorch.org) development(GPU)
