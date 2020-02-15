@@ -1,6 +1,6 @@
 
 # -----------------------------------------------------------------------------------
-FROM arch/python-dev:latest AS arch-torch-dev
+FROM unknownue/python-dev:latest AS arch-torch-dev
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A pytorch environment with personal configuration in docker."

@@ -2,10 +2,6 @@
 # -----------------------------------------------------------------------------------
 FROM archlinux/base AS cpp-env
 
-LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
-LABEL description="A C++ development environment with personal configuration in docker."
-LABEL license="MIT"
-
 # Copy files to image
 COPY config/. config/
 COPY system/. system/
