@@ -16,7 +16,7 @@ RUN \
 
 # Update base system and install rust
 RUN pacman -Syy --noconfirm --noprogressbar && \
-    pacman -S --noconfirm rust g++ tar && \
+    pacman -S --noconfirm rust gcc tar && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Config neovim and vim-plug
