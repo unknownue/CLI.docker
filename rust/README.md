@@ -9,7 +9,7 @@ $ docker build -t unknownue/rust -f rust/rust.Dockerfile .
 Run:
 ```shell
 $ docker run -it --rm \
-    -v ~/.cargo/registry:~/.cargo/registry \
+    -v ~/.cargo/registry:/root/.cargo/registry \
     -v $(pwd):/root/dev \
     -w /root/dev \
     unknownue/rust

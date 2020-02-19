@@ -20,7 +20,7 @@ RUN pacman -Syy --noconfirm --noprogressbar && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Config neovim and vim-plug
-RUN \ 
+RUN \
     # Install neovim and nodejs
     pacman -S neovim git yarn nodejs --noconfirm --needed && \
     echo -e "Y\nY\n" | pacman -Scc && \
@@ -31,10 +31,9 @@ RUN \
     nvim -c "CocInstall coc-rust-analyzer" -c q
 
 # Install rust-analyzer
-# RUN git clone https://github.com/rust-analyzer/rust-analyzer && \
-#     cd rust-analyzer && \
-#     cargo xtask install --server && \
-#     cd .. && rm -r rust-analyzer
+RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
+    https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-02-17/ra_lsp_server-linux && \
+    chmod 777 ~/.cargo/bin/ra_lsp_server
 
 ENV USER=unknownue
 
