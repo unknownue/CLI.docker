@@ -16,20 +16,21 @@ RUN \
 
 # Update base system and install rust
 RUN pacman -Syy --noconfirm --noprogressbar && \
-    pacman -S rust && \
+    pacman -S --noconfirm rust tar && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Config neovim and vim-plug
 RUN \ 
-    # Install nobejs
-    curl -sL install-node.now.sh/lts | bash && \
-    # Install neovim
-    pacman -S neovim --noconfirm --needed && \
+    # Install neovim and nodejs
+    pacman -S neovim git nodejs --noconfirm --needed && \
     echo -e "Y\nY\n" | pacman -Scc && \
     # Install plugin for neovim
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
-    nvim +slient +VimEnter +PlugInstall +qal
+    nvim +slient +VimEnter +PlugInstall +qal && \
+    nvim -c "CocInstall coc-rust-analyzer"
+
+ENV USER=unknownue
 
 CMD ["bash"]
 # -----------------------------------------------------------------------------------
