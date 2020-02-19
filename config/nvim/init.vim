@@ -99,4 +99,3 @@ source ~/.config/nvim/dev-plug-config.vim
 
 " Load keymapping
 source ~/.config/nvim/colemak.vim
-source ~/.config/nvim/dev-plug-colemak.vim
