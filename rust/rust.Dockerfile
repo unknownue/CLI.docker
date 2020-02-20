@@ -27,13 +27,13 @@ RUN \
     # Install plugin for neovim
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
-    nvim -c "PlugInstall" -c q -c q && \
-    nvim -c "CocInstall coc-rust-analyzer" -c q
+    nvim -c "PlugInstall" -c q -c q
 
 # Install rust-analyzer
 RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
     https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-02-17/ra_lsp_server-linux && \
-    chmod 777 ~/.cargo/bin/ra_lsp_server
+    chmod 777 ~/.cargo/bin/ra_lsp_server && \
+    nvim -c "CocInstall coc-rust-analyzer" -c 5sleep -c q
 
 ENV USER=unknownue
 
