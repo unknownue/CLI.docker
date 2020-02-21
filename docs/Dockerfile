@@ -24,7 +24,7 @@ RUN curl -fLo /etc/pacman.d/mirrorlist \
 RUN useradd unknownue -m && \
     passwd -d unknownue && \
     # enable unknownue to sudo without password
-    printf 'root ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+    printf 'root ALL=(ALL) ALL\nunknownue ALL=(ALL) ALL\n' | tee -a /etc/sudoers
 
 # Compiler --------------------------------------------------------
 # RUN pacman -S --noconfirm sudo fakeroot git binutils && \
