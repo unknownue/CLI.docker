@@ -1,25 +1,42 @@
 
 # -----------------------------------------------------------------------------------
-FROM archlinux/base:20200106 AS install-env
+FROM archlinux/base:latest
 
-# Copy files to image
-COPY config/. ~/.config/
-COPY system/. ~/
+WORKDIR /root
 
-RUN \
-    useradd builduser -m && \
-    passwd -d builduser && \
-    # enable builduser to sudo without password
-    printf 'root ALL=(ALL) ALL\n' | tee -a /etc/sudoers && \
-    pacman -Syy && \
-    pacman -S --noconfirm sudo fakeroot git binutils && \
-    echo -e "Y\nY" | pacman -Scc
+ARG MIRROR_COUNTRY=CN
 
-# Change current root path to tmp directory path
-WORKDIR /tmp
+# Copy files to image ----------------------------------------------
+ADD system/. /root/
+ADD config/. /root/.config/
 
-# Config Fish shell
-# RUN pacman -S fish --noconfirm --needed --clean && \
+# Generate mirrorlist ----------------------------------------------
+# Get the mirrorlist for a specific country
+RUN curl -fLo /etc/pacman.d/mirrorlist \
+    https://www.archlinux.org/mirrorlist/?country=${MIRROR_COUNTRY} && \
+    sed -i 's/#Server/Server/' /etc/pacman.d/mirrorlist && \
+    pacman -Syy
+# Generate mirrorlist by testing speed
+# RUN reflector --verbose -l 20 -p http --sort rate --save /etc/pacman.d/mirrorlist && \
+#     pacman -Syy
+
+# Add user --------------------------------------------------------
+RUN useradd unknownue -m && \
+    passwd -d unknownue && \
+    # enable unknownue to sudo without password
+    printf 'root ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+
+# Compiler --------------------------------------------------------
+# RUN pacman -S --noconfirm sudo fakeroot git binutils && \
+#     echo -e "Y\nY\n" | pacman -Scc
+
+# Install common package ------------------------------------------
+RUN pacman -S --noconfirm --noprogressbar \
+    neofetch figlet git
+
+# Config Fish shell -----------------------------------------------
+# RUN pacman -S fish --noconfirm --clean && \
+#     echo -e "Y\nY\n" | pacman -Scc && \
 #     curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish && \
 #     curl -sLo ~/.local/bin/chips --create-dirs \
 #     https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
@@ -27,43 +44,25 @@ WORKDIR /tmp
 #     ~/.local/bin/chips && \
 #     cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/
 
-# Install Nerd Font
-RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
-    cd nerd-fonts-hack && sudo --user=builduser bash makepkg -si --noconfirm && \
-    cd .. && rm -r nerd-fonts-hack
+# Install Nerd Font -----------------------------------------------
+# RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
+#     cd nerd-fonts-hack && sudo --user=builduser bash makepkg -si --noconfirm && \
+#     cd .. && rm -r nerd-fonts-hack
 
-# Config tmux
+# Config tmux -----------------------------------------------------
 # https://github.com/tmux-plugins/tpm/issues/6
-# RUN pacman -S tmux --noconfirm --needed && \
+# RUN pacman -S tmux --noconfirm && \
+#     echo -e "Y\nY\n" | pacman -Scc && \
 #     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
 #     tmux start-server && \
 #     tmux new-session -d && \
 #     sleep 1 && \
 #     bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
 #     tmux kill-server
-# -----------------------------------------------------------------------------------
 
-
-# -----------------------------------------------------------------------------------
-FROM install-env AS nvim-env
-# Copy only the files we need from the previous stage
-# COPY --from=install-env ["", ""]
-
-# Config neovim
-RUN pacman -S neovim --noconfirm --needed && \
+# Config neovim --------------------------------------------------
+RUN pacman -S --noconfirm --noprogressbar neovim && \
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
-    nvim +slient +VimEnter +PlugInstall +qall && \
-    echo -e "yes" | pacman -Scc
-# -----------------------------------------------------------------------------------
-
-
-# -----------------------------------------------------------------------------------
-FROM nvim-env AS arch-nvim
-
-LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
-LABEL description="A dev environment with neovim installed and personal configuration in docker."
-LABEL license="MIT"
-
-CMD [ "nvim", "." ]
+    nvim -c "PlugInstall" -c q -c q
 # -----------------------------------------------------------------------------------
