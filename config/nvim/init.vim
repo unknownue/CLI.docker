@@ -46,6 +46,34 @@ call plug#end()
 syntax on
 colorscheme onedark
 
+" Set filetype
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+
+" spell check
+set nospell " Disable spell by default
+
+" Set indent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+" set foldmethod=indent
+
+" Set backspace can return to last line
+" set backspace=indent,eol,start
+
+" Set cursor
+set scrolloff=5
+" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+" let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" Return to last edit position
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 " Set default split location to bottom
 set splitbelow
 
@@ -67,6 +95,8 @@ set noswapfile
 set nowritebackup
 
 " Search configuration
+" set hlsearch      " Turn on highlight when search
+" exec "nohlsearch" " Turn off highlight in new file
 set ignorecase    " ignore case when searching
 set smartcase     " turn on smartcase
 " ##################################################################################

@@ -2,6 +2,7 @@
 " #################################################################################################
 " Keymapping for colemak in neovim
 
+" Use ":help keycodes" to see all key notation
 " :h key-notation
 " <ESC> -> Escape
 " <CR>  -> Enter
@@ -10,7 +11,12 @@
 " <D-?> -> Command
 " <M-?> or <A-?> -> Alt/Option
 
+" Set <leader> key
+let mapleader=" "
+
+" -----------------------------------------------------------------------------------
 "  map 	     noremap 	 unmap 	      mapclear 	    effact mode
+" -----------------------------------------------------------------------------------
 " :map 	    :noremap 	:unmap 	    :mapc[lear] 	Normal, Visual, Select, Operator-pending
 " :nmap 	:nnoremap 	:nunmap 	:nmapc[lear] 	Normal
 " :vmap 	:vnoremap 	:vunmap 	:vmapc[lear] 	Visual and Select
@@ -21,6 +27,7 @@
 " :imap 	:inoremap 	:iunmap 	:imapc[lear] 	Insert
 " :lmap 	:lnoremap 	:lunmap 	:lmapc[lear] 	Insert, Command-line, Lang-Arg
 " :cmap 	:cnoremap 	:cunmap 	:cmapc[lear] 	Command-line
+" -----------------------------------------------------------------------------------
 
 
 " Up/down/left/right
@@ -77,13 +84,43 @@ nnoremap k n| " find next
 nnoremap K N| " find previous
 nnoremap g t| onoremap g t| onoremap g t| " -> until char
 nnoremap G T| onoremap G T| onoremap G T| " <- until char
+nnoremap = nzz
+nnoremap - Nzz
 
 " Custom keymapping
 " unhightlight
-nnoremap <leader>c :set nohlsearch<CR>
+nnoremap <leader><CR> :nohlsearch<CR>
 " Toggle line number
 nnoremap <C-i> :set invnumber invrelativenumber<CR>
+
+" Spilit screen
+nnoremap <leader><C-left>  :set nosplitright<CR>:vsplit<CR>
+nnoremap <leader><C-right> :set splitright<CR>:vsplit<CR>
+nnoremap <leader><C-up>    :set nosplitbelow<CR>:split<CR>
+nnoremap <leader><C-down>  :set splitbelow<CR>:split<CR>
+" Switch screen
+nnoremap <leader><left>  :<C-w><left>
+nnoremap <leader><right> :<C-w><right>
+nnoremap <leader><up>    :<C-w><up>
+nnoremap <leader><down>  :<C-w><down>
+nnoremap <leader>- <C-w>t<C-w>H  " Switch to vertical screen spliting
+nnoremap <leader>- <C-w>t<C-w>K  " Switch to horizontal screen spliting
+" Adjust screen size
+nnoremap <up>    :res +5<CR>
+nnoremap <down>  :res -5<CR>
+nnoremap <left>  :vertical resize-5<CR>
+nnoremap <right> :vertical resize+5<CR>
+
+" Toggle spell check
+nnoremap <leader>sc :set spell!<CR>
+
+" Press space twice to jump to the next '<++>' and edit it
+nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
+
+" Call figlet to print ASCII art
+nnoremap <leader>p :r !figlet 
 " #################################################################################################
+
 
 
 " #################################################################################################
@@ -94,8 +131,12 @@ nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Keymapping for vim-buftabline
+" Keymapping for buffers """""""""""""""""""""""""""""""""""""""""""""""
+" Delete current buffer and switch to another buffer
+nnoremap <kDel>b :bp|bd #<CR>
+" Switch to next buffer
 nnoremap <C-k> :bnext<CR>
+" Switch to previous
 nnoremap <C-K> :bprev<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
