@@ -99,17 +99,18 @@ nnoremap <leader><C-right> :set splitright<CR>:vsplit<CR>
 nnoremap <leader><C-up>    :set nosplitbelow<CR>:split<CR>
 nnoremap <leader><C-down>  :set splitbelow<CR>:split<CR>
 " Switch screen
-nnoremap <leader><left>  :<C-w><left>
-nnoremap <leader><right> :<C-w><right>
-nnoremap <leader><up>    :<C-w><up>
-nnoremap <leader><down>  :<C-w><down>
+nnoremap <leader><left>  <C-w><left>
+nnoremap <leader><right> <C-w><right>
+nnoremap <leader><up>    <C-w><up>
+nnoremap <leader><down>  <C-w><down>
 nnoremap <leader>- <C-w>t<C-w>H  " Switch to vertical screen spliting
-nnoremap <leader>- <C-w>t<C-w>K  " Switch to horizontal screen spliting
+nnoremap <leader>+ <C-w>t<C-w>K  " Switch to horizontal screen spliting
 " Adjust screen size
-nnoremap <up>    :res +5<CR>
-nnoremap <down>  :res -5<CR>
-nnoremap <left>  :vertical resize-5<CR>
-nnoremap <right> :vertical resize+5<CR>
+nnoremap <C-up>    :res +5<CR>
+nnoremap <C-down>  :res -5<CR>
+nnoremap <C-left>  :vertical resize-5<CR>
+nnoremap <C-right> :vertical resize+5<CR>
+
 
 " Toggle spell check
 nnoremap <leader>sc :set spell!<CR>
@@ -119,6 +120,16 @@ nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
 
 " Call figlet to print ASCII art
 nnoremap <leader>p :r !figlet 
+
+" Support Copy text from vim to system clipboard
+" See also https://neovim.io/doc/user/provider.html#clipboard
+vnoremap <leader>s :w !xclip -i -sel c<CR><CR>
+nnoremap <leader>c "+yg_
+nnoremap <leader>v "+p
+nnoremap <leader>V "+P
+
+" For macOS
+" vmap <C-c> :w !pbcopy<CR><CR>
 " #################################################################################################
 
 
@@ -127,17 +138,19 @@ nnoremap <leader>p :r !figlet
 " Plugin keymapping
 
 " Keymapping for sideways """"""""""""""""""""""""""""""""""""""""""""""
-nnoremap <c-h> :SidewaysLeft<cr>
-nnoremap <c-l> :SidewaysRight<cr>
+nnoremap <C-k> :SidewaysLeft<CR>
+nnoremap <C-m> :SidewaysRight<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for buffers """""""""""""""""""""""""""""""""""""""""""""""
-" Delete current buffer and switch to another buffer
-nnoremap <kDel>b :bp|bd #<CR>
-" Switch to next buffer
-nnoremap <C-k> :bnext<CR>
-" Switch to previous
-nnoremap <C-K> :bprev<CR>
+" Switch buffer
+nnoremap <C-\> :BUN<CR>
+" Move to backward buffer
+nnoremap <C-[> :BB<CR>
+" Move to forward buffer
+nnoremap <C-]> :BF<CR>
+" Delete current Buffer
+nnoremap <leader><BS> :BD<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for nerdtree """"""""""""""""""""""""""""""""""""""""""""""

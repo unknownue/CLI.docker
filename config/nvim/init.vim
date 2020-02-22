@@ -28,6 +28,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'      " Auto comment by programming language
 Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
+Plug 'qpkorr/vim-bufkill'            " Helper to kill buffer
 "Plug 'tmhedberg/SimpylFold'          " Code folding
 
 " Unused plug
@@ -76,9 +77,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " Set default split location to bottom
 set splitbelow
-
-" Support Copy text from vim to system clipboard(Ctrl + C on Visual mode)
-vmap <C-c> :w !pbcopy<CR><CR>
 
 " Show line number as relative number
 set relativenumber

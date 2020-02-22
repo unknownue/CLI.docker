@@ -57,9 +57,6 @@ autocmd vimEnter * wincmd w
 " autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Config for vim-multiple-cursors """"""""""""""""""""""""""""""""""
-"Usage: https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/#heading-9
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Config for vim-multiple-cursors """"""""""""""""""""""""""""""""""
 "Usage: https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/#heading-9
