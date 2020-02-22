@@ -22,9 +22,10 @@ RUN pacman -S python-pynvim --noconfirm --needed && \
 # https://github.com/ycm-core/YouCompleteMe
 RUN cd ~/.local/share/nvim/plugged/YouCompleteMe/ && \
     git submodule update --init --recursive && \
-    python install.py --clang-completer && \
-    cp ~/.local/share/nvim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py \
-    ~/.config/nvim/.ycm_extra_conf.py
+    python install.py --clang-completer
+
+# Copied from https://jonasdevlieghere.com/a-better-youcompleteme-config/
+ADD cpp/.ycm_extra_conf.py ~/.config/nvim/.ycm_extra_conf.py
 
 CMD ["bash"]
 # -----------------------------------------------------------------------------------

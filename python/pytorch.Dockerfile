@@ -64,19 +64,10 @@ LABEL license="MIT"
 
 WORKDIR /tmp
 
-# RUN pip install --no-cache-dir \
-#     torch==1.4.0+cpu torchvision==0.5.0+cpu \
-#     -f https://download.pytorch.org/whl/torch_stable.html && \
-#     pip install --no-cache-dir \
-#     tensorboard==2.1.0 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0
-COPY torch-1.4.0+cpu-cp36-cp36m-linux_x86_64.whl torch-1.4.0+cpu-cp36-cp36m-linux_x86_64.whl
-COPY torchvision-0.5.0+cpu-cp36-cp36m-linux_x86_64.whl torchvision-0.5.0+cpu-cp36-cp36m-linux_x86_64.whl
-RUN pip install pqi --no-cache-dir && pqi use aliyun && \
-    pip install -U torch-1.4.0+cpu-cp36-cp36m-linux_x86_64.whl && \
-    rm torch-1.4.0+cpu-cp36-cp36m-linux_x86_64.whl && \
-    pip install -U torchvision-0.5.0+cpu-cp36-cp36m-linux_x86_64.whl && \
-    rm torchvision-0.5.0+cpu-cp36-cp36m-linux_x86_64.whl
 RUN pip install --no-cache-dir \
+    torch==1.4.0+cpu torchvision==0.5.0+cpu \
+    -f https://download.pytorch.org/whl/torch_stable.html && \
+    pip install --no-cache-dir \
     tensorboard==2.1.0 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0
 
 WORKDIR /root/dev
