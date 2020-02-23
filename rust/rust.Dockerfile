@@ -1,22 +1,18 @@
 
 # -----------------------------------------------------------------------------------
-FROM archlinux/base
+FROM unknownue/arch-env:latest
 
 LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A Rust development environment with personal configuration in docker."
 LABEL license="MIT"
 
+ENV USER=unknownue
+
 # Copy files to image
-COPY config/. config/
-COPY system/. system/
-COPY rust/. config/nvim/
-RUN \
-    cp -r config/. ~/.config/ && rm -r config/ && \
-    cp -r system/. ~/ && rm -r system/
+ADD rust/. /root/.config/nvim/
 
 # Update base system and install rust
-RUN pacman -Syy --noconfirm --noprogressbar && \
-    pacman -S --noconfirm rust gcc tar && \
+RUN pacman -S --noconfirm rust gcc tar && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Config neovim and vim-plug
@@ -34,8 +30,6 @@ RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
     https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-02-17/ra_lsp_server-linux && \
     chmod 777 ~/.cargo/bin/ra_lsp_server && \
     nvim -c "CocInstall coc-rust-analyzer" -c 5sleep -c q
-
-ENV USER=unknownue
 
 CMD ["bash"]
 # -----------------------------------------------------------------------------------

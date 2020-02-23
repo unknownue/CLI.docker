@@ -123,7 +123,7 @@ nnoremap <leader>p :r !figlet
 
 " Support Copy text from vim to system clipboard
 " See also https://neovim.io/doc/user/provider.html#clipboard
-vnoremap <leader>s :w !xclip -i -sel c<CR><CR>
+vnoremap <leader>c :w !xclip -i -sel c<CR><CR>
 nnoremap <leader>c "+yg_
 nnoremap <leader>v "+p
 nnoremap <leader>V "+P
