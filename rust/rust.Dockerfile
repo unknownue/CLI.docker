@@ -31,5 +31,9 @@ RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
     chmod 777 ~/.cargo/bin/ra_lsp_server && \
     nvim -c "CocInstall coc-rust-analyzer" -c 5sleep -c q
 
+# Update indices
+RUN cargo search vulkan
+
 CMD ["bash"]
 # -----------------------------------------------------------------------------------
+
