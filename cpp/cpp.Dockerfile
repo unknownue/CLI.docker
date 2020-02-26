@@ -6,6 +6,9 @@ LABEL maintainer="unknownue <usami-ssc@protonmail.com>"
 LABEL description="A C++ development environment with personal configuration in docker."
 LABEL license="MIT"
 
+ENV DISPLAY=host.docker.internal:0
+
+
 # Copy files to image
 ADD cpp/. /root/.config/nvim/
 

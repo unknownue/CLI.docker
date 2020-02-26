@@ -32,7 +32,7 @@ RUN useradd unknownue -m && \
 
 # Install common package ------------------------------------------
 RUN pacman -S --noconfirm --noprogressbar \
-    neofetch figlet git
+    neofetch figlet git xclip
 
 # Config Fish shell -----------------------------------------------
 # RUN pacman -S fish --noconfirm --clean && \

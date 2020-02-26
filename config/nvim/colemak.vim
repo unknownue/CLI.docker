@@ -1,6 +1,16 @@
 
 " #################################################################################################
 " Keymapping for colemak in neovim
+" 
+"   ____      _                      _    
+"  / ___|___ | | ___ _ __ ___   __ _| | __
+" | |   / _ \| |/ _ \ '_ ` _ \ / _` | |/ /
+" | |__| (_) | |  __/ | | | | | (_| |   < 
+"  \____\___/|_|\___|_| |_| |_|\__,_|_|\_\
+"                                         
+"
+" #################################################################################################
+
 
 " Use ":help keycodes" to see all key notation
 " :h key-notation
@@ -28,6 +38,16 @@ let mapleader=" "
 " :lmap 	:lnoremap 	:lunmap 	:lmapc[lear] 	Insert, Command-line, Lang-Arg
 " :cmap 	:cnoremap 	:cunmap 	:cmapc[lear] 	Command-line
 " -----------------------------------------------------------------------------------
+
+" Reload the all configuration
+nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
+" Toggle NERDTree
+nnoremap <leader>` :NERDTreeToggle<CR>
+" Call figlet to print ASCII art
+nnoremap <leader>9 :r !figlet 
+" Press space twice to jump to the next '<++>' and edit it
+" nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
+
 
 
 " Up/down/left/right
@@ -60,8 +80,9 @@ nnoremap s d| xnoremap s d| onoremap s d| " delete | operator-pending
 nnoremap S D| xnoremap S D| onoremap S D| " change the line at the line beginning
 " nnoremap y o| " create new line at the next line of cursor
 " nnoremap Y O| " create new line at the previous line of cursor
-nnoremap d g| " goto
-nnoremap D G| " jump to eof
+nnoremap d g|  " goto
+nnoremap D G|  " jump to eof
+nnoremap dd gg " jump to start of file
 
 " Undo/Redo
 nnoremap z u
@@ -91,7 +112,10 @@ nnoremap - Nzz
 " unhightlight
 nnoremap <leader><CR> :nohlsearch<CR>
 " Toggle line number
-nnoremap <C-i> :set invnumber invrelativenumber<CR>
+" nnoremap <C-i> :set invnumber invrelativenumber<CR>
+
+" Select All
+nnoremap <C-a> ggVG
 
 " Spilit screen
 nnoremap <leader><C-left>  :set nosplitright<CR>:vsplit<CR>
@@ -103,8 +127,8 @@ nnoremap <leader><left>  <C-w><left>
 nnoremap <leader><right> <C-w><right>
 nnoremap <leader><up>    <C-w><up>
 nnoremap <leader><down>  <C-w><down>
-nnoremap <leader>- <C-w>t<C-w>H  " Switch to vertical screen spliting
-nnoremap <leader>+ <C-w>t<C-w>K  " Switch to horizontal screen spliting
+nnoremap <leader>-       <C-w>t<C-w>H  " Switch to vertical screen spliting
+nnoremap <leader>+       <C-w>t<C-w>K  " Switch to horizontal screen spliting
 " Adjust screen size
 nnoremap <C-up>    :res +5<CR>
 nnoremap <C-down>  :res -5<CR>
@@ -115,18 +139,14 @@ nnoremap <C-right> :vertical resize+5<CR>
 " Toggle spell check
 nnoremap <leader>sc :set spell!<CR>
 
-" Press space twice to jump to the next '<++>' and edit it
-nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
-
-" Call figlet to print ASCII art
-nnoremap <leader>p :r !figlet 
 
 " Support Copy text from vim to system clipboard
+" For linux
 " See also https://neovim.io/doc/user/provider.html#clipboard
-vnoremap <leader>c :w !xclip -i -sel c<CR><CR>
-nnoremap <leader>c "+yg_
-nnoremap <leader>v "+p
-nnoremap <leader>V "+P
+vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
+nnoremap <C-c> "+yg_
+nnoremap <C-v> "+p
+nnoremap <C-V> "+P
 
 " For macOS
 " vmap <C-c> :w !pbcopy<CR><CR>
@@ -143,19 +163,19 @@ nnoremap <C-m> :SidewaysRight<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for buffers """""""""""""""""""""""""""""""""""""""""""""""
+" See also https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window
+
 " Switch buffer
-nnoremap <C-\> :BUN<CR>
-" Move to backward buffer
-nnoremap <C-[> :BB<CR>
-" Move to forward buffer
-nnoremap <C-]> :BF<CR>
+nnoremap <C-\> :bnext<CR>
 " Delete current Buffer
 nnoremap <leader><BS> :BD<CR>
+" Move to backward buffer
+" nnoremap <C-[> :BB<CR>
+" Move to forward buffer
+" nnoremap <C-]> :BF<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for nerdtree """"""""""""""""""""""""""""""""""""""""""""""
-" Toggle NERDTree
-nnoremap <leader>g :NERDTreeToggle<CR>
 
 " open in prew window: j -> y
 let NERDTreeMapActivateNode='y'
