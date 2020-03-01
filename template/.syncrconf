@@ -1,0 +1,10 @@
+name   Arch
+host   192.168.1.xxx
+user   username
+pass   password
+port   22
+remote Remote/Path/
+confirm_download 0
+confirm_upload 0
+quiet 0
+exclude

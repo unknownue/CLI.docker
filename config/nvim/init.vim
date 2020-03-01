@@ -31,6 +31,9 @@ Plug 'machakann/vim-highlightedyank' " Hint for copied text
 Plug 'qpkorr/vim-bufkill'            " Helper to kill buffer
 "Plug 'tmhedberg/SimpylFold'          " Code folding
 
+" Network
+Plug 'jacob-ogre/vim-syncr'  " A small plugin to sync local and remote files and directories from Vim.
+
 " Unused plug
 " Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
 " Plug 'ap/vim-buftabline' " buffer bar for vim " Replace by smart tab line in vim-airline/vim-airline

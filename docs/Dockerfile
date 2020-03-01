@@ -32,7 +32,17 @@ RUN useradd unknownue -m && \
 
 # Install common package ------------------------------------------
 RUN pacman -S --noconfirm --noprogressbar \
-    neofetch figlet git xclip
+    neofetch figlet git xclip && \
+    echo -e "Y\nY\n" | pacman -Scc
+
+# Configure file sync
+ADD .ssh/. ~/.ssh/
+RUN pacman -S --noconfirm --noprogressbar openssh rsync && \
+    echo -e "Y\nY\n" | pacman -Scc && \
+    git clone https://github.com/jacob-ogre/vim-syncr ~/.vim/bundle/vim-syncr && \
+    # Use "ssh username@remote_address" to establish the remote host first
+    chmod 600 ~/.ssh/id_rsa && \
+    chmod 644 ~/.ssh/config
 
 # Config Fish shell -----------------------------------------------
 # RUN pacman -S fish --noconfirm --clean && \
