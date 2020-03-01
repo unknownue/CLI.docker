@@ -42,8 +42,13 @@ let mapleader=" "
 nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
 " Toggle NERDTree
 nnoremap <leader>` :NERDTreeToggle<CR>
+" Toggle file sync
+nnoremap <leader>7 :call NVimToggleFileSync()<CR>
+" Toggle spell check
+nnoremap <leader>8 :set spell!<CR>
 " Call figlet to print ASCII art
 nnoremap <leader>9 :r !figlet 
+
 " Press space twice to jump to the next '<++>' and edit it
 " nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
 
@@ -133,10 +138,6 @@ nnoremap <C-up>    :res +5<CR>
 nnoremap <C-down>  :res -5<CR>
 nnoremap <C-left>  :vertical resize-5<CR>
 nnoremap <C-right> :vertical resize+5<CR>
-
-
-" Toggle spell check
-nnoremap <leader>sc :set spell!<CR>
 
 
 " Support Copy text from vim to system clipboard
@@ -235,5 +236,41 @@ xnoremap <leader>/ :NERDCommenterToggle<CR>
 "    zO  -> recusive open folding at cursor
 "    zc  -> close folding at cursor
 "    zC  -> close all folding
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+" Keymapping for jacob-ogre/vim-syncr """"""""""""""""""""""""""""""""""
+
+" Disable default key bindings
+nnoremap <leader>sf <Nop>
+nnoremap <leader>sd <Nop>
+nnoremap <leader>sdf <Nop>
+
+" Toggle sync after buffer writing
+function! NVimFileSync()
+    if get(g:, "nvim_file_sync", 1) |
+        :Suplfil
+    endif
+endfunction
+
+function! NVimToggleFileSync()
+    if get(g:, "nvim_file_sync", 1) |
+        let g:nvim_file_sync = 0
+        echo 'File sync disable...'
+    else
+        let g:nvim_file_sync = 1
+        echo 'File sync enable...'
+    endif
+endfunction
+
+augroup VimFileSync
+  autocmd!
+  autocmd BufWritePost * :call NVimFileSync()
+augroup END
+
+" Customize new keymapping
+nnoremap <leader>r :Suplfil  " sync current file local -> remote
+nnoremap <leader>s :Supldir  " sync current dir local  -> remote
+" nnoremap <leader>d :Sdownlf  " sync current file remote -> local
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #################################################################################################
