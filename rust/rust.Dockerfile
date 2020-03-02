@@ -7,7 +7,7 @@ LABEL description="A Rust development environment with personal configuration in
 LABEL license="MIT"
 
 ENV USER=unknownue
-ENV $DISPLAY=host.docker.internal:0
+ENV DISPLAY="host.docker.internal:0"
 
 # Copy files to image
 ADD rust/. /root/.config/nvim/
@@ -37,4 +37,3 @@ RUN cargo search vulkan
 
 CMD ["bash"]
 # -----------------------------------------------------------------------------------
-

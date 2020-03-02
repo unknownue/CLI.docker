@@ -25,7 +25,7 @@ Plug 'andrewradev/sideways.vim'      " Switch function parameters
 Plug 'easymotion/vim-easymotion'     " Vim motion on speed!
 Plug 'haya14busa/incsearch.vim'      " Improved incremental searching for Vim
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'      " Auto comment by programming language
+Plug 'preservim/nerdcommenter'       " Auto comment by programming language 
 Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
 Plug 'qpkorr/vim-bufkill'            " Helper to kill buffer

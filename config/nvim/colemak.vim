@@ -223,7 +223,7 @@ let NERDTreeMapToggleHidden='U'
 
 " Keymapping for nerdcommenter """""""""""""""""""""""""""""""""""""""""
 " Toggles the comment state of the selected line(s)
-xnoremap <leader>/ :NERDCommenterToggle<CR>
+xnoremap <leader>/ :call NERDComment(0, "toggle")<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plug vim-slash """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -269,8 +269,11 @@ augroup VimFileSync
 augroup END
 
 " Customize new keymapping
-nnoremap <leader>r :Suplfil  " sync current file local -> remote
-nnoremap <leader>s :Supldir  " sync current dir local  -> remote
-" nnoremap <leader>d :Sdownlf  " sync current file remote -> local
+" sync current file local -> remote
+nnoremap <leader>r :Suplfil<CR>
+" sync current dir local  -> remote
+nnoremap <leader>s :Supldir<CR>
+" sync current file remote -> local
+" nnoremap <leader>d :Sdownlf<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #################################################################################################

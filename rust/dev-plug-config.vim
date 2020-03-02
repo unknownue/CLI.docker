@@ -3,7 +3,7 @@
 
 " Config for 'neoclide/coc.nvim' """"""""""""""""""""""""""""""""""""
 " Activate coc-rust-analyzer on startup
-autocmd VimEnter * CocInstall coc-rust-analyzer
+" autocmd VimEnter * CocInstall coc-rust-analyzer
 
 " TextEdit might fail if hidden is not set.
 set hidden
