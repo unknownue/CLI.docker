@@ -53,6 +53,15 @@ nnoremap <leader>9 :r !figlet
 " nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
 
 
+" Adjust view area
+" Use <PageUp> and <PageDown> to scroll a page
+" Use Shift + <PageUp>/<PageDown> to scroll half page
+nnoremap <S-PageUp>   <C-u>
+nnoremap <S-PageDown> <C-d>
+" Adjust display area
+nnoremap <C-[> 3<C-e>
+nnoremap <C-]> 3<C-y>
+
 
 " Up/down/left/right
 " nnoremap h h|xnoremap h h|onoremap h h| " left

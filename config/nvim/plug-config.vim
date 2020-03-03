@@ -88,4 +88,10 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDToggleCheckAllLines = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+" Config for skywind3000/asyncrun.vim """""""""""""""""""""""""""""""
+let g:asyncrun_status = ''
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " ##################################################################################
