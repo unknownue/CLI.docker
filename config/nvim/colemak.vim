@@ -60,10 +60,10 @@ nnoremap n j|xnoremap n j|onoremap n j| " down
 nnoremap e k|xnoremap e k|onoremap e k| " up
 nnoremap i l|xnoremap i l|onoremap i l| " right
 " Move cursor faster
-nnoremap <S-h> 3h|xnoremap <S-h> 3h|onoremap <S-h> 3h
-nnoremap <S-e> 3k|xnoremap <S-e> 3k|onoremap <S-e> 3k
-nnoremap <S-n> 3j|xnoremap <S-n> 3j|onoremap <S-n> 3j
-nnoremap <S-i> 3l|xnoremap <S-i> 3l|onoremap <S-i> 3l
+nnoremap <S-h> 4h|xnoremap <S-h> 4h|onoremap <S-h> 4h
+nnoremap <S-e> 4k|xnoremap <S-e> 4k|onoremap <S-e> 4k
+nnoremap <S-n> 4j|xnoremap <S-n> 4j|onoremap <S-n> 4j
+nnoremap <S-i> 4l|xnoremap <S-i> 4l|onoremap <S-i> 4l
 
 " Words forward/backward
 " nnoremap b b|xnoremap b b|onoremap b b| " back word

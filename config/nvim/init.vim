@@ -4,9 +4,8 @@
 
 set encoding=UTF-8
 
-" ##################################################################################
-" Vim-plug Start
 " ----------------------------------------------------------------------------------
+" Vim-plug Start
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Development Customize
@@ -38,13 +37,12 @@ Plug 'jacob-ogre/vim-syncr'  " A small plugin to sync local and remote files and
 " Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
 " Plug 'ap/vim-buftabline' " buffer bar for vim " Replace by smart tab line in vim-airline/vim-airline
 " Plug 'junegunn/vim-slash' " Remove highlight when cursor is moved " Conflict to colemak.vim
+
 call plug#end()
 " ----------------------------------------------------------------------------------
-" Vim-plug End
-" ##################################################################################
 
 
-" ##################################################################################
+" ----------------------------------------------------------------------------------
 " Default configuration for neovim
 
 syntax on
@@ -71,6 +69,8 @@ set softtabstop=4
 
 " Set cursor
 set scrolloff=5
+" Highlight current line(cursor)
+set cul
 " let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 " let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -100,12 +100,12 @@ set nowritebackup
 " exec "nohlsearch" " Turn off highlight in new file
 set ignorecase    " ignore case when searching
 set smartcase     " turn on smartcase
-" ##################################################################################
+" ----------------------------------------------------------------------------------
 
 
 
 
-" ##################################################################################
+" ----------------------------------------------------------------------------------
 " Necessary code for syntax highlight
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -122,11 +122,14 @@ set smartcase     " turn on smartcase
         set termguicolors
     endif
 "endif
-" ##################################################################################
+" ----------------------------------------------------------------------------------
 
+
+" ----------------------------------------------------------------------------------
 " Load Development Plug config
 source ~/.config/nvim/plug-config.vim
 source ~/.config/nvim/dev-plug-config.vim
 
 " Load keymapping
 source ~/.config/nvim/colemak.vim
+" ----------------------------------------------------------------------------------
