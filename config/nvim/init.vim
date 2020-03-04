@@ -34,6 +34,10 @@ Plug 'qpkorr/vim-bufkill'            " Helper to kill buffer
 Plug 'skywind3000/asyncrun.vim'  " Run shell commands in background
 Plug 'jacob-ogre/vim-syncr'      " Sync local and remote files and directories from Vim
 
+" Language
+Plug 'ekalinin/Dockerfile.vim'  " Vim syntax file for Dockerfile
+Plug 'plasticboy/vim-markdown'  " Syntax highlighting...etc for the Markdown
+
 " Unused plug
 " Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
 " Plug 'ap/vim-buftabline' " buffer bar for vim " Replace by smart tab line in vim-airline/vim-airline

@@ -88,10 +88,17 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDToggleCheckAllLines = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " Config for skywind3000/asyncrun.vim """""""""""""""""""""""""""""""
 let g:asyncrun_status = ''
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Config for plasticboy/vim-markdown """""""""""""""""""""""""""""""
+" Disable folding functions of this plugin
+let g:vim_markdown_folding_disabled = 1
+" Disable Default Key Mappings
+let g:vim_markdown_no_default_key_mappings = 1
+" Support fo latex math
+let g:vim_markdown_math = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ##################################################################################
