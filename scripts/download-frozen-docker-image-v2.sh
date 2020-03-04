@@ -2,7 +2,8 @@
 
 # From https://github.com/moby/moby/master/contrib/download-frozen-image-v2.sh
 # Dependencies: curl jq go
-# Usage: bash download-frozen-docker-image-v2.sh ubuntu/ ubunbu:latest
+# Usage: bash download-frozen-docker-image-v2.sh ubuntu/ ubunbu:latest && \
+#        tar -cC 'ubuntu' . | docker load
 
 set -eo pipefail
 

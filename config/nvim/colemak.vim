@@ -59,8 +59,8 @@ nnoremap <leader>9 :r !figlet
 nnoremap <S-PageUp>   <C-u>
 nnoremap <S-PageDown> <C-d>
 " Adjust display area
-nnoremap <C-[> 3<C-e>
-nnoremap <C-]> 3<C-y>
+nnoremap <C-[> 3<C-y>
+nnoremap <C-]> 3<C-e>
 
 
 " Up/down/left/right
@@ -176,6 +176,7 @@ nnoremap <C-m> :SidewaysRight<CR>
 
 " Switch buffer
 nnoremap <C-\> :bnext<CR>
+vnoremap <C-\> :bnext<CR>
 " Delete current Buffer
 nnoremap <leader><BS> :BD<CR>
 " Move to backward buffer
