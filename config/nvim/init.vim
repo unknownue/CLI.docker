@@ -28,6 +28,7 @@ Plug 'preservim/nerdcommenter'       " Auto comment by programming language
 Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
 Plug 'qpkorr/vim-bufkill'            " Helper to kill buffer
+Plug 'easymotion/vim-easymotion'     " Move cursor to anywhere
 "Plug 'tmhedberg/SimpylFold'          " Code folding
 
 " Interactive

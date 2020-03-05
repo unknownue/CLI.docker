@@ -84,7 +84,7 @@ nnoremap F E| xnoremap F E| onoremap F E| " next word end
 " nnoremap W W|xnoremap W W|onoremap W W| " next word start
 
 " Insert/Replace/Append/Delete/Open line/Goto
-nnoremap u i| onoremap u i| " insert to current cursor
+nnoremap u i| xnoremap u i| onoremap u i| " insert to current cursor
 nnoremap U I| " insert to line beginning
 " nnoremap a a| " Append to current cursor
 " nnoremap A A| " Append to up line
@@ -117,8 +117,8 @@ nnoremap t f| onoremap t f| " Search to line right | operator-pending
 nnoremap T F| onoremap T F| " Search to line left  | operator-pending 
 nnoremap k n| " find next
 nnoremap K N| " find previous
-nnoremap g t| onoremap g t| onoremap g t| " -> until char
-nnoremap G T| onoremap G T| onoremap G T| " <- until char
+nnoremap g t| xnoremap g t| onoremap g t| " -> until char
+nnoremap G T| xnoremap G T| onoremap G T| " <- until char
 nnoremap = nzz
 nnoremap - Nzz
 
@@ -249,9 +249,18 @@ xnoremap <leader>/ :call NERDComment(0, "toggle")<CR>
 "    zC  -> close all folding
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Keymapping for easymotion/vim-easymotion """""""""""""""""""""""""""""
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+" Move to anywhere
+nmap <leader><leader> <Plug>(easymotion-s2)
+" Move to line(<leader>+l)
+nmap <Leader>i <Plug>(easymotion-overwin-line)
+" Move to word(<leader>+w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for jacob-ogre/vim-syncr """"""""""""""""""""""""""""""""""
-
 " Disable default key bindings
 nnoremap <leader>sf <Nop>
 nnoremap <leader>sd <Nop>
