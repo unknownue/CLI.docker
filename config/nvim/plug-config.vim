@@ -17,11 +17,11 @@ let g:airline#extensions#whitespace#enabled = 1 " Enable trailing whitespace det
 " https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
 function! AirlineInit()
   " let g:airline_section_a = airline#section#create(['mode'])
-  let g:airline_section_b = airline#section#create_left(['filetype'])
+  let g:airline_section_b = airline#section#create_left(['Sync %{NVimFileSyncStatus()}', 'filetype'])
   let g:airline_section_c = airline#section#create(['%f', 'readonly'])
   let g:airline_section_x = airline#section#create([])
   let g:airline_section_y = airline#section#create_right(['%{getcwd()}'])
-  let g:airline_section_z = airline#section#create(['Ln %l/%L.Col %c'])
+  let g:airline_section_z = airline#section#create(['Ln%l/%L.Col%c'])
 endfunction
 autocmd VimEnter * call AirlineInit()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

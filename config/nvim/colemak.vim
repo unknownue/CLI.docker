@@ -59,8 +59,9 @@ nnoremap <leader>9 :r !figlet
 nnoremap <S-PageUp>   <C-u>
 nnoremap <S-PageDown> <C-d>
 " Adjust display area
-nnoremap <C-[> 3<C-y>
-nnoremap <C-]> 3<C-e>
+" (A special key mapping for mac, which is option+[ or option+])
+nnoremap “ 3<C-y>
+nnoremap ‘ 3<C-e>
 
 
 " Up/down/left/right
@@ -77,13 +78,13 @@ nnoremap <S-i> 4l|xnoremap <S-i> 4l|onoremap <S-i> 4l
 " Words forward/backward
 " nnoremap b b|xnoremap b b|onoremap b b| " back word
 " nnoremap B B|xnoremap B B|onoremap B B| " back word
-nnoremap f e|xnoremap f e|onoremap f e| " next word end
-nnoremap F E|xnoremap F E|onoremap F E| " next word end
+nnoremap f e| xnoremap f e| onoremap f e| " next word end
+nnoremap F E| xnoremap F E| onoremap F E| " next word end
 " nnoremap w w|xnoremap w w|onoremap w w| " next word start
 " nnoremap W W|xnoremap W W|onoremap W W| " next word start
 
 " Insert/Replace/Append/Delete/Open line/Goto
-nnoremap u i| " insert to current cursor
+nnoremap u i| onoremap u i| " insert to current cursor
 nnoremap U I| " insert to line beginning
 " nnoremap a a| " Append to current cursor
 " nnoremap A A| " Append to up line
@@ -99,7 +100,7 @@ nnoremap dd gg " jump to start of file
 
 " Undo/Redo
 nnoremap z u
-nnoremap <C-z> <C-r> " redo
+nnoremap <S-z> <C-r> " redo
 
 " Copy/Paste
 nnoremap j y| xnoremap j y| " copy
@@ -257,9 +258,18 @@ nnoremap <leader>sd <Nop>
 nnoremap <leader>sdf <Nop>
 
 " Toggle sync after buffer writing
+let g:nvim_file_sync = 0
 function! NVimFileSync()
     if get(g:, "nvim_file_sync", 1) |
         :Suplfil
+    endif
+endfunction
+
+function! NVimFileSyncStatus()
+    if get(g:, "nvim_file_sync", 1) |
+        return 'On'
+    else
+        return 'Off'
     endif
 endfunction
 
