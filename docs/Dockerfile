@@ -32,7 +32,7 @@ RUN useradd unknownue -m && \
 
 # Install common package ------------------------------------------
 RUN pacman -S --noconfirm --noprogressbar \
-    neofetch figlet git xclip && \
+    neofetch figlet git fzf ripgrep bat xclip && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Configure file sync
@@ -52,7 +52,9 @@ RUN pacman -S --noconfirm --noprogressbar openssh rsync && \
 #     https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
 #     chmod +x ~/.local/bin/chips && \
 #     ~/.local/bin/chips && \
-#     cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/
+#     cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/ && \
+#     # Install fish plugin
+#     fisher add jethrokuan/fzf
 
 # Install Nerd Font -----------------------------------------------
 # RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \

@@ -237,6 +237,35 @@ let NERDTreeMapToggleHidden='U'
 xnoremap <leader>/ :call NERDComment(0, "toggle")<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Keymapping for junegunn/fzf O"""""""""""""""""""""""""""""""""""""""""
+" Preview file search
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': 
+    \ ['--layout=reverse', '--info=inline', '--preview', '~/.local/share/nvim/plugged/fzf.vim/bin/preview.sh {}']
+    \ }, <bang>0)
+" Recursive search current directory recursive
+" :Rg <keyword>
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+" Toggle file search
+nnoremap <leader>t :Files<CR>
+" Toggle buffers selection
+nnoremap <leader>b :Buffers<CR>
+" View keymapping in normal, visual, and operator-pending mode(<leader>+k)
+nmap <leader>e <plug>(fzf-maps-n)
+xmap <leader>e <plug>(fzf-maps-x)
+omap <leader>e <plug>(fzf-maps-o)
+" Extre keymapping to open file
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Plug vim-slash """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " noremap <plug>(slash-after) zz
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

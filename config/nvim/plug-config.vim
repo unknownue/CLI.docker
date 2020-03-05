@@ -42,15 +42,15 @@ autocmd VimEnter * call AirlineInit()
 "let g:nerdtree_tabs_open_on_console_startup=1
 
 " Ignore specific files
-"let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+let NERDTreeIgnore=['\.pyc']
 
 " show bookmakrs
 "let NERDTreeShowBookmarks=1
 
 " Toggle NERDTree on start
-autocmd vimenter * NERDTree
-wincmd w
-autocmd vimEnter * wincmd w
+" autocmd vimenter * NERDTree
+" wincmd w
+" autocmd vimEnter * wincmd w
 
 " Close all NERDTree after the last document was closed.
 " autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -100,5 +100,11 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
 " Support fo latex math
 let g:vim_markdown_math = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Config for junegunn/fzf """""""""""""""""""""""""""""""""""""""""""
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ##################################################################################

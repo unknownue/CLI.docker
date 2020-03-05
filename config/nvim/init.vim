@@ -34,6 +34,8 @@ Plug 'easymotion/vim-easymotion'     " Move cursor to anywhere
 " Interactive
 Plug 'skywind3000/asyncrun.vim'  " Run shell commands in background
 Plug 'jacob-ogre/vim-syncr'      " Sync local and remote files and directories from Vim
+Plug 'junegunn/fzf', { 'do': './install --bin' } " FZF
+Plug 'junegunn/fzf.vim'
 
 " Language
 Plug 'ekalinin/Dockerfile.vim'  " Vim syntax file for Dockerfile
