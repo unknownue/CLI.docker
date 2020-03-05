@@ -7,7 +7,7 @@
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 " Enable smarter tab line
-" https://github.com/vim-airline/vim-airline#smarter-tab-line
+" https://:egithub.com/vim-airline/vim-airline#smarter-tab-line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'

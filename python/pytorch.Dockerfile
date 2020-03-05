@@ -62,6 +62,8 @@ LABEL torch-version="1.4.0"
 LABEL torchvision-version="0.5.0"
 LABEL license="MIT"
 
+ENV DISPLAY=host.docker.internal:0
+
 WORKDIR /tmp
 
 RUN pip install --no-cache-dir \
