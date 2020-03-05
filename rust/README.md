@@ -11,7 +11,7 @@ Run:
 ```shell
 $ docker run -it --rm \
     -v ~/.cargo/registry:/root/.cargo/registry \
-    -v $(pwd):/root/dev \
-    -w /root/dev \
+    -v $(pwd):/workspace \
+    -w /workspace \
     unknownue/rust
 ```

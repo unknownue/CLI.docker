@@ -18,7 +18,7 @@ RUN pip install pqi --no-cache-dir && pqi use aliyun && \
     pip install -U torchvision-0.5.0+cpu-cp36-cp36m-linux_x86_64.whl && \
     rm torchvision-0.5.0+cpu-cp36-cp36m-linux_x86_64.whl
 
-WORKDIR /root/dev
+WORKDIR /workspace
 CMD [ "bash" ]
 # -----------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ LABEL torch-version="1.4.0"
 LABEL torchvision-version="0.5.0"
 LABEL license="MIT"
 
-WORKDIR /root/dev
+WORKDIR /workspace
 
 COPY /sources.list /etc/apt/sources.list
 RUN apt update 

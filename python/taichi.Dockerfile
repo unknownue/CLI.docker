@@ -11,7 +11,7 @@ LABEL license="MIT"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /root/dev/
+WORKDIR /workspace/
 
 # Install common system-level package
 RUN apt update && apt upgrade -y && \
@@ -45,7 +45,7 @@ LABEL license="MIT"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /root/dev/
+WORKDIR /workspace/
 
 # Install common system-level package
 RUN apt update && apt upgrade -y && \

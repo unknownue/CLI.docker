@@ -49,7 +49,7 @@ RUN pacman -U --noconfirm python36.pkg.tar.xz && \
 RUN pip install --no-cache-dir pynvim jedi yapf flake8 && \
     nvim +slient +VimEnter +PlugInstall +qal
 
-WORKDIR /root/dev/
+WORKDIR /workspace/
 # -----------------------------------------------------------------------------------
 
 
@@ -70,7 +70,7 @@ RUN pip install --no-cache-dir \
     pip install --no-cache-dir \
     tensorboard==2.1.0 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0
 
-WORKDIR /root/dev
+WORKDIR /workspace
 CMD [ "bash" ]
 # -----------------------------------------------------------------------------------
 
@@ -91,6 +91,6 @@ RUN pip install --no-cache-dir \
     pip install --no-cache-dir \
     tensorboard==2.1.0 visdom==0.1.8.9 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0
 
-WORKDIR /root/dev
+WORKDIR /workspace
 CMD [ "bash" ]
 # -----------------------------------------------------------------------------------

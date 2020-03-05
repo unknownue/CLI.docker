@@ -20,7 +20,7 @@ RUN pacman -Syy --noconfirm --noprogressbar && \
 RUN pacman -S --noconfirm --noprogressbar scons clang && \
     echo -e "Y\nY\n" | pacman -Scc
 
-WORKDIR /root/dev
+WORKDIR /workspace
 # -----------------------------------------------------------------------------------
 
 

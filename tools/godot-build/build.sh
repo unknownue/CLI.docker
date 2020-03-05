@@ -4,5 +4,5 @@ cd /root/osxcross
 UNATTENDED=1 ./build.sh
 export PATH="/root/osxcross/target/bin:$PATH"
 
-cd /root/dev
+cd /workspace
 scons platform=osx

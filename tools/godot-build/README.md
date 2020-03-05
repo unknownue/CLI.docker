@@ -19,9 +19,9 @@ $ docker build -t unknownue/godot-build --target mac-build .
 - Run the container to build the engine
 ```shell
 $ docker run -it --rm \
-    -v PATH2/godot:/root/dev \
-    -v PATH1/osxcross:/root/osxcross \
-    -w /root \
+    -v PATH2/godot:/workspace/godot \
+    -v PATH1/osxcross:/workspace/osxcross \
+    -w /workspace \
     unknownue/godot-build
 
 (container) $ # Run as build.sh
