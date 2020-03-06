@@ -57,6 +57,7 @@ RUN pacman -S --noconfirm --noprogressbar openssh rsync && \
 #     fisher add jethrokuan/fzf
 
 # Install Nerd Font -----------------------------------------------
+# Use 'DroidSansMono Nerd Font Mono' for icon support
 # RUN git clone https://aur.archlinux.org/nerd-fonts-hack.git && \
 #     cd nerd-fonts-hack && sudo --user=builduser bash makepkg -si --noconfirm && \
 #     cd .. && rm -r nerd-fonts-hack

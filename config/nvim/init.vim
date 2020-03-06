@@ -29,7 +29,6 @@ Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
 Plug 'qpkorr/vim-bufkill'            " Helper to kill buffer
 Plug 'easymotion/vim-easymotion'     " Move cursor to anywhere
-"Plug 'tmhedberg/SimpylFold'          " Code folding
 
 " Interactive
 Plug 'skywind3000/asyncrun.vim'  " Run shell commands in background
@@ -41,10 +40,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'ekalinin/Dockerfile.vim'  " Vim syntax file for Dockerfile
 Plug 'plasticboy/vim-markdown'  " Syntax highlighting...etc for the Markdown
 
+" Fonts
+" Use 'DroidSansMono Nerd Font Mono' for icon support
+Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
+
 " Unused plug
-" Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
 " Plug 'ap/vim-buftabline' " buffer bar for vim " Replace by smart tab line in vim-airline/vim-airline
 " Plug 'junegunn/vim-slash' " Remove highlight when cursor is moved " Conflict to colemak.vim
+" Plug 'tmhedberg/SimpylFold' " Code folding
 
 call plug#end()
 " ----------------------------------------------------------------------------------
