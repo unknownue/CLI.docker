@@ -17,11 +17,15 @@ let g:airline#extensions#whitespace#enabled = 1 " Enable trailing whitespace det
 " https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
 function! AirlineInit()
   " let g:airline_section_a = airline#section#create(['mode'])
-  let g:airline_section_b = airline#section#create_left(['Sync %{NVimFileSyncStatus()}', 'filetype'])
+  if has("gui_vimr")
+    let g:airline_section_b = airline#section#create_left(['Sync %{NVimFileSyncStatus()}', 'filetype'])
+  else
+    let g:airline_section_b = airline#section#create_left(['Sync %{NVimFileSyncStatus()}', '%{WebDevIconsGetFileTypeSymbol()} %{&filetype}'])
+  endif
   let g:airline_section_c = airline#section#create(['%f', 'readonly'])
   let g:airline_section_x = airline#section#create([])
-  let g:airline_section_y = airline#section#create_right(['%{getcwd()}'])
-  let g:airline_section_z = airline#section#create(['Ln%l/%L.Col%c'])
+  " let g:airline_section_y = airline#section#create_right(['%{getcwd()}'])
+  let g:airline_section_z = airline#section#create(['Ln %l/%L.Col %c'])
 endfunction
 autocmd VimEnter * call AirlineInit()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,6 +104,11 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
 " Support fo latex math
 let g:vim_markdown_math = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Config for ryanoasis/vim-devicons """""""""""""""""""""""""""""""""
+" Disable statusline support
+let g:webdevicons_enable_airline_statusline = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Config for junegunn/fzf """""""""""""""""""""""""""""""""""""""""""

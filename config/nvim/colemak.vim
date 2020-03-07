@@ -38,6 +38,8 @@ let mapleader=" "
 " :cmap 	:cnoremap 	:cunmap 	:cmapc[lear] 	Command-line
 " -----------------------------------------------------------------------------------
 
+" Shortcut for execute comman
+nnoremap ! :!
 " Reload the all configuration
 nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
 " Toggle NERDTree
@@ -235,6 +237,7 @@ let NERDTreeMapToggleHidden='U'
 " Keymapping for nerdcommenter """""""""""""""""""""""""""""""""""""""""
 " Toggles the comment state of the selected line(s)
 xnoremap <leader>/ :call NERDComment(0, "toggle")<CR>
+nnoremap <leader>/ :call NERDComment(0, "toggle")<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for junegunn/fzf O"""""""""""""""""""""""""""""""""""""""""

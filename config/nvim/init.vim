@@ -42,7 +42,9 @@ Plug 'plasticboy/vim-markdown'  " Syntax highlighting...etc for the Markdown
 
 " Fonts
 " Use 'DroidSansMono Nerd Font Mono' for icon support
-Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
+if !has("gui_vimr")
+    Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
+endif
 
 " Unused plug
 " Plug 'ap/vim-buftabline' " buffer bar for vim " Replace by smart tab line in vim-airline/vim-airline
@@ -64,6 +66,9 @@ filetype on
 filetype indent on
 filetype plugin on
 filetype plugin indent on
+
+" Enable mouse support
+set mouse=a
 
 " spell check
 set nospell " Disable spell by default
