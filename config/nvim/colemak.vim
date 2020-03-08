@@ -39,7 +39,7 @@ let mapleader=" "
 " -----------------------------------------------------------------------------------
 
 " Shortcut for execute comman
-nnoremap ! :!
+nnoremap ! :w<CR> :!
 " Reload the all configuration
 nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
 " Toggle NERDTree
@@ -153,15 +153,19 @@ nnoremap <C-right> :vertical resize+5<CR>
 
 
 " Support Copy text from vim to system clipboard
-" For linux
 " See also https://neovim.io/doc/user/provider.html#clipboard
-vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
-nnoremap <C-c> "+yg_
-nnoremap <C-v> "+p
-nnoremap <C-V> "+P
-
-" For macOS
-" vmap <C-c> :w !pbcopy<CR><CR>
+if has("gui_vimr")
+    " for macOS
+    vnoremap <C-c> :w !pbcopy<CR><CR>
+    nnoremap <C-v> :!pbpaste<CR>
+    vnoremap <C-v> :!pbpaste<CR>
+else
+    " for linux
+    vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
+    nnoremap <C-c> "+yg_
+    nnoremap <C-v> "+p
+    nnoremap <C-V> "+P
+endif
 " #################################################################################################
 
 
@@ -178,8 +182,9 @@ nnoremap <C-m> :SidewaysRight<CR>
 " See also https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window
 
 " Switch buffer
-nnoremap <C-\> :bnext<CR>
-vnoremap <C-\> :bnext<CR>
+" Special kep mappinng for macOS(that is option+\ key)
+nnoremap « :bnext<CR>
+vnoremap « :bnext<CR>
 " Delete current Buffer
 nnoremap <leader><BS> :BD<CR>
 " Move to backward buffer
