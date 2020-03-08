@@ -44,12 +44,15 @@ nnoremap ! :w<CR> :!
 nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
 " Toggle NERDTree
 nnoremap <leader>` :NERDTreeToggle<CR>
+" Toggle background transparent
+nnoremap <leader>6 : call Toggle_transparent()<CR>
 " Toggle file sync
 nnoremap <leader>7 :call NVimToggleFileSync()<CR>
 " Toggle spell check
 nnoremap <leader>8 :set spell!<CR>
 " Call figlet to print ASCII art
 nnoremap <leader>9 :r !figlet 
+
 
 " Press space twice to jump to the next '<++>' and edit it
 " nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i

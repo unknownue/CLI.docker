@@ -58,8 +58,12 @@ call plug#end()
 " ----------------------------------------------------------------------------------
 " Default configuration for neovim
 
+" Appearance
 syntax on
 colorscheme onedark
+" Enable transparency for popup-menu
+set pumblend=15
+hi PmenuSel blend=0
 
 " Set filetype
 filetype on
@@ -68,7 +72,7 @@ filetype plugin on
 filetype plugin indent on
 
 " Enable mouse support
-set mouse=a
+" set mouse=a
 
 " spell check
 set nospell " Disable spell by default
@@ -138,6 +142,17 @@ set smartcase     " turn on smartcase
         set termguicolors
     endif
 "endif
+
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_tranparent = 0
+    endif
+endfunction
 " ----------------------------------------------------------------------------------
 
 
