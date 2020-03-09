@@ -44,14 +44,18 @@ nnoremap ! :w<CR> :!
 nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
 " Toggle NERDTree
 nnoremap <leader>` :NERDTreeToggle<CR>
+" Toggle mouse support
+nnoremap <leader>5 :call Toggle_Mouse()<CR>
 " Toggle background transparent
-nnoremap <leader>6 : call Toggle_transparent()<CR>
+nnoremap <leader>6 :call Toggle_transparent()<CR>
 " Toggle file sync
 nnoremap <leader>7 :call NVimToggleFileSync()<CR>
 " Toggle spell check
 nnoremap <leader>8 :set spell!<CR>
 " Call figlet to print ASCII art
 nnoremap <leader>9 :r !figlet 
+" write file if you forgot to give it sudo permission
+nnoremap <leader>sudo :w !sudo tee % <CR><CR>
 
 
 " Press space twice to jump to the next '<++>' and edit it
@@ -99,8 +103,8 @@ nnoremap s d| xnoremap s d| onoremap s d| " delete | operator-pending
 nnoremap S D| xnoremap S D| onoremap S D| " change the line at the line beginning
 " nnoremap y o| " create new line at the next line of cursor
 " nnoremap Y O| " create new line at the previous line of cursor
-nnoremap d g|  " goto
-nnoremap D G|  " jump to eof
+nnoremap d g| xnoremap d g| " goto
+nnoremap D G| xnoremap D G| " jump to eof
 nnoremap dd gg " jump to start of file
 
 " Undo/Redo
@@ -164,11 +168,12 @@ if has("gui_vimr")
     vnoremap <C-v> :!pbpaste<CR>
 else
     " for linux
-    vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
+    vnoremap <C-c> :!xclip -in -selection clipboard<CR><CR>
     nnoremap <C-c> "+yg_
     nnoremap <C-v> "+p
     nnoremap <C-V> "+P
 endif
+
 " #################################################################################################
 
 

@@ -72,7 +72,15 @@ filetype plugin on
 filetype plugin indent on
 
 " Enable mouse support
-" set mouse=a
+set mousehide
+set mouse=a
+function! Toggle_Mouse()
+    if &mouse == 'a'  " check if mouse is enables
+        set mouse="" " disable mouse
+    else
+        set mouse=a " enable mouse everywhere
+    endif
+endfunc
 
 " spell check
 set nospell " Disable spell by default
