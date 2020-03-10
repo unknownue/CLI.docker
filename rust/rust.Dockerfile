@@ -13,8 +13,11 @@ ENV DISPLAY="host.docker.internal:0"
 ADD rust/. /root/.config/nvim/
 
 # Update base system and install rust
-RUN pacman -S --noconfirm rust gcc tar && \
-    echo -e "Y\nY\n" | pacman -Scc
+RUN pacman -S --noconfirm rustup gcc tar && \
+    echo -e "Y\nY\n" | pacman -Scc && \
+    rustup toolchain install stable && \
+    rustup component add rustfmt && \
+    rustup component add clippy
 
 # Config neovim and vim-plug
 RUN \
