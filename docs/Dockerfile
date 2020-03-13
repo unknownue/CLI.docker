@@ -36,7 +36,7 @@ RUN pacman -S --noconfirm --noprogressbar \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Configure file sync
-ADD system/.ssh/. ~/.ssh/
+ADD system/.ssh/. /root/.ssh/
 RUN pacman -S --noconfirm --noprogressbar openssh rsync && \
     echo -e "Y\nY\n" | pacman -Scc && \
     git clone https://github.com/jacob-ogre/vim-syncr ~/.vim/bundle/vim-syncr && \

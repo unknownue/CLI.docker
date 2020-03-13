@@ -35,6 +35,7 @@ Plug 'skywind3000/asyncrun.vim'  " Run shell commands in background
 Plug 'jacob-ogre/vim-syncr'      " Sync local and remote files and directories from Vim
 Plug 'junegunn/fzf', { 'do': './install --bin' } " FZF
 Plug 'junegunn/fzf.vim'
+Plug 'ZSaberLv0/ZFVimDirDiff'    " Diff two directories like BeyondCompare
 
 " Language
 Plug 'ekalinin/Dockerfile.vim'  " Vim syntax file for Dockerfile

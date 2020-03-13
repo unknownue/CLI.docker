@@ -182,8 +182,9 @@ endif
 " Plugin keymapping
 
 " Keymapping for sideways """"""""""""""""""""""""""""""""""""""""""""""
-nnoremap <C-k> :SidewaysLeft<CR>
-nnoremap <C-m> :SidewaysRight<CR>
+" Conflit with 'i' key
+" nnoremap <C-k> :SidewaysLeft<CR>
+" nnoremap <C-m> :SidewaysRight<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for buffers """""""""""""""""""""""""""""""""""""""""""""""
