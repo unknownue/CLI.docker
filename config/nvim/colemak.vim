@@ -182,9 +182,14 @@ endif
 " Plugin keymapping
 
 " Keymapping for sideways """"""""""""""""""""""""""""""""""""""""""""""
-" Conflit with 'i' key
-" nnoremap <C-k> :SidewaysLeft<CR>
-" nnoremap <C-m> :SidewaysRight<CR>
+function! NVimColemakRemapInsert()
+    nnoremap u i| xnoremap u i| onoremap u i
+endfunction
+
+" 'ª' and 'º' are key value of option+'('/')' on macOS
+" call SidewaysLeft would cause confit to 'i' key, so remap it again
+nnoremap ª :SidewaysLeft<CR> call NVimColemakRemapInsert()<CR>
+nnoremap º :SidewaysRight<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for buffers """""""""""""""""""""""""""""""""""""""""""""""
@@ -260,6 +265,7 @@ command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': 
     \ ['--layout=reverse', '--info=inline', '--preview', '~/.local/share/nvim/plugged/fzf.vim/bin/preview.sh {}']
     \ }, <bang>0)
+
 " Recursive search current directory recursive
 " :Rg <keyword>
 command! -bang -nargs=* Rg
@@ -268,10 +274,17 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+" List files which only contain the term your searched
+" Tips from https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
 " Toggle file search
 nnoremap <leader>t :Files<CR>
 " Toggle buffers selection
 nnoremap <leader>b :Buffers<CR>
+" View keymapping in normal, visual, and operator-pending mode(<leader>+k)
+nnoremap <leader>r :Find<CR>
 " View keymapping in normal, visual, and operator-pending mode(<leader>+k)
 nmap <leader>e <plug>(fzf-maps-n)
 xmap <leader>e <plug>(fzf-maps-x)
@@ -343,11 +356,11 @@ augroup VimFileSync
   autocmd BufWritePost * :call NVimFileSync()
 augroup END
 
-" Customize new keymapping
+" Customize new keymapping for file syncing
 " sync current file local -> remote
-nnoremap <leader>r :Suplfil<CR>
+" nnoremap <leader>r :Suplfil<CR>
 " sync current dir local  -> remote
-nnoremap <leader>s :Supldir<CR>
+" nnoremap <leader>s :Supldir<CR>
 " sync current file remote -> local
 " nnoremap <leader>d :Sdownlf<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
