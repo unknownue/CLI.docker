@@ -29,6 +29,7 @@ Plug 'terryma/vim-multiple-cursors'  " Multi-line edit
 Plug 'machakann/vim-highlightedyank' " Hint for copied text
 Plug 'qpkorr/vim-bufkill'            " Helper to kill buffer
 Plug 'easymotion/vim-easymotion'     " Move cursor to anywhere
+Plug 'junegunn/vim-easy-align'       " Vim alignment plugin
 
 " Interactive
 Plug 'skywind3000/asyncrun.vim'  " Run shell commands in background

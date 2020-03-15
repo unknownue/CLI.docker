@@ -364,4 +364,12 @@ augroup END
 " sync current file remote -> local
 " nnoremap <leader>d :Sdownlf<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Keymapping for junegunn/vim-easy-align """""""""""""""""""""""""""""""
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xnoremap <leader>- :EasyAlign<CR>
+xnoremap <leader>= :EasyAlign<CR>=
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" nnoremap ga <Plug>(EasyAlign)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " #################################################################################################
