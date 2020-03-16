@@ -85,6 +85,9 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 
+" Share system clipboard
+set clipboard+=unnamedplus
+
 " Enable mouse support
 set mousehide
 set mouse=a
@@ -185,4 +188,8 @@ source ~/.config/nvim/dev-plug-config.vim
 
 " Load keymapping
 source ~/.config/nvim/colemak.vim
+
+" Load custom functions
+source ~/.config/nvim/function.vim
 " ----------------------------------------------------------------------------------
+

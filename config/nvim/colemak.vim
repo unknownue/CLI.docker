@@ -62,6 +62,9 @@ nnoremap <leader>sudo :w !sudo tee % <CR><CR>
 " nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
 
 
+" use q to save file
+nnoremap q :w<CR>
+
 " Adjust view area
 " Use <PageUp> and <PageDown> to scroll a page
 " Use Shift + <PageUp>/<PageDown> to scroll half page
@@ -168,7 +171,7 @@ if has("gui_vimr")
     vnoremap <C-v> :!pbpaste<CR>
 else
     " for linux
-    vnoremap <C-c> :!xclip -in -selection clipboard<CR><CR>
+    vnoremap <C-c> :!xclip -in -selection clipboard<CR> u
     nnoremap <C-c> "+yg_
     nnoremap <C-v> "+p
     nnoremap <C-V> "+P
