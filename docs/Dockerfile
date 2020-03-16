@@ -32,7 +32,7 @@ RUN useradd unknownue -m && \
 
 # Install common package ------------------------------------------
 RUN pacman -S --noconfirm --noprogressbar \
-    neofetch figlet git fzf ripgrep bat xclip && \
+    neofetch figlet git fzf ripgrep bat xclip which && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Configure file sync
@@ -45,16 +45,18 @@ RUN pacman -S --noconfirm --noprogressbar openssh rsync && \
     chmod 644 ~/.ssh/config
 
 # Config Fish shell -----------------------------------------------
-# RUN pacman -S fish --noconfirm --clean && \
-#     echo -e "Y\nY\n" | pacman -Scc && \
-#     curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish && \
-#     curl -sLo ~/.local/bin/chips --create-dirs \
-#     https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
-#     chmod +x ~/.local/bin/chips && \
-#     ~/.local/bin/chips && \
-#     cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/ && \
-#     # Install fish plugin
-#     fisher add jethrokuan/fzf
+RUN pacman -S fish --noconfirm --clean && \
+    echo -e "Y\nY\n" | pacman -Scc && \
+    curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish && \
+    curl -sLo ~/.local/bin/chips --create-dirs \
+    https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
+    chmod +x ~/.local/bin/chips && \
+    ~/.local/bin/chips && \
+    cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/ && \
+    # Install fish plugin
+    fisher add jethrokuan/fzf && \
+    # Change default shell to fish
+    chsh -s $(which fish)
 
 # Install Nerd Font -----------------------------------------------
 # Use 'DroidSansMono Nerd Font Mono' for icon support
@@ -79,6 +81,6 @@ RUN pacman -S --noconfirm --noprogressbar neovim && \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     nvim -c "PlugInstall" -c q -c q
 
-# TODO: Not test yet
-ENTRYPOINT [ "/bin/bash", "~/.bash_profile" ]
+# ENTRYPOINT [ "/bin/bash", "~/.bash_profile" ]
 # -----------------------------------------------------------------------------------
+

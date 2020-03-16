@@ -56,7 +56,7 @@ autocmd VimEnter * call AirlineInit()
 "let g:nerdtree_tabs_open_on_console_startup=1
 
 " Ignore specific files
-let NERDTreeIgnore=['\.pyc']
+let NERDTreeIgnore=['\.pyc', '.git', '.DS_Store']
 
 " show bookmakrs
 "let NERDTreeShowBookmarks=1
