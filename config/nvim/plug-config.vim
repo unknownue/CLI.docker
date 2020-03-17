@@ -12,6 +12,32 @@
 " #########################################################################
 
 
+" Color Theme for vim """"""""""""""""""""""""""""""""""""""""""""""
+syntax enable
+colorscheme onedark
+let g:nue_theme_index = 1
+
+function! NUE_ToggleTheme()
+    if g:nue_theme_index == 0
+        let g:nue_theme_index = 1
+        echo 'Switch theme to One Dark theme...'
+        set background=dark
+        colorscheme onedark
+    elseif g:nue_theme_index == 1
+        let g:nue_theme_index = 2
+        echo 'Switch theme to Material theme...'
+        set background=dark
+        colorscheme material-theme
+    elseif g:nue_theme_index == 2
+        let g:nue_theme_index = 0
+        echo 'Switch theme to Colaized theme...'
+        set background=light
+        colorscheme solarized
+    endif
+endfunction
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 " Config for vim-airline """""""""""""""""""""""""""""""""""""""""""
 " Color theme
 let g:airline_theme='tomorrow'

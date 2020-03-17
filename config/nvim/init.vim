@@ -23,12 +23,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Development Customize
 source ~/.config/nvim/dev-plug.vim
 
-" Apperance
+" GUI enhance
 Plug 'mhinz/vim-startify'      " Welcome screen for neovim.
-Plug 'joshdick/onedark.vim'    " One Dark theme for vim
 Plug 'preservim/nerdtree'      " A tree explorer plugin for vim.
 Plug 'vim-airline/vim-airline' " tabline for vim
-Plug 'vim-airline/vim-airline-themes' " theme for vim-ariline
+
+" Theme
+Plug 'joshdick/onedark.vim'             " One Dark theme for vim (Dark theme)
+Plug 'jdkanani/vim-material-theme'      " Material theme for vim (Dark theme)
+Plug 'altercation/vim-colors-solarized' " Colarized theme for vim (Light and Dark theme)
+Plug 'vim-airline/vim-airline-themes'   " theme for vim-ariline
 
 " Editor
 Plug 'tpope/vim-repeat'              " Ex version of '.'
@@ -72,9 +76,6 @@ call plug#end()
 " ----------------------------------------------------------------------------------
 " Default configuration for neovim
 
-" Appearance
-syntax on
-colorscheme onedark
 " Enable transparency for popup-menu
 set pumblend=15
 hi PmenuSel blend=0

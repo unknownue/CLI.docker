@@ -44,14 +44,16 @@ nnoremap ! :w<CR> :!
 nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
 " Toggle NERDTree
 nnoremap <leader>` :NERDTreeToggle<CR>
+" Toggle spell check
+nnoremap <leader>4 :set spell!<CR>
 " Toggle mouse support
 nnoremap <leader>5 :call Toggle_Mouse()<CR>
 " Toggle background transparent
 nnoremap <leader>6 :call Toggle_transparent()<CR>
 " Toggle file sync
 nnoremap <leader>7 :call NVimToggleFileSync()<CR>
-" Toggle spell check
-nnoremap <leader>8 :set spell!<CR>
+" Toggje colorscheme
+nnoremap <leader>8 :call NUE_ToggleTheme()<CR>
 " Call figlet to print ASCII art
 nnoremap <leader>9 :r !figlet 
 " write file if you forgot to give it sudo permission
