@@ -256,13 +256,23 @@ end
 # Prompt
 #
 function fish_prompt
-  set -g RETVAL $status
-  prompt_status
-  prompt_virtual_env
-  prompt_user
-  prompt_dir
-  __exists hg;  and prompt_hg
-  __exists git; and prompt_git
-  __exists svn; and prompt_svn
-  prompt_finish
+    switch (uname)
+        case Linux
+          prompt_status
+        case Darwin
+          set -g RETVAL $status
+          prompt_status
+          prompt_virtual_env
+          prompt_user
+          prompt_dir
+          __exists hg;  and prompt_hg
+          __exists git; and prompt_git
+          __exists svn; and prompt_svn
+        case FreeBSD NetBSD DragonFly
+            echo "Prompt unset for current OS"
+        case '*'
+            echo "Prompt unset for current OS"
+    end
+    prompt_finish
 end
+
