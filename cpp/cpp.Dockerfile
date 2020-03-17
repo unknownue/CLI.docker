@@ -8,6 +8,7 @@ LABEL license="MIT"
 
 ENV USER=unknownue
 ENV DISPLAY="host.docker.internal:0"
+ENV CONTAINNER_NAME="CppDev"
 
 
 # Copy files to image
@@ -30,6 +31,5 @@ RUN cd ~/.local/share/nvim/plugged/YouCompleteMe/ && \
 
 # Copied from https://jonasdevlieghere.com/a-better-youcompleteme-config/
 ADD cpp/.ycm_extra_conf.py ~/.config/nvim/.ycm_extra_conf.py
-
-CMD ["bash"]
 # -----------------------------------------------------------------------------------
+

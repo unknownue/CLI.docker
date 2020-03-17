@@ -8,6 +8,7 @@ LABEL license="MIT"
 
 ENV USER=unknownue
 ENV DISPLAY="host.docker.internal:0"
+ENV CONTAINER_NAME="RustDev"
 
 # Copy files to image
 ADD rust/*.vim /root/.config/nvim/
@@ -41,6 +42,5 @@ RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
 RUN cargo search vulkan
 ADD rust/cargo.config /root/.cargo/config
 
-CMD ["bash"]
 # -----------------------------------------------------------------------------------
 

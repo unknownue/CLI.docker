@@ -63,6 +63,7 @@ LABEL torchvision-version="0.5.0"
 LABEL license="MIT"
 
 ENV DISPLAY=host.docker.internal:0
+ENV CONTAINER_NAME="PythonDev"
 
 WORKDIR /tmp
 
@@ -73,7 +74,6 @@ RUN pip install --no-cache-dir \
     tensorboard==2.1.0 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0
 
 WORKDIR /workspace
-CMD [ "bash" ]
 # -----------------------------------------------------------------------------------
 
 
@@ -94,5 +94,6 @@ RUN pip install --no-cache-dir \
     tensorboard==2.1.0 visdom==0.1.8.9 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0
 
 WORKDIR /workspace
-CMD [ "bash" ]
 # -----------------------------------------------------------------------------------
+
+
