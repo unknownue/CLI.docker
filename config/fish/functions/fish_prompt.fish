@@ -159,7 +159,8 @@ function prompt_git -d "Display the current git state"
 
       # Check if there's any commit in the repo
       set -l empty 0
-      git rev-parse --quiet --verify HEAD > /dev/null ^&1; or set empty 1
+      # The following seem to toggle error on linux, but works on macOS
+      # git rev-parse --quiet --verify HEAD > /dev/null ^&1; or set empty 1
 
       set -l target
       if [ $empty = 1 ]
@@ -256,11 +257,11 @@ end
 # Prompt
 #
 function fish_prompt
+    set -g RETVAL $status
     switch (uname)
         case Linux
           prompt_status
         case Darwin
-          set -g RETVAL $status
           prompt_status
           prompt_virtual_env
           prompt_user
