@@ -33,7 +33,7 @@ RUN useradd unknownue -m && \
 
 # Install common package ------------------------------------------
 RUN pacman -S --noconfirm --noprogressbar \
-    neofetch figlet git fzf ripgrep bat xclip which tar awk && \
+    neofetch figlet git fzf ripgrep bat xclip which tar exa awk && \
     echo -e "Y\nY\n" | pacman -Scc
 
 # Configure file sync

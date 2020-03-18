@@ -8,6 +8,7 @@ alias erust="docker run -it --rm -v (pwd):/root/dev -w /root/dev unknownue/rust"
 alias ecpp="docker run -it --rm -v (pwd):/root/dev -w /root/dev unknownue/cpp"
 alias epython="docker run -it --rm -v (pwd):/root/dev -w /root/dev unknownue/torch-dev"
 
+alias exa="ls"
 
 # Configuration for file serarching
 # --files: List files that would be searched but do not search
