@@ -45,4 +45,11 @@ let g:neomake_python_enabled_makers = ['flake8']
 " Auto check grammer
 call neomake#configure#automake('nrwi', 500)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Config for Yggdroot/indentLine """"""""""""""""""""""""""""""""""""
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" Enable by default
+" Use ':IndentLinesToggle' command to toggle the indent display
+let g:indentLine_enabled = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ##################################################################################
