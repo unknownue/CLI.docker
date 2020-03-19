@@ -66,6 +66,8 @@ nnoremap <leader>sudo :w !sudo tee % <CR><CR>
 
 " use q to save file
 nnoremap q :w<CR>
+" Record macro
+nnoremap Q q
 
 " Adjust view area
 " Use <PageUp> and <PageDown> to scroll a page
@@ -80,14 +82,14 @@ nnoremap ‘ 3<C-e>
 
 " Up/down/left/right
 " nnoremap h h|xnoremap h h|onoremap h h| " left
-nnoremap n j|xnoremap n j|onoremap n j| " down
-nnoremap e k|xnoremap e k|onoremap e k| " up
-nnoremap i l|xnoremap i l|onoremap i l| " right
+nnoremap n j| xnoremap n j| onoremap n j| " down
+nnoremap e k| xnoremap e k| onoremap e k| " up
+nnoremap i l| xnoremap i l| onoremap i l| " right
 " Move cursor faster
-nnoremap <S-h> 4h|xnoremap <S-h> 4h|onoremap <S-h> 4h
-nnoremap <S-e> 4k|xnoremap <S-e> 4k|onoremap <S-e> 4k
-nnoremap <S-n> 4j|xnoremap <S-n> 4j|onoremap <S-n> 4j
-nnoremap <S-i> 4l|xnoremap <S-i> 4l|onoremap <S-i> 4l
+nnoremap <S-h> 4h| xnoremap <S-h> 4h| onoremap <S-h> 4h
+nnoremap <S-e> 4k| xnoremap <S-e> 4k| onoremap <S-e> 4k
+nnoremap <S-n> 4j| xnoremap <S-n> 4j| onoremap <S-n> 4j
+nnoremap <S-i> 4l| xnoremap <S-i> 4l| onoremap <S-i> 4l
 
 " Words forward/backward
 " nnoremap b b|xnoremap b b|onoremap b b| " back word
@@ -110,6 +112,7 @@ nnoremap S D| xnoremap S D| onoremap S D| " change the line at the line beginnin
 " nnoremap Y O| " create new line at the previous line of cursor
 nnoremap d g| xnoremap d g| " goto
 nnoremap D G| xnoremap D G| " jump to eof
+onoremap 0 ^| onoremap ^ 0| " Swap 0 and ^ functionality in operator-pending mode
 nnoremap dd gg " jump to start of file
 
 " Undo/Redo
@@ -143,7 +146,8 @@ nnoremap <leader><CR> :nohlsearch<CR>
 " nnoremap <C-i> :set invnumber invrelativenumber<CR>
 
 " Select All
-nnoremap <C-a> ggVG
+nnoremap å ggVG      " That is Option + a on macOS.
+nnoremap <C-a> GVgg  " That is Ctrl + a
 
 " Spilit screen
 nnoremap <leader><C-left>  :set nosplitright<CR>:vsplit<CR>
@@ -288,7 +292,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 nnoremap <leader>t :Files<CR>
 " Toggle buffers selection
 nnoremap <leader>b :Buffers<CR>
-" View keymapping in normal, visual, and operator-pending mode(<leader>+k)
+" Toggle file content search
 nnoremap <leader>r :Find<CR>
 " View keymapping in normal, visual, and operator-pending mode(<leader>+k)
 nmap <leader>e <plug>(fzf-maps-n)
