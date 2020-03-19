@@ -48,11 +48,12 @@ Plug 'easymotion/vim-easymotion'     " Move cursor to anywhere
 Plug 'junegunn/vim-easy-align'       " Vim alignment plugin
 
 " Interactive
-Plug 'skywind3000/asyncrun.vim'  " Run shell commands in background
-Plug 'jacob-ogre/vim-syncr'      " Sync local and remote files and directories from Vim
+Plug 'skywind3000/asyncrun.vim'                  " Run shell commands in background
+Plug 'jacob-ogre/vim-syncr'                      " Sync local and remote files and directories from Vim
 Plug 'junegunn/fzf', { 'do': './install --bin' } " FZF
 Plug 'junegunn/fzf.vim'
-Plug 'ZSaberLv0/ZFVimDirDiff'    " Diff two directories like BeyondCompare
+Plug 'ZSaberLv0/ZFVimDirDiff'                    " Diff two directories like BeyondCompare
+Plug 'skywind3000/vim-terminal-help'             " Wrapper for terminal in neovim
 
 " Language
 Plug 'ekalinin/Dockerfile.vim'  " Vim syntax file for Dockerfile

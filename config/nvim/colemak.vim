@@ -40,14 +40,14 @@ let mapleader=" "
 
 " Shortcut for execute comman
 nnoremap ! :w<CR> :!
+" Toggle terminal
+let g:terminal_key = '<leader>`'
 " Reload the all configuration
-nnoremap <leader>0 :source ~/.config/nvim/init.vim<CR> <C-w><right>
+nnoremap <leader>0 :w<CR> :source %<CR>
 " Toggle NERDTree
-nnoremap <leader>` :NERDTreeToggle<CR>
+nnoremap <leader>1 :NERDTreeToggle<CR>
 " Toggle spell check
 nnoremap <leader>4 :set spell!<CR>
-" Toggle mouse support
-nnoremap <leader>5 :call Toggle_Mouse()<CR>
 " Toggle background transparent
 nnoremap <leader>6 :call Toggle_transparent()<CR>
 " Toggle file sync
@@ -58,10 +58,26 @@ nnoremap <leader>8 :call NUE_ToggleTheme()<CR>
 nnoremap <leader>9 :r !figlet 
 " write file if you forgot to give it sudo permission
 nnoremap <leader>sudo :w !sudo tee % <CR><CR>
+" Toggle mouse support
+nnoremap <leader>m :call Toggle_Mouse()<CR>
+
+
 
 
 " Press space twice to jump to the next '<++>' and edit it
 " nnoremap <leader><leader> <Esc>/<++><CR>:nohlsearch<CR>c4i
+
+" Terminal
+" Quit terminal(option + q)
+tnoremap œ <C-\><C-n> :q<CR>
+" Create terminal in horizontal(option + 1)
+nnoremap ¡ :split term://$SHELL<CR>
+" Create terminal in vertical(option + 2)
+nnoremap ™ :vs term://$SHELL<CR>
+" Open terminal in new buffer(option + 3)
+" nnoremap £ :ter ++curwin<CR>
+" Open terminal in new tab(option + 4)
+nnoremap ¢ :tabe term://$SHELL<CR>
 
 
 " use q to save file
@@ -182,7 +198,6 @@ else
     nnoremap <C-v> "+p
     nnoremap <C-V> "+P
 endif
-
 " #################################################################################################
 
 

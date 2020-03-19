@@ -155,4 +155,15 @@ let g:webdevicons_enable_airline_statusline = 0
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Config for skywind3000/vim-terminal-help """"""""""""""""""""""""""
+" Set to 0 to hide terminal bufffer in buffer list
+let g:terminal_list = 0
+" Default shell
+let g:terminal_shell = 'fish'
+" Terminal height
+let g:terminal_height = 10
+" Working dir: 0 for unchanged, 1 for file path, 2 for project root
+let g:terminal_cwd = 2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ##################################################################################
