@@ -20,7 +20,8 @@ RUN pacman -S --noconfirm rustup gcc tar && \
     rustup toolchain install stable && \
     rustup component add rustfmt && \
     rustup component add clippy && \
-    rustup component add rust-src
+    rustup component add rust-src && \
+    pacman -R --noconfirm gcc
 
 # Config neovim and vim-plug
 RUN \
@@ -36,11 +37,12 @@ RUN \
 RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
     https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-02-17/ra_lsp_server-linux && \
     chmod 777 ~/.cargo/bin/ra_lsp_server && \
-    nvim -c "CocInstall coc-rust-analyzer" -c 5sleep -c q
+    nvim -c "CocInstall coc-rust-analyzer" -c 5sleep -c q && \
+    # Support highlight
+    nvim -c "CocInstall coc-highlight" -c 5sleep -c q
 
 # Update indices
 RUN cargo search vulkan
 ADD rust/cargo.config /root/.cargo/config
-
 # -----------------------------------------------------------------------------------
 

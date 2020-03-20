@@ -49,13 +49,9 @@ RUN pacman -S --noconfirm --noprogressbar openssh rsync && \
 RUN pacman -S fish --noconfirm && \
     echo -e "Y\nY\n" | pacman -Scc && \
     curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish && \
-    curl -sLo ~/.local/bin/chips --create-dirs \
-    https://github.com/xtendo-org/chips/releases/download/1.1.2/chips_gnulinux && \
-    chmod +x ~/.local/bin/chips && \
-    ~/.local/bin/chips && \
-    # cp -r /root/arch-build/config/fish/functions/. ~/.config/fish/functions/ && \
     # Install fish plugin
     fish -c "fisher add jethrokuan/fzf" && \
+    fish -c "fisher add andyklimczak/fishshell-theme-gnuykeajgnuykeaj" && \
     # Change default shell to fish
     chsh -s $(which fish)
 

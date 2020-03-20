@@ -45,7 +45,7 @@ let g:terminal_key = '<leader>`'
 " Reload the all configuration
 nnoremap <leader>0 :w<CR> :source %<CR>
 " Toggle NERDTree
-nnoremap <leader>1 :NERDTreeToggle<CR>
+nnoremap <leader><Tab> :NERDTreeToggle<CR>
 " Toggle spell check
 nnoremap <leader>4 :set spell!<CR>
 " Toggle background transparent

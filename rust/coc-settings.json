@@ -1,3 +1,4 @@
 {
+    "coc.preferences.colorSupport": false,
     "rust-analyzer.serverPath": "~/.cargo/bin/ra_lsp_server"
 }
