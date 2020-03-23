@@ -1,5 +1,8 @@
 # Base Image
 docker build -t unknownue/arch-env -f docs/Dockerfile .
+# Swap
+bash scripts/swap/create-swap.sh
+bash scripts/swap/delete-swap.sh
 # PyTorch-Dev (CPU)
 docker build -t unknownue/torch-dev --target arch-torch-dev -f python/pytorch.Dockerfile .
 # PyTorch-Runtime (GPU)

@@ -73,7 +73,7 @@ tnoremap œ <C-\><C-n> :q<CR>
 " Create terminal in horizontal(option + 1)
 nnoremap ¡ :split term://$SHELL<CR>
 " Create terminal in vertical(option + 2)
-nnoremap ™ :vs term://$SHELL<CR>
+nnoremap ™ :set splitright<CR> :vs term://$SHELL<CR>
 " Open terminal in new buffer(option + 3)
 " nnoremap £ :ter ++curwin<CR>
 " Open terminal in new tab(option + 4)
@@ -102,10 +102,8 @@ nnoremap n j| xnoremap n j| onoremap n j| " down
 nnoremap e k| xnoremap e k| onoremap e k| " up
 nnoremap i l| xnoremap i l| onoremap i l| " right
 " Move cursor faster
-nnoremap <S-h> 4h| xnoremap <S-h> 4h| onoremap <S-h> 4h
 nnoremap <S-e> 4k| xnoremap <S-e> 4k| onoremap <S-e> 4k
 nnoremap <S-n> 4j| xnoremap <S-n> 4j| onoremap <S-n> 4j
-nnoremap <S-i> 4l| xnoremap <S-i> 4l| onoremap <S-i> 4l
 
 " Words forward/backward
 " nnoremap b b|xnoremap b b|onoremap b b| " back word
@@ -180,8 +178,8 @@ nnoremap <leader>+       <C-w>t<C-w>K  " Switch to horizontal screen spliting
 " Adjust screen size
 nnoremap <C-up>    :res +5<CR>
 nnoremap <C-down>  :res -5<CR>
-nnoremap <C-left>  :vertical resize-5<CR>
-nnoremap <C-right> :vertical resize+5<CR>
+nnoremap <C-left>  :vertical resize+5<CR>
+nnoremap <C-right> :vertical resize-5<CR>
 
 
 " Support Copy text from vim to system clipboard

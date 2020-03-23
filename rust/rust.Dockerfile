@@ -20,8 +20,7 @@ RUN pacman -S --noconfirm rustup gcc tar && \
     rustup toolchain install stable && \
     rustup component add rustfmt && \
     rustup component add clippy && \
-    rustup component add rust-src && \
-    pacman -R --noconfirm gcc
+    rustup component add rust-src
 
 # Config neovim and vim-plug
 RUN \

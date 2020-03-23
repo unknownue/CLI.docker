@@ -1,0 +1,4 @@
+
+swapoff /tmpswap
+rm /tmpswap
+

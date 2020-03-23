@@ -1,5 +1,32 @@
 
 # -----------------------------------------------------------------------------------
+FROM archlinux/base:latest AS install-env
+
+# Change current root path to tmp directory path
+WORKDIR /tmp
+
+RUN useradd unknownue -m && \
+    passwd -d unknownue && \
+    # enable unknownue to sudo without password
+    printf 'root ALL=(ALL) ALL\nunknownue ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+
+# Install tools to build python from source
+RUN pacman -Sy --noconfirm --noprogressbar --need \
+    sudo fakeroot git base-devel libnsl && \
+    echo -e "Y\nY\n" | pacman -Scc
+
+# Install python
+RUN git clone https://aur.archlinux.org/eternalterminal.git && \
+    chmod 777 /tmp/eternalterminal && \
+    # git clone https://aur.archlinux.org/python37.git && \
+    cd eternalterminal && \
+    # utilise sudo to unknownue in order to make the gss-ntlmssp package
+    sudo --user=unknownue bash makepkg -s --noconfirm && \
+    mv eternalterminal-client*.pkg.tar.xz eternalterminal.pkg.tar.xz
+# -----------------------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------------------
 FROM archlinux/base:latest
 
 WORKDIR /root
@@ -51,7 +78,7 @@ RUN pacman -S fish --noconfirm && \
     curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish && \
     # Install fish plugin
     fish -c "fisher add jethrokuan/fzf" && \
-    fish -c "fisher add andyklimczak/fishshell-theme-gnuykeajgnuykeaj" && \
+    fish -c "fisher add andyklimczak/fishshell-theme-gnuykeaj" && \
     # Change default shell to fish
     chsh -s $(which fish)
 
@@ -71,6 +98,11 @@ RUN pacman -S fish --noconfirm && \
 #     sleep 1 && \
 #     bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh && \
 #     tmux kill-server
+
+# Install package from AUR
+COPY --from=install-env ["/tmp/eternalterminal/eternalterminal.pkg.tar.xz", "/tmp/eternalterminal.pkg.tar.xz"]
+RUN pacman -U --noconfirm eternalterminal.pkg.tar.xz && \
+    rm eternalterminal.pkg.tar.xz
 
 # Config neovim --------------------------------------------------
 RUN pacman -S --noconfirm --noprogressbar neovim && \
