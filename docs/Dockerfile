@@ -100,9 +100,12 @@ RUN pacman -S fish --noconfirm && \
 #     tmux kill-server
 
 # Install package from AUR
+
+WORKDIR /tmp/
 COPY --from=install-env ["/tmp/eternalterminal/eternalterminal.pkg.tar.xz", "/tmp/eternalterminal.pkg.tar.xz"]
 RUN pacman -U --noconfirm eternalterminal.pkg.tar.xz && \
     rm eternalterminal.pkg.tar.xz
+WORKDIR /root/
 
 # Config neovim --------------------------------------------------
 RUN pacman -S --noconfirm --noprogressbar neovim && \
