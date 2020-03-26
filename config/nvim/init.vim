@@ -149,7 +149,13 @@ set ignorecase    " ignore case when searching
 set smartcase     " turn on smartcase
 " ----------------------------------------------------------------------------------
 
-
+" ----------------------------------------------------------------------------------
+" Save session after exit neovim
+if !has("gui_vimr")
+    " Automatically save the current session whenever vim is closed
+    autocmd VimLeave * mksession! ./Session.vim 
+endif
+" ----------------------------------------------------------------------------------
 
 
 " ----------------------------------------------------------------------------------

@@ -166,4 +166,22 @@ let g:terminal_height = 10
 " Working dir: 0 for unchanged, 1 for file path, 2 for project root
 let g:terminal_cwd = 2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+" Config for skywind3000/vim-terminal-help """"""""""""""""""""""""""
+" Custom header (see also :h g:startify_custom_header)
+let g:startify_custom_header = [
+\ '        _   _                 _ ',
+\ '       | \ | | ___  _____   _(_)_ __ ___',
+\ '       |  \| |/ _ \/ _ \ \ / / |  _ ` _ \',
+\ '       | |\  |  __/ (_) \ V /| | | | | | |',
+\ '       |_| \_|\___|\___/ \_/ |_|_| |_| |_|',
+\ '',
+\ ]
+" Custom footer
+let g:startify_custom_footer = [
+\ '       @2020 unknownue  ',
+\ '       usami-ssc@protonmail.com'
+\ ]
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ##################################################################################
