@@ -41,7 +41,7 @@ RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
     nvim -c "CocInstall coc-highlight" -c 5sleep -c q
 
 # Update indices
-RUN cargo search vulkan
+# RUN cargo search vulkan
 ADD rust/cargo.config /root/.cargo/config
 # -----------------------------------------------------------------------------------
 
