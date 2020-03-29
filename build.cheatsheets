@@ -1,14 +1,14 @@
 # Base Image
-docker build -t unknownue/arch-env -f docs/Dockerfile .
+docker build -t unknownue/arch-env -f docker/Dockerfile .
 # Swap
 bash scripts/swap/create-swap.sh
 bash scripts/swap/delete-swap.sh
 # PyTorch-Dev (CPU)
-docker build -t unknownue/torch-dev --target arch-torch-dev -f python/pytorch.Dockerfile .
+docker build -t unknownue/torch-dev --target arch-torch-dev -f docker/pytorch.Dockerfile .
 # PyTorch-Runtime (GPU)
-docker build -t unknownue/taichi-dev --target taichi-gpu -f python/taichi.Dockerfile .
+docker build -t unknownue/taichi-dev --target taichi-gpu -f docker/taichi.Dockerfile .
 # Rust
-docker build -t unknownue/rust -f rust/rust.Dockerfile .
+docker build -t unknownue/rust -f docker/rust.Dockerfile .
 # CPP
-docker build -t unknownue/cpp -f cpp/cpp.Dockerfile .
+docker build -t unknownue/cpp -f docker/cpp.Dockerfile .
 

@@ -8,11 +8,8 @@ LABEL license="MIT"
 
 ENV USER=unknownue
 ENV DISPLAY="host.docker.internal:0"
-ENV CONTAINNER_NAME="CppDev"
+ENV ENV_DEV="cpp"
 
-
-# Copy files to image
-ADD cpp/. /root/.config/nvim/
 
 # Install C++ compiler
 RUN pacman -S clang make cmake python --noconfirm --needed && \
@@ -30,6 +27,6 @@ RUN cd ~/.local/share/nvim/plugged/YouCompleteMe/ && \
     python install.py --clang-completer
 
 # Copied from https://jonasdevlieghere.com/a-better-youcompleteme-config/
-ADD cpp/.ycm_extra_conf.py ~/.config/nvim/.ycm_extra_conf.py
+ADD language/cpp/.ycm_extra_conf.py ~/.config/nvim/.ycm_extra_conf.py
 # -----------------------------------------------------------------------------------
 

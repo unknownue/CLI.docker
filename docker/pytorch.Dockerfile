@@ -30,9 +30,6 @@ LABEL license="MIT"
 
 WORKDIR /tmp
 
-# Copy files to image
-ADD python/. /root/.config/nvim/
-
 # Install python
 COPY --from=install-env ["/tmp/python36/python36.pkg.tar.xz", "/tmp/python36.pkg.tar.xz"]
 RUN pacman -U --noconfirm python36.pkg.tar.xz && \
@@ -63,7 +60,7 @@ LABEL torchvision-version="0.5.0"
 LABEL license="MIT"
 
 ENV DISPLAY=host.docker.internal:0
-ENV CONTAINER_NAME="PythonDev"
+ENV ENV_DEV="python"
 
 WORKDIR /tmp
 

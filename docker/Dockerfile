@@ -32,7 +32,7 @@ FROM archlinux/base:latest
 WORKDIR /root
 
 ARG MIRROR_COUNTRY=CN
-ENV CONTAINER_NAME="base"
+ENV ENV_DEV="base"
 
 # Copy files to image ----------------------------------------------
 ADD system/. /root/

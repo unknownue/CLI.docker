@@ -1,3 +1,4 @@
+
 " Plugin for python development
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
@@ -9,4 +10,3 @@ Plug 'sheerun/vim-polyglot'   " More syntax highlighting
  
 " May Cause key conflict 
 Plug 'davidhalter/jedi-vim' " go-to defination
-

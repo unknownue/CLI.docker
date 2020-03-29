@@ -185,3 +185,19 @@ let g:startify_custom_footer = [
 \ ]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ##################################################################################
+
+
+
+" Load Development Specific config
+if system('echo $ENV_DEV') =~ "base"
+    echo 'Base Dev'
+elseif system('echo $ENV_DEV') =~ "cpp"
+    source ~/.config/nvim/plugs/cpp/plug-config.vim
+    echo 'Dev: cpp'
+elseif system('echo $ENV_DEV') =~ "rust"
+    source ~/.config/nvim/plugs/rust/plug-config.vim
+    echo 'Dev: rust'
+elseif system('echo $ENV_DEV') =~ "python"
+    source ~/.config/nvim/plugs/python/plug-config.vim
+    echo 'Dev: python'
+endif

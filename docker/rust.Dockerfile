@@ -8,11 +8,10 @@ LABEL license="MIT"
 
 ENV USER=unknownue
 ENV DISPLAY="host.docker.internal:0"
-ENV CONTAINER_NAME="RustDev"
+ENV ENV_DEV="rust"
 
 # Copy files to image
-ADD rust/*.vim /root/.config/nvim/
-ADD rust/coc-settings.json /root/.config/nvim/
+ADD language/rust/coc-settings.json /root/.config/nvim/
 
 # Update base system and install rust
 RUN pacman -S --noconfirm rustup gcc tar && \
@@ -42,6 +41,6 @@ RUN curl -fLo ~/.cargo/bin/ra_lsp_server --create-dirs \
 
 # Update indices
 # RUN cargo search vulkan
-ADD rust/cargo.config /root/.cargo/config
+ADD language/rust/cargo.config /root/.cargo/config
 # -----------------------------------------------------------------------------------
 
