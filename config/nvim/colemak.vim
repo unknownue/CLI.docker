@@ -138,6 +138,8 @@ nnoremap j y| xnoremap j y| " copy
 nnoremap J Y| xnoremap J Y| " copy line
 nnoremap l p| xnoremap l p| " paste to next line
 nnoremap l P| xnoremap l P| " paste to previous line
+" Copy a word
+nnoremap jw bye
 
 " Command line
 " nnoremap o ;| " jump to next search
@@ -221,6 +223,8 @@ nnoremap º :SidewaysRight<CR>
 " Special kep mappinng for macOS(that is option+\ key)
 nnoremap « :bnext<CR>
 vnoremap « :bnext<CR>
+" Special key to switch buffer in alacritty emulator
+nnoremap ¥ :bnext<CR>
 " Delete current Buffer
 nnoremap <leader><BS> :BD<CR>
 " Move to backward buffer

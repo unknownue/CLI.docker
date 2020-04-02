@@ -538,6 +538,7 @@ key_bindings:
   - { key: Q,      mods: Command,         action: None             }
   - { key: W,      mods: Command,         action: None             }
   #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
+  - { key: Tab,    mods: Control,         chars: "¥"      }  # Special to switch buffer in neovim
 
   - { key: K,        mods: Command, command: { program: "open", args: ["-nb", "io.alacritty"] } }
   - { key: Paste,                   action: Paste                            }
