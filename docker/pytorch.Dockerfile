@@ -90,6 +90,11 @@ RUN pip install --no-cache-dir \
     pip install --no-cache-dir \
     tensorboard==2.1.0 visdom==0.1.8.9 scipy==1.3.1 h5py==2.10.0 torchsnooper==0.7.1 torchsummaryX==1.3.0
 
+# Pytorch3d
+RUN pip install --no-cache-dir 'git+https://github.com/facebookresearch/pytorch3d.git'
+RUN pip install --no-cache-dir \
+    alfred-py open3d
+
 WORKDIR /workspace
 # -----------------------------------------------------------------------------------
 

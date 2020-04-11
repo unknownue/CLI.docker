@@ -1,19 +1,21 @@
 
+# -----------------------------------------------------------------------
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+export ENV_DEV="base"
+export EDITOR='nvim'
+# -----------------------------------------------------------------------
 
-
-# Run "dfimage image_id" to extract Dockerfile
-alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm chenzj/dfimage"
-alias erust="docker run -it --rm -v (pwd):/root/dev -w /root/dev unknownue/rust"
-alias ecpp="docker run -it --rm -v (pwd):/root/dev -w /root/dev unknownue/cpp"
-alias epython="docker run -it --rm -v (pwd):/root/dev -w /root/dev unknownue/torch-dev"
-
+alias ..='cd ..'
 alias ls='exa'
+alias la='exa -a'
 alias view='viu'
+alias cat="bat"
+alias mv='mv -i'
+alias rm='rm -i'
+alias gs='git status'
 alias python="/usr/local/bin/python3"
 alias python2="/usr/bin/python2.7"
-alias cat="bat"
 
 # -----------------------------------------------------------------------
 # Configuration for file serarching
@@ -30,9 +32,5 @@ export FZF_TMUX_HEIGHT='80%'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --theme=OneHalfDark --style=grid,header --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
 export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --theme=OneHalfDark --style=grid,header --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-# -----------------------------------------------------------------------
-
-# -----------------------------------------------------------------------
-export ENV_DEV="base"
 # -----------------------------------------------------------------------
 
