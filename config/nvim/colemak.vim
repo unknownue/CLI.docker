@@ -216,6 +216,13 @@ nnoremap ª :SidewaysLeft<CR> call NVimColemakRemapInsert()<CR>
 nnoremap º :SidewaysRight<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Keymapping for AndrewRadev/splitjoin.vim """""""""""""""""""""""""""""
+" split a one-liner into multiple lines(Option + n)
+nnoremap ø :SplitjoinSplit<CR>
+" join a block into a single-line statement(Option + m)
+nnoremap æ :SplitjoinJoin<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Keymapping for buffers """""""""""""""""""""""""""""""""""""""""""""""
 " See also https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window
 

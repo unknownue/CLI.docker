@@ -32,6 +32,7 @@ Plug 'vim-airline/vim-airline-themes'   " theme for vim-ariline
 " Editor
 Plug 'tpope/vim-repeat'              " Ex version of '.'
 Plug 'andrewradev/sideways.vim'      " Switch function parameters
+Plug 'AndrewRadev/splitjoin.vim'     " switching statement between single-line and multi-lines
 Plug 'easymotion/vim-easymotion'     " Vim motion on speed!
 Plug 'haya14busa/incsearch.vim'      " Improved incremental searching for Vim
 Plug 'jiangmiao/auto-pairs'
