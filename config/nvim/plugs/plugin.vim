@@ -25,6 +25,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Add icon highlight for nerdtree
 Plug 'vim-airline/vim-airline'                 " tabline for vim
 
 " Theme
+Plug 'arcticicestudio/nord-vim'         " Norm theme(Dark theme)
 Plug 'joshdick/onedark.vim'             " One Dark theme for vim (Dark theme)
 Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme(Dark theme)
 Plug 'jdkanani/vim-material-theme'      " Material theme for vim (Dark theme)
