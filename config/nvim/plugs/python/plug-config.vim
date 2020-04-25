@@ -13,55 +13,48 @@ let g:startify_custom_header = [
 " ##################################################################################
 " Plugin configuration for python development
 
-" Config for 'Shougo/deoplete.nvim' """""""""""""""""""""""""""""""""
+" Config for 'neovim/nvim-lsp' --------------------------------------
+lua require'nvim_lsp'.pyls.setup{
+  \ settings = {
+  \   pyls = {
+  \     plugins = {
+  \       pycodestyle = {
+  \         enabled = true;
+  \         ignore = { "W391", "E221" };
+  \         maxLineLength = 120;
+  \       };
+  \       pyflakes = { enabled = true; };
+  \       pylint = { enabled = false; };
+  \     }
+  \ }
+  \ }
+  \ }
+
+" Use LSP omni-completion in Rust files
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+" disable preview window
+" set completeopt-=preview
+
+" use omni completion provided by lsp
+set omnifunc=lsp#omnifunc
+" -------------------------------------------------------------------
+
+
+" Config for 'Shougo/deoplete.nvim' ---------------------------------
 let g:deoplete#enable_at_startup = 1
 
 " close preview window on leaving the insert mode
 autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
 
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------
 
-" Config for neoformat """"""""""""""""""""""""""""""""""""""""""""""
-" Usage:
-"    <leader>d    -> go to definition
-"    K            -> check documentation of class or method
-"    <leader>n    -> show the usage of a name in current file
-"    <leader>r    -> rename a name
-
-" Enable alignment
-let g:neoformat_basic_format_align = 1
-
-" Enable tab to spaces conversion
-let g:neoformat_basic_format_retab = 1
-
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Config for jedi-vim """""""""""""""""""""""""""""""""""""""""""""""
-" disable autocompletion, cause we use deoplete for completion
-" let g:jedi#completions_enabled = 0
-
-" open the go-to function in split, not another buffer
-" let g:jedi#use_splits_not_buffers = "right"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Config for neomake """"""""""""""""""""""""""""""""""""""""""""""""
-" Usage:
-"    :Neomake -> check grammer manually
-
-" Set default linter to flake8(need pip install flake8)
-let g:neomake_python_enabled_makers = ['flake8']
-
-" Auto check grammer
-call neomake#configure#automake('nrwi', 500)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Config for Yggdroot/indentLine """"""""""""""""""""""""""""""""""""
+" Config for Yggdroot/indentLine ------------------------------------
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " Enable by default
 " Use ':IndentLinesToggle' command to toggle the indent display
 let g:indentLine_enabled = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------
 " ##################################################################################
+

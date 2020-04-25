@@ -82,6 +82,7 @@ if !has("gui_vimr")
         autocmd VimLeave * mksession! ./Session.vim 
     end
 endif
+"
 " ----------------------------------------------------------------------------------
 
 
