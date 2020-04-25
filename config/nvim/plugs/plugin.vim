@@ -19,9 +19,10 @@ endif
 
 
 " GUI enhance
-Plug 'mhinz/vim-startify'      " Welcome screen for neovim.
-Plug 'preservim/nerdtree'      " A tree explorer plugin for vim.
-Plug 'vim-airline/vim-airline' " tabline for vim
+Plug 'mhinz/vim-startify'                      " Welcome screen for neovim.
+Plug 'preservim/nerdtree'                      " A tree explorer plugin for vim.
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Add icon highlight for nerdtree
+Plug 'vim-airline/vim-airline'                 " tabline for vim
 
 " Theme
 Plug 'joshdick/onedark.vim'             " One Dark theme for vim (Dark theme)

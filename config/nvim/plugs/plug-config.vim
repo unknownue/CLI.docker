@@ -12,7 +12,7 @@
 " #########################################################################
 
 
-" Color Theme for vim """"""""""""""""""""""""""""""""""""""""""""""
+" Color Theme for vim -----------------------------------------------------
 syntax enable
 colorscheme onedark
 let g:nue_theme_index = 1
@@ -35,10 +35,10 @@ function! NUE_ToggleTheme()
         colorscheme solarized
     endif
 endfunction
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
 
-" Config for vim-airline """""""""""""""""""""""""""""""""""""""""""
+" Config for vim-airline --------------------------------------------------
 " Color theme
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
@@ -64,10 +64,10 @@ function! AirlineInit()
   let g:airline_section_z = airline#section#create(['Ln %l/%L.Col %c'])
 endfunction
 autocmd VimEnter * call AirlineInit()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
 
-" Config for nerdtree """""""""""""""""""""""""""""""""""""""""""""""
+" Config for nerdtree -----------------------------------------------------
 " show line number
 "let NERDTreeShowLineNumbers=1
 
@@ -95,20 +95,27 @@ let NERDTreeIgnore=['\.pyc', '.git', '.DS_Store']
 " Close all NERDTree after the last document was closed.
 " autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
 
-" Config for vim-multiple-cursors """"""""""""""""""""""""""""""""""
+" Config for 'tiagofumo/vim-nerdtree-syntax-highlight' -------------------- 
+let g:NERDTreeDisableFileExtensionHighlight = 0
+let g:NERDTreeDisableExactMatchHighlight    = 0
+let g:NERDTreeDisablePatternMatchHighlight  = 0
+" -------------------------------------------------------------------------
+
+
+" Config for vim-multiple-cursors -----------------------------------------
 "Usage: https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/#heading-9
 " For some theme, the following setting may help
 " hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " set the highlight durationg(ms)
 "let g:highlightedyank_highlight_duration = 1000
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
 
-" Config for NERDCommenter """"""""""""""""""""""""""""""""""""""""""
+" Config for NERDCommenter -------------------------------------------------
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -129,34 +136,35 @@ let g:NERDDefaultAlign = 'left'
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
-" Config for skywind3000/asyncrun.vim """""""""""""""""""""""""""""""
+" Config for skywind3000/asyncrun.vim -------------------------------------
 let g:asyncrun_status = ''
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
-" Config for plasticboy/vim-markdown """""""""""""""""""""""""""""""
+" Config for plasticboy/vim-markdown --------------------------------------
 " Disable folding functions of this plugin
 let g:vim_markdown_folding_disabled = 1
 " Disable Default Key Mappings
 let g:vim_markdown_no_default_key_mappings = 1
 " Support fo latex math
 let g:vim_markdown_math = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
-" Config for ryanoasis/vim-devicons """""""""""""""""""""""""""""""""
+
+" Config for ryanoasis/vim-devicons ---------------------------------------
 " Disable statusline support
 let g:webdevicons_enable_airline_statusline = 0
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
-" Config for junegunn/fzf """""""""""""""""""""""""""""""""""""""""""
+" Config for junegunn/fzf -------------------------------------------------
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
-" Config for skywind3000/vim-terminal-help """"""""""""""""""""""""""
+" Config for skywind3000/vim-terminal-help --------------------------------
 " Set to 0 to hide terminal bufffer in buffer list
 let g:terminal_list = 0
 " Default shell
@@ -165,10 +173,10 @@ let g:terminal_shell = 'fish'
 let g:terminal_height = 10
 " Working dir: 0 for unchanged, 1 for file path, 2 for project root
 let g:terminal_cwd = 2
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 
 
-" Config for skywind3000/vim-terminal-help """"""""""""""""""""""""""
+" Config for skywind3000/vim-terminal-help --------------------------------
 " Custom header (see also :h g:startify_custom_header)
 let g:startify_custom_header = [
 \ '        _   _                 _ ',
@@ -183,21 +191,19 @@ let g:startify_custom_footer = [
 \ '       @2020 unknownue  ',
 \ '       usami-ssc@protonmail.com'
 \ ]
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -------------------------------------------------------------------------
 " ##################################################################################
 
 
 
 " Load Development Specific config
 if system('echo $ENV_DEV') =~ "base"
-    echo 'Base Dev'
+    "
 elseif system('echo $ENV_DEV') =~ "cpp"
     source ~/.config/nvim/plugs/cpp/plug-config.vim
-    echo 'Dev: cpp'
 elseif system('echo $ENV_DEV') =~ "rust"
     source ~/.config/nvim/plugs/rust/plug-config.vim
-    echo 'Dev: rust'
 elseif system('echo $ENV_DEV') =~ "python"
     source ~/.config/nvim/plugs/python/plug-config.vim
-    echo 'Dev: python'
 endif
+
