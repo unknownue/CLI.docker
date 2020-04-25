@@ -26,6 +26,7 @@ Plug 'vim-airline/vim-airline'                 " tabline for vim
 
 " Theme
 Plug 'joshdick/onedark.vim'             " One Dark theme for vim (Dark theme)
+Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme(Dark theme)
 Plug 'jdkanani/vim-material-theme'      " Material theme for vim (Dark theme)
 Plug 'altercation/vim-colors-solarized' " Colarized theme for vim (Light and Dark theme)
 Plug 'vim-airline/vim-airline-themes'   " theme for vim-ariline
