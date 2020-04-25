@@ -40,7 +40,7 @@ function! NUE_ToggleTheme()
         set background=dark
         colorscheme material-theme
     elseif g:nue_theme_index == 4
-        let g:nue_theme_index = 5
+        let g:nue_theme_index = 0
         echo 'Switch theme to Colaized theme...'
         set background=light
         colorscheme solarized
@@ -76,6 +76,7 @@ function! AirlineInit()
 endfunction
 autocmd VimEnter * call AirlineInit()
 " -------------------------------------------------------------------------
+
 
 
 " Config for nerdtree -----------------------------------------------------

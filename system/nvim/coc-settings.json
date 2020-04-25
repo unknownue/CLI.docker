@@ -1,0 +1,6 @@
+{
+    "coc.preferences.colorSupport": false,
+    "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer",
+    "rust-analyzer.cargo-watch.enable": true
+}
+

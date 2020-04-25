@@ -19,10 +19,9 @@ endif
 
 
 " GUI enhance
-Plug 'mhinz/vim-startify'                      " Welcome screen for neovim.
-Plug 'preservim/nerdtree'                      " A tree explorer plugin for vim.
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Add icon highlight for nerdtree
-Plug 'vim-airline/vim-airline'                 " tabline for vim
+Plug 'mhinz/vim-startify'      " Welcome screen for neovim.
+Plug 'preservim/nerdtree'      " A tree explorer plugin for vim.
+Plug 'vim-airline/vim-airline' " tabline for vim
 
 " Theme
 Plug 'arcticicestudio/nord-vim'         " Norm theme(Dark theme)
@@ -61,7 +60,8 @@ Plug 'plasticboy/vim-markdown'  " Syntax highlighting...etc for the Markdown
 " Fonts
 " Use 'DroidSansMono Nerd Font Mono' for icon support
 if !has("gui_vimr")
-    Plug 'ryanoasis/vim-devicons'  " Add icons to plugs " Conflict with vim-airline/vim-airline
+    Plug 'ryanoasis/vim-devicons'  " Add icons to plugs (Conflict with vim-airline/vim-airline)
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Add icon highlight for nerdtree
 endif
 
 " Unused plug

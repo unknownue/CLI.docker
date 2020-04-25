@@ -136,10 +136,11 @@ nnoremap <S-z> <C-r> " redo
 " Copy/Paste
 nnoremap j y| xnoremap j y| " copy
 nnoremap J Y| xnoremap J Y| " copy line
-nnoremap l p| xnoremap l p| " paste to next line
-nnoremap l P| xnoremap l P| " paste to previous line
+nnoremap l p| xnoremap l p| onoremap l p| " paste to next line
+nnoremap l P| xnoremap l P| onoremap l p| " paste to previous line
 " Copy a word
 nnoremap jw bye
+
 
 " Command line
 " nnoremap o ;| " jump to next search
@@ -216,12 +217,13 @@ nnoremap ª :SidewaysLeft<CR> call NVimColemakRemapInsert()<CR>
 nnoremap º :SidewaysRight<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Keymapping for AndrewRadev/splitjoin.vim """""""""""""""""""""""""""""
+
+" Keymapping for AndrewRadev/splitjoin.vim """"""""""""""""""""""""""""""
 " split a one-liner into multiple lines(Option + n)
 nnoremap ø :SplitjoinSplit<CR>
 " join a block into a single-line statement(Option + m)
 nnoremap æ :SplitjoinJoin<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Keymapping for buffers """""""""""""""""""""""""""""""""""""""""""""""
 " See also https://superuser.com/questions/289285/how-to-close-buffer-without-closing-the-window
@@ -230,7 +232,6 @@ nnoremap æ :SplitjoinJoin<CR>
 " Special kep mappinng for macOS(that is option+\ key)
 nnoremap « :bnext<CR>
 vnoremap « :bnext<CR>
-" Special key to switch buffer in alacritty emulator
 nnoremap ¥ :bnext<CR>
 " Delete current Buffer
 nnoremap <leader><BS> :BD<CR>
