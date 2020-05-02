@@ -182,7 +182,7 @@ let g:terminal_list = 0
 " Default shell
 let g:terminal_shell = 'fish'
 " Terminal height
-let g:terminal_height = 10
+let g:terminal_height = 50
 " Working dir: 0 for unchanged, 1 for file path, 2 for project root
 let g:terminal_cwd = 2
 " -------------------------------------------------------------------------

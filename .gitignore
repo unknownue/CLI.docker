@@ -2,3 +2,5 @@
 .DS_Store
 *.whl
 system/.ssh/id_rsa
+Session.vim
+

@@ -62,6 +62,8 @@ nnoremap <leader>sudo :w !sudo tee % <CR><CR>
 nnoremap <leader>m :call Toggle_Mouse()<CR>
 
 
+" Open the cheatsheet
+nnoremap º :e ~/Development/Docs/gitnote/docs/cheatsheet/vim.md<CR>
 
 
 " Press space twice to jump to the next '<++>' and edit it
@@ -206,22 +208,33 @@ endif
 " #################################################################################################
 " Plugin keymapping
 
-" Keymapping for sideways """"""""""""""""""""""""""""""""""""""""""""""
+
+" Keymapping for sideways ----------------------------------------------
 function! NVimColemakRemapInsert()
     nnoremap u i| xnoremap u i| onoremap u i
 endfunction
 
+function! NVimSidewaysLeft()
+    " call SidewaysLeft would cause confit to 'i' key, so remap it again
+    :SidewaysLeft
+    :call NVimColemakRemapInsert()
+endfunction
+
+function! NVimSidewaysRight()
+    :SidewaysRight
+    :call NVimColemakRemapInsert()
+endfunction
+
 " 'ª' and 'º' are key value of option+'('/')' on macOS
-" call SidewaysLeft would cause confit to 'i' key, so remap it again
-nnoremap ª :SidewaysLeft<CR> call NVimColemakRemapInsert()<CR>
-nnoremap º :SidewaysRight<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap ≤ :call NVimSidewaysLeft()<CR>
+nnoremap ≥ :call NVimSidewaysRight()<CR>
+" -----------------------------------------------------------------------
 
 
 " Keymapping for AndrewRadev/splitjoin.vim """"""""""""""""""""""""""""""
-" split a one-liner into multiple lines(Option + n)
+" split a one-line into multiple lines(Option + :)
 nnoremap ø :SplitjoinSplit<CR>
-" join a block into a single-line statement(Option + m)
+" join a block into a single-line statement(Option + ')
 nnoremap æ :SplitjoinJoin<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

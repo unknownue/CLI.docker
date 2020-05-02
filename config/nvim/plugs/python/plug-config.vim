@@ -20,7 +20,7 @@ lua require'nvim_lsp'.pyls.setup{
   \     plugins = {
   \       pycodestyle = {
   \         enabled = true;
-  \         ignore = { "W391", "E221" };
+  \         ignore = { "W391", "E221", "E201", "E202", "E203" };
   \         maxLineLength = 120;
   \       };
   \       pyflakes = { enabled = true; };
