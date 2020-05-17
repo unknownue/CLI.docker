@@ -28,18 +28,23 @@ function! NUE_ToggleTheme()
         let g:nue_theme_index = 2
         echo 'Switch theme to One Dark theme...'
         set background=dark
-        colorscheme onedark
+        colorscheme aurora
     elseif g:nue_theme_index == 2
         let g:nue_theme_index = 3
+        echo 'Switch theme to One Dark theme...'
+        set background=dark
+        colorscheme onedark
+    elseif g:nue_theme_index == 3
+        let g:nue_theme_index = 4
         echo 'Switch theme to Dracula theme...'
         set background=dark
         colorscheme dracula
-    elseif g:nue_theme_index == 3
-        let g:nue_theme_index = 4
+    elseif g:nue_theme_index == 4
+        let g:nue_theme_index = 5
         echo 'Switch theme to Material theme...'
         set background=dark
         colorscheme material-theme
-    elseif g:nue_theme_index == 4
+    elseif g:nue_theme_index == 5
         let g:nue_theme_index = 0
         echo 'Switch theme to Colaized theme...'
         set background=light
