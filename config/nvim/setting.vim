@@ -77,12 +77,12 @@ set smartcase     " turn on smartcase
 " ----------------------------------------------------------------------------------
 " Save session after exit neovim
 if !has("gui_vimr")
-    if system('if [ -d ".git" ]; then echo true; fi') =~ "true"
+    if system('if [ -d ".git" ]; echo true; else; echo false; end;') =~ 'true'
         " Automatically save the current session whenever vim is closed
         autocmd VimLeave * mksession! ./Session.vim 
     end
 endif
-"
+
 " ----------------------------------------------------------------------------------
 
 
