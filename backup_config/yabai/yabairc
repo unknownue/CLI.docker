@@ -1,11 +1,6 @@
 
 # From https://github.com/koekeishiya/yabai/wiki/Configuration#configuration-file
 
-# For Big Sur
-sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-
-
 # Tiling options --------------------------------------------------
 # bsp or float
 yabai -m config layout bsp
@@ -20,7 +15,7 @@ yabai -m config layout bsp
 
 # Set all padding and gaps to 20pt (default: 0)
 yabai -m config top_padding    10
-yabai -m config bottom_padding 10
+yabai -m config bottom_padding 35
 yabai -m config left_padding   10
 yabai -m config right_padding  10
 yabai -m config window_gap     10
@@ -35,10 +30,6 @@ yabai -m config auto_balance off
 yabai -m config split_ratio 0.5
 
 
-# Rules for application --------------------------------------
-# See https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc for detail
-yabai -m rule --add app!="^(Code|Firefox|PDF Expert|Firefox Developer Edition|Sublime Merge|Brave|Unity)" manage=off
-
 # Mouse support ----------------------------------------------
 # set mouse interaction modifier key (default: fn)
 yabai -m config mouse_modifier fn
@@ -50,7 +41,7 @@ yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 
 # set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
-yabai -m config focus_follows_mouse off
+yabai -m config focus_follows_mouse autoraise
 
 # set mouse follows focus mode (default: off)
 yabai -m config mouse_follows_focus on
@@ -79,8 +70,8 @@ yabai -m config window_opacity off
 # - radius has unit 1pt
 # - value of `-1` tells yabai to calculate a radius automatically
 # - other valid values are `0 .. 20` inclusive, use `0` for square-borders and anything above (up to 20) for rounded.
-yabai -m config window_border of
-yabai -m config window_border_width 1
+yabai -m config window_border on
+yabai -m config window_border_width 2
 yabai -m config window_border_radius -1.0
 yabai -m config active_window_border_color 0xffAAAAAA
 yabai -m config normal_window_border_color 0xff505050
@@ -91,4 +82,6 @@ yabai -m config insert_window_border_color 0xffd75f5f
 # add 20 padding to the top and bottom of all spaces regardless of the display it belongs to
 # Not work
 # yabai -m external_bar all:0:20
+
+
 

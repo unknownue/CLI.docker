@@ -48,13 +48,11 @@
 # eval (starship init fish)
 
 
-# Set neovim config directory
-set -g XDG_CONFIG_HOME /Users/sylveon/Dev/.dotfiles/config
-
 # chips
 if [ -e ~/.config/chips/build.fish ] ; . ~/.config/chips/build.fish ; end
 
 
+# ----------------------------------------------------------------------------------
 # REUSE ALIASES FROM ~/.bash_profile
 egrep "^alias " ~/.bash_profile | while read e
         set var (echo $e | sed -E "s/^alias ([A-Za-z0-9_-]+)=(.*)\$/\1/")
@@ -103,4 +101,5 @@ egrep "^export " ~/.bash_profile | while read e
             set -xg $var $value
         end
 end
+# ----------------------------------------------------------------------------------
 
