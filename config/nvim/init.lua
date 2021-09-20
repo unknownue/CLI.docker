@@ -18,10 +18,16 @@
 package.path = package.path .. ";/Users/sylveon/Dev/.dotfiles/config/nvim/?.lua;"
 -- print(package.path)
 
--- Appearence settings (only work in terminal)
+-- Basic configration
 require('lua.config')
+-- Appearence settings (only work in terminal)
 require('lua.appearence')
+-- Customized functions
+require('function')
+-- Load plugins
+require('lua.plugs')
+-- Keyboard settings
 require('lua.colemak')
 
-
 print('Configuration load succeed...')
+

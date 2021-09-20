@@ -46,6 +46,8 @@ vim.api.nvim_set_keymap('', 'F', 'E', {noremap = true})  -- next word end
 -- Search
 if vim.g.vscode then
     -- Ues build-in function in vscode
+    vim.api.nvim_set_keymap('o', 'g', 't', {noremap = true})  -- -> until char
+    vim.api.nvim_set_keymap('o', 'G', 'T', {noremap = true})  -- <- until char
 else
     -- vim.api.nvim_set_keymap('n', 'o', ';', {noremap = true})  -- just to next search
     -- vim.api.nvim_set_keymap('n', 'O', ':', {noremap = true})  -- 
@@ -103,11 +105,15 @@ vim.api.nvim_set_keymap('n', '<S-CR>', 'O', {noremap = true})  -- change to inse
 vim.api.nvim_set_keymap('n', 'D', 'G', {noremap = true})     -- jump to file eof
 vim.api.nvim_set_keymap('n', 'dd', 'gg', {noremap = true})   -- jump to start of file
 
+-- New line
+vim.api.nvim_set_keymap('n', 'o', 'mpo<Esc>`p', {noremap = true})  -- insert new line at next line (keep normal mode & cursor)
+vim.api.nvim_set_keymap('n', 'O', 'mpO<Esc>`p', {noremap = true})  -- insert new line at above line (keep normal mode & cursor)
+
 -- Comment
 if vim.g.vscode then
     -- From https://github.com/asvetliakov/vscode-neovim/issues/199#issuecomment-640284496
-    vim.api.nvim_set_keymap('x', '<C-/>', '<Plug>VSCodeCommentarygv')
-    vim.api.nvim_set_keymap('n', '<C-/>', '<Plug>VSCodeCommentaryLine')
+    vim.api.nvim_set_keymap('x', '<C-/>', '<Plug>VSCodeCommentarygv', {})
+    vim.api.nvim_set_keymap('n', '<C-/>', '<Plug>VSCodeCommentaryLine', {})
 else
     -- Use vim-commentary plugin
     -- TODO
@@ -115,6 +121,16 @@ end
 
 -- Move code up/down
 -- No good solution yet (Use vscode selection instead (insert mode))
+
+
+-- Plugins ---------------------------------------------------------------
+-- config for splitjoin
+vim.api.nvim_set_keymap('n', '<leader>{', 'gJ', {})  -- split a one-liner into multiple lines
+vim.api.nvim_set_keymap('n', '<leader>}', 'gS', {})  -- join a block into a single-line statement
+-- config for sideways
+vim.api.nvim_set_keymap('n', '<leader>(', ':SidewaysLeft<CR>', {})  -- Move parameter to left
+vim.api.nvim_set_keymap('n', '<leader>)', ':SidewaysRight<CR>', {}) -- Move parameter to right
+
 
 -- Custom ---------------------------------------------------------------- 
 -- Swap 0 and ^ functionality in operator-pending mode
