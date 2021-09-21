@@ -25,6 +25,13 @@
 -- use space as a the leader key
 vim.g.mapleader = ' '
 
+-- Map but not used ------------------------------------------------------
+vim.api.nvim_set_keymap('n', 'g', 't', {noremap = true})
+vim.api.nvim_set_keymap('n', 'G', 'T', {noremap = true})
+vim.api.nvim_set_keymap('n', 'r', 's', {noremap = true})
+vim.api.nvim_set_keymap('n', 'R', 'S', {noremap = true})
+
+
 -- Movement --------------------------------------------------------------
 -- Up/down/left/right
 -- vim.api.nvim_set_keymap('', 'h', 'h', {noremap = true})  -- left
@@ -125,12 +132,14 @@ end
 
 -- Plugins ---------------------------------------------------------------
 -- config for splitjoin
-vim.api.nvim_set_keymap('n', '<leader>{', 'gJ', {})  -- split a one-liner into multiple lines
-vim.api.nvim_set_keymap('n', '<leader>}', 'gS', {})  -- join a block into a single-line statement
+vim.api.nvim_set_keymap('n', '<leader><down>', 'gJ', {})  -- split a one-liner into multiple lines
+vim.api.nvim_set_keymap('n', '<leader><up>',   'gS', {})  -- join a block into a single-line statement
 -- config for sideways
-vim.api.nvim_set_keymap('n', '<leader>(', ':SidewaysLeft<CR>', {})  -- Move parameter to left
-vim.api.nvim_set_keymap('n', '<leader>)', ':SidewaysRight<CR>', {}) -- Move parameter to right
-
+vim.api.nvim_set_keymap('n', '<leader><left>',  ':SidewaysLeft<CR>',  {}) -- move parameter to left
+vim.api.nvim_set_keymap('n', '<leader><right>', ':SidewaysRight<CR>', {}) -- move parameter to right
+-- config for vim-eary-align
+vim.api.nvim_set_keymap('x', '<leader>-', '<Plug>(EasyAlign)',  {}) -- enter align mode from visual mode
+vim.api.nvim_set_keymap('x', '<leader>=', '<Plug>(EasyAlign)=', {}) -- align by '=' from visual mode
 
 -- Custom ---------------------------------------------------------------- 
 -- Swap 0 and ^ functionality in operator-pending mode

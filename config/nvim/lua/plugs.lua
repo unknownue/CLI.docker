@@ -27,7 +27,6 @@ vim.call('plug#begin', '$XDG_CONFIG_HOME/nvim/plugs')
 Plug 'AndrewRadev/sideways.vim'  -- switch function parameters
 Plug 'AndrewRadev/splitjoin.vim' -- switching statement between single-line and multi-lines
 Plug 'machakann/vim-highlightedyank'  -- hint for copied text
-
--- Plug 'junegunn/vim-easy-align'  -- Vim alignment plugin
+Plug 'junegunn/vim-easy-align'  -- Vim alignment plugin
 
 vim.call('plug#end')
