@@ -169,6 +169,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
                                             "^org\\.godotengine\\.godot$",
@@ -202,6 +203,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
                                             "^org\\.godotengine\\.godot$",
@@ -238,6 +240,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
                                             "^org\\.godotengine\\.godot$",
@@ -269,6 +272,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
                                             "^org\\.godotengine\\.godot$",
@@ -511,6 +515,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
                                             "^org\\.godotengine\\.godot$",
@@ -542,6 +547,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
                                             "^org\\.godotengine\\.godot$",
