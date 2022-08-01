@@ -47,9 +47,10 @@
 # Config for starship https://github.com/starship/starship
 # eval (starship init fish)
 
+set -x PATH $HOME/.cargo/bin $PATH
 
 # Set neovim config directory
-set -g XDG_CONFIG_HOME /Users/sylveon/Dev/.dotfiles/config
+set -g XDG_CONFIG_HOME /Users/sylveon/Dev/dotfiles/config
 
 # chips
 if [ -e ~/.config/chips/build.fish ] ; . ~/.config/chips/build.fish ; end

@@ -15,15 +15,19 @@
 -- Use 'source config/nvim/init.lua' to reload all config
 
 -- Add absolute search path
-package.path = package.path .. ";/Users/sylveon/Dev/.dotfiles/config/nvim/?.lua;"
+package.path = package.path .. ";/Users/sylveon/Dev/dotfiles/config/nvim/?.lua;"
 -- print(package.path)
+
+if not vim.g.vscode then
+    vim.env.XDG_CONFIG_HOME = "/Users/sylveon/Dev/dotfiles/config"
+end
 
 -- Basic configration
 require('lua.config')
 -- Appearence settings (only work in terminal)
 require('lua.appearence')
 -- Customized functions
-require('function')
+require('lua.function')
 -- Load plugins
 require('lua.plugs')
 -- Keyboard settings

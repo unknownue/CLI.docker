@@ -1,0 +1,4 @@
+{
+    "vscode-neovim.neovimInitVimPaths.darwin": "/Users/sylveon/Dev/dotfiles/config/nvim/init.lua",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim"
+}

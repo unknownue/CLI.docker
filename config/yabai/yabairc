@@ -37,7 +37,7 @@ yabai -m config split_ratio 0.5
 
 # Rules for application --------------------------------------
 # See https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc for detail
-yabai -m rule --add app!="^(Code|VSCodium|Firefox|PDF Expert|Sublime Merge|Brave|Unity)" manage=off
+yabai -m rule --add app!="^(Code|CLion|VSCodium|Firefox|PDF Expert|Sublime Merge|Brave|Unity)" manage=off
 
 # Mouse support ----------------------------------------------
 # set mouse interaction modifier key (default: fn)

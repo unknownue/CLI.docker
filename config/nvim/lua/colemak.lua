@@ -87,13 +87,36 @@ else
 end
 
 -- Copy/Paste
-vim.api.nvim_set_keymap('n', 'j', 'bye', {noremap = true})  -- copy a word
+-- Examples:
+--     yi{ -> yand inside {}
+--     yw  -> yand word after cursor
+--     yaw -> yand a word
+vim.api.nvim_set_keymap('n', 'j', 'y', {noremap = true})    -- switch to yand pending state
 vim.api.nvim_set_keymap('v', 'j', 'y', {noremap = true})    -- copy visual selection
 vim.api.nvim_set_keymap('n', 'J', 'Y', {noremap = true})    -- copy line
 vim.api.nvim_set_keymap('n', 'l', 'p', {noremap = true})    -- paste to next line
 vim.api.nvim_set_keymap('n', 'L', 'P', {noremap = true})    -- paste to preview line
+vim.api.nvim_set_keymap("o", 'u', 'i', {noremap = true})    -- copy inside something
+
+-- Change
+-- Examples:
+--     ci{ -> change inside {}
+--     cw  -> change word after cursor
+--     caw -> change a word
+vim.api.nvim_set_keymap('o', "u", "i", {noremap = true})    -- change inside something ({} or "" or (), or [])
 
 -- Insert/Replace/Append/Delete/Open line/Goto
+-- Exmaples:
+--     di{ -> delete inside {}
+--     dw  -> delete word after cursor
+--     daw -> delete a word
+--     D   -> delete all after cursor
+--     i   -> insert at cursor
+--     I   -> insert at line beginning (with indent support)
+--     r   -> replace a character
+--     R   -> replace starts from cursor
+--     gg  -> jump to start of file
+--     G   -> jump to end of file
 vim.api.nvim_set_keymap('n', 'u', 'i', {noremap = true})  -- change to insert mode at cursor position
 vim.api.nvim_set_keymap('n', 'U', 'I', {noremap = true})  -- change to insert mode at line beginning
 -- vim.api.nvim_set_keymap('n', 'a', 'a', {noremap = true})  -- change to insert mode at next cursor positon
@@ -147,7 +170,9 @@ vim.api.nvim_set_keymap('x', '<leader>=', '<Plug>(EasyAlign)=', {}) -- align by 
 -- vim.api.nvim_set_keymap('o', '^', '0', {noremap = true})
 
 -- toggle hightlight
-vim.api.nvim_set_keymap('n', '<leader><CR>', ':set hlsearch!<CR>', { noremap = true, silent = true })
+if vim.g.vscode then
+    vim.api.nvim_set_keymap('n', '<leader><CR>', ':set hlsearch!<CR>', { noremap = true, silent = true })
+end
 
 -- Use Q to record macro
 vim.api.nvim_set_keymap('n', 'Q', 'q', {noremap = true})
