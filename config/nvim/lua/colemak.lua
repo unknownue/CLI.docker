@@ -55,6 +55,7 @@ if vim.g.vscode then
     -- Ues build-in function in vscode
     vim.api.nvim_set_keymap('o', 'g', 't', {noremap = true})  -- -> until char
     vim.api.nvim_set_keymap('o', 'G', 'T', {noremap = true})  -- <- until char
+    vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua vim.call('VSCodeCall', 'action.find')", { noremap = true })  -- Ctrl + f to search in current file
 else
     -- vim.api.nvim_set_keymap('n', 'o', ';', {noremap = true})  -- just to next search
     -- vim.api.nvim_set_keymap('n', 'O', ':', {noremap = true})  -- 
@@ -74,7 +75,9 @@ end
 -- Edit ------------------------------------------------------------------
 -- Undo/Redo
 -- Please use cmd + z and cmd + shift + z in macos
-if not vim.g.vscode then
+if vim.g.vscode then
+    -- vim.api.nvim_set_keymap('n', 'z', "<cmd>lua vim.call('VSCodeCall', 'undo')<CR>", {noremap = true})  -- too slow to execute
+else
     vim.api.nvim_set_keymap('n', 'z', 'u', {noremap = true})          -- undo
     vim.api.nvim_set_keymap('n', '<S-z>', '<C-r>', {noremap = true})  -- redo    
 end
@@ -109,7 +112,7 @@ vim.api.nvim_set_keymap('o', "u", "i", {noremap = true})    -- change inside som
 -- Exmaples:
 --     di{ -> delete inside {}
 --     dw  -> delete word after cursor
---     daw -> delete a word
+--     daw -> deletd a word
 --     D   -> delete all after cursor
 --     i   -> insert at cursor
 --     I   -> insert at line beginning (with indent support)
@@ -134,6 +137,7 @@ vim.api.nvim_set_keymap('n', '<S-CR>', 'O', {noremap = true})  -- change to inse
 -- vim.api.nvim_set_keymap('x', 'd', 'g', {noremap = true})  -- goto (during operator-pending)
 vim.api.nvim_set_keymap('n', 'D', 'G', {noremap = true})     -- jump to file eof
 vim.api.nvim_set_keymap('n', 'dd', 'gg', {noremap = true})   -- jump to start of file
+
 
 -- New line
 vim.api.nvim_set_keymap('n', 'o', 'mpo<Esc>`p', {noremap = true})  -- insert new line at next line (keep normal mode & cursor)
