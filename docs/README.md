@@ -1,4 +1,3 @@
-# CLI.docker
+# dotfiles
 
-Personal development configuration in docker.
-
+Personal development configuration.
