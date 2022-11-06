@@ -55,7 +55,7 @@ if vim.g.vscode then
     -- Ues build-in function in vscode
     vim.api.nvim_set_keymap('o', 'g', 't', {noremap = true})  -- -> until char
     vim.api.nvim_set_keymap('o', 'G', 'T', {noremap = true})  -- <- until char
-    vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua vim.call('VSCodeCall', 'action.find')", { noremap = true })  -- Ctrl + f to search in current file
+    vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua vim.call('VSCodeCall', 'action.find')", { noremap = true, silent = true })  -- Ctrl + f to search in current file
 else
     -- vim.api.nvim_set_keymap('n', 'o', ';', {noremap = true})  -- just to next search
     -- vim.api.nvim_set_keymap('n', 'O', ':', {noremap = true})  -- 
@@ -146,8 +146,8 @@ vim.api.nvim_set_keymap('n', 'O', 'mpO<Esc>`p', {noremap = true})  -- insert new
 -- Comment
 if vim.g.vscode then
     -- From https://github.com/asvetliakov/vscode-neovim/issues/199#issuecomment-640284496
-    vim.api.nvim_set_keymap('x', '<C-/>', '<Plug>VSCodeCommentarygv', {})
-    vim.api.nvim_set_keymap('n', '<C-/>', '<Plug>VSCodeCommentaryLine', {})
+    vim.api.nvim_set_keymap('x', '<C-/>', '<Plug>(VSCodeCommentary)gv',   { silent = true, noremap = true })
+    vim.api.nvim_set_keymap('n', '<C-/>', '<Plug>(VSCodeCommentary)Line', { noremap = true, silent = true })
 else
     -- Use vim-commentary plugin
     -- TODO
@@ -159,14 +159,15 @@ end
 
 -- Plugins ---------------------------------------------------------------
 -- config for splitjoin
-vim.api.nvim_set_keymap('n', '<leader><down>', 'gJ', {})  -- split a one-liner into multiple lines
-vim.api.nvim_set_keymap('n', '<leader><up>',   'gS', {})  -- join a block into a single-line statement
+vim.api.nvim_set_keymap('n', '<leader><down>', 'gJ', { noremap = true, silent = true })  -- split a one-liner into multiple lines
+vim.api.nvim_set_keymap('n', '<leader><up>',   'gS', { noremap = true, silent = true })  -- join a block into a single-line statement
 -- config for sideways
-vim.api.nvim_set_keymap('n', '<leader><left>',  ':SidewaysLeft<CR>',  {}) -- move parameter to left
-vim.api.nvim_set_keymap('n', '<leader><right>', ':SidewaysRight<CR>', {}) -- move parameter to right
--- config for vim-eary-align
-vim.api.nvim_set_keymap('x', '<leader>-', '<Plug>(EasyAlign)',  {}) -- enter align mode from visual mode
-vim.api.nvim_set_keymap('x', '<leader>=', '<Plug>(EasyAlign)=', {}) -- align by '=' from visual mode
+vim.api.nvim_set_keymap('n', '<leader><left>',  ':SidewaysLeft<CR>',  { noremap = true, silent = true }) -- move parameter to left
+vim.api.nvim_set_keymap('n', '<leader><right>', ':SidewaysRight<CR>', { noremap = true, silent = true }) -- move parameter to right
+-- config for vim-easy-align
+vim.api.nvim_set_keymap('x', '<leader>-', '<Plug>(EasyAlign)',  { noremap = true, silent = true }) -- enter align mode from visual mode
+vim.api.nvim_set_keymap('x', '<leader>=', '<Plug>(EasyAlign)=', { noremap = true, silent = true }) -- align by '=' from visual mode
+
 
 -- Custom ---------------------------------------------------------------- 
 -- Swap 0 and ^ functionality in operator-pending mode
