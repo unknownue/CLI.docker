@@ -14,6 +14,7 @@
 -- To see how to translate *.vim to *.lua, see https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 -- Use 'source config/nvim/init.lua' to reload all config
 
+print('Configuration load begin...')
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
     package.path = package.path .. "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\?.lua;C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\lua\\?.lua;"

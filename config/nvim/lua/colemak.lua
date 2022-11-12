@@ -50,12 +50,15 @@ vim.api.nvim_set_keymap('', 'F', 'E', {noremap = true})  -- next word end
 -- vim.api.nvim_set_keymap('', 'w', 'w', {noremap = true})  -- next word start
 -- vim.api.nvim_set_keymap('', 'W', 'W', {noremap = true})  -- next word start
 
--- Search
+-- Search & Replace
 if vim.g.vscode then
     -- Ues build-in function in vscode
     vim.api.nvim_set_keymap('o', 'g', 't', {noremap = true})  -- -> until char
     vim.api.nvim_set_keymap('o', 'G', 'T', {noremap = true})  -- <- until char
-    vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua vim.call('VSCodeCall', 'action.find')", { noremap = true, silent = true })  -- Ctrl + f to search in current file
+    -- Use vscode built-in find instead of neovim forward search
+    vim.api.nvim_set_keymap('n', '/', "<cmd>lua vim.call('VSCodeCall', 'actions.find')<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>/', "<cmd>lua vim.call('VSCodeCall', 'editor.action.startFindReplaceAction')<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua vim.call('VSCodeCall', 'actions.find')<CR>", { noremap = true, silent = true })  -- Ctrl + f to search in current file
 else
     -- vim.api.nvim_set_keymap('n', 'o', ';', {noremap = true})  -- just to next search
     -- vim.api.nvim_set_keymap('n', 'O', ':', {noremap = true})  -- 
@@ -181,4 +184,9 @@ end
 
 -- Use Q to record macro
 vim.api.nvim_set_keymap('n', 'Q', 'q', {noremap = true})
+
+-- Easy motion
+-- Disable default mappings
+-- vim.g.easymotion_do_mapping = 0
+-- vim.api.nvim_set_keymap('n', '<leader><leader>', '<Plug>(easymotion-overwin-f)', { noremap = true, silent = true })
 --------------------------------------------------------------------------
