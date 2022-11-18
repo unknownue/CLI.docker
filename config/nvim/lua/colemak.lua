@@ -149,8 +149,8 @@ vim.api.nvim_set_keymap('n', 'O', 'mpO<Esc>`p', {noremap = true})  -- insert new
 -- Comment
 if vim.g.vscode then
     -- From https://github.com/asvetliakov/vscode-neovim/issues/199#issuecomment-640284496
-    vim.api.nvim_set_keymap('x', '<C-/>', '<Plug>(VSCodeCommentary)gv',   { silent = true, noremap = true })
-    vim.api.nvim_set_keymap('n', '<C-/>', '<Plug>(VSCodeCommentary)Line', { noremap = true, silent = true })
+    -- vim.api.nvim_set_keymap('x', '<C-/>', '<Plug>(VSCodeCommentary)gv',     { silent = true, noremap = true })
+    -- vim.api.nvim_set_keymap('n', '<C-/>', '<Plug>(VSCodeCommentary)Line', { noremap = true, silent = true })
 else
     -- Use vim-commentary plugin
     -- TODO
