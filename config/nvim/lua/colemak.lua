@@ -162,8 +162,10 @@ end
 
 -- Plugins ---------------------------------------------------------------
 -- config for splitjoin
-vim.api.nvim_set_keymap('n', '<leader><down>', 'gJ', { noremap = true, silent = true })  -- split a one-liner into multiple lines
-vim.api.nvim_set_keymap('n', '<leader><up>',   'gS', { noremap = true, silent = true })  -- join a block into a single-line statement
+vim.g.splitjoin_split_mapping = ''
+vim.g.splitjoin_join_mapping  = ''
+vim.api.nvim_set_keymap('n', '<leader>j', ':SplitjoinJoin<CR>',  { noremap = true, silent = true })  -- split a one-liner into multiple lines
+vim.api.nvim_set_keymap('n', '<leader>s', ':SplitjoinSplit<CR>', { noremap = true, silent = true })  -- join a block into a single-line statement
 -- config for sideways
 vim.api.nvim_set_keymap('n', '<leader><left>',  ':SidewaysLeft<CR>',  { noremap = true, silent = true }) -- move parameter to left
 vim.api.nvim_set_keymap('n', '<leader><right>', ':SidewaysRight<CR>', { noremap = true, silent = true }) -- move parameter to right
