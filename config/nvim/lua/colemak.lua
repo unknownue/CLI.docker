@@ -103,6 +103,7 @@ vim.api.nvim_set_keymap('n', 'J', 'Y', {noremap = true})    -- copy line
 vim.api.nvim_set_keymap('n', 'l', 'p', {noremap = true})    -- paste to next line
 vim.api.nvim_set_keymap('n', 'L', 'P', {noremap = true})    -- paste to preview line
 vim.api.nvim_set_keymap("o", 'u', 'i', {noremap = true})    -- copy inside something
+vim.api.nvim_set_keymap('x', 'l', 'p', {noremap = true})    -- replace current selection by paste
 
 -- Change
 -- Examples:
@@ -172,6 +173,11 @@ vim.api.nvim_set_keymap('n', '<leader><right>', ':SidewaysRight<CR>', { noremap 
 -- config for vim-easy-align
 vim.api.nvim_set_keymap('x', '<leader>-', '<Plug>(EasyAlign)',  { noremap = true, silent = true }) -- enter align mode from visual mode
 vim.api.nvim_set_keymap('x', '<leader>=', '<Plug>(EasyAlign)=', { noremap = true, silent = true }) -- align by '=' from visual mode
+-- config for exchange.vim
+vim.g.exchange_no_mappings = 1
+vim.api.nvim_set_keymap('n', 'cx', '<Plug>(Exchange)', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'cxx', '<Plug>(ExchangeLine)', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'cxc', '<Plug>(ExchangeClear)', { noremap = true, silent = true })
 
 
 -- Custom ---------------------------------------------------------------- 

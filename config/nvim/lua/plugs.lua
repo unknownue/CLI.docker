@@ -43,5 +43,6 @@ Plug 'machakann/vim-highlightedyank'  -- hint for copied text
 Plug 'junegunn/vim-easy-align'  -- Vim alignment plugin
 -- Plug "tpope/vim-commentary"
 -- Plug 'easymotion/vim-easymotion' -- Vim easy-motion plugin
+Plug 'tommcdo/vim-exchange'
 
 vim.call('plug#end')
