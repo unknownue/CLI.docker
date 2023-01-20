@@ -169,6 +169,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.vscodium$",
                                             "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
@@ -203,6 +204,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.vscodium$",
                                             "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
@@ -240,6 +242,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.vscodium$",
                                             "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
@@ -272,6 +275,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.vscodium$",
                                             "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
@@ -515,6 +519,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.vscodium$",
                                             "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
@@ -547,6 +552,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.vscodium$",
                                             "^com\\.visualstudio\\.code\\.oss$",
                                             "^com\\.jetbrains\\.CLion$",
                                             "^com\\.jetbrains\\.pycharm$",
