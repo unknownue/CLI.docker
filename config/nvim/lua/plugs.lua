@@ -23,9 +23,9 @@ end
 if not file_exists(plugin_path) then
     local download_cmd
     if vim.loop.os_uname().sysname == "Windows_NT" then
-        download_cmd = 'curl -fLo ' .. plugin_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    else
         download_cmd = 'iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force'
+    else
+        download_cmd = 'curl -fLo ' .. plugin_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     end
     
     os.execute(download_cmd)

@@ -34,11 +34,11 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     require('colemak')
 else
     -- Add absolute search path
-    package.path = package.path .. ";/Users/sylveon/Dev/dotfiles/config/nvim/?.lua;"
+    package.path = package.path .. ";/Users/unknownue/Develop/dotfiles/config/nvim/?.lua;"
     -- print(package.path)
 
     if not vim.g.vscode then
-        vim.env.XDG_CONFIG_HOME = "/Users/sylveon/Dev/dotfiles/config"
+        vim.env.XDG_CONFIG_HOME = "/Users/unknownue/Develop/dotfiles/config"
     end
 
     -- Basic configration

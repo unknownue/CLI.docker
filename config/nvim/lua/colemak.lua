@@ -135,7 +135,7 @@ vim.api.nvim_set_keymap('n', 's', 'd', {noremap = true})  -- delete (start opera
 vim.api.nvim_set_keymap('o', 's', 'd', {noremap = true})  -- delete (during operator-pending)
 vim.api.nvim_set_keymap('x', 's', 'd', {noremap = true})  -- delete visual selection
 vim.api.nvim_set_keymap('n', 'S', 'D', {noremap = true})  -- delete from cursor to line ending
-vim.api.nvim_set_keymap('n', '<CR>', 'o', {noremap = true})  -- change to insert mode and open new line at next line of current cursor
+-- vim.api.nvim_set_keymap('n', '<CR>', 'o', {noremap = true})  -- change to insert mode and open new line at next line of current cursor
 vim.api.nvim_set_keymap('n', '<S-CR>', 'O', {noremap = true})  -- change to insert mode and open new line at the previous line of current cursor
 -- vim.api.nvim_set_keymap('n', 'd', 'g', {noremap = true})  -- goto (start operator-pending)
 -- vim.api.nvim_set_keymap('x', 'd', 'g', {noremap = true})  -- goto (during operator-pending)
@@ -190,8 +190,9 @@ if vim.g.vscode then
     vim.api.nvim_set_keymap('n', '<leader><CR>', ':set hlsearch!<CR>', { noremap = true, silent = true })
 end
 
--- Use Q to record macro
-vim.api.nvim_set_keymap('n', 'Q', 'q', {noremap = true})
+-- Disable macro recording
+vim.api.nvim_set_keymap('n', 'Q', "", { noremap = true })
+vim.api.nvim_del_keymap('n', 'Q')
 
 -- Easy motion
 -- Disable default mappings
