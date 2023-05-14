@@ -1,0 +1,74 @@
+{
+    // https://code.visualstudio.com/api/references/theme-color
+    "workbench.colorCustomizations": {
+        "editorInlayHint.background": "#88c0d005",
+        // "editorInlayHint.typeForeground": "#65b6ad8c",
+        "editorInlayHint.typeForeground": "#dadada9d",
+        // "editorInlayHint.parameterForeground": "#65b6ad8c",
+        "editorInlayHint.parameterForeground": "#dadada9d",
+        
+        "editor.background": "#1B1B1B",
+        "activityBar.background": "#181818",
+        "activityBar.border": "#3b414f",
+        "editorWidget.background": "#181818",
+        "editorGutter.background": "#181818",
+        "editorSuggestWidget.background": "#181818",
+        "statusBar.debuggingBackground": "#b36e0e",
+        "panel.background": "#181818",
+        "sideBar.background": "#181818",
+        "statusBar.background": "#414658",
+        "statusBarItem.hoverBackground": "#566590",
+        "tab.inactiveBackground": "#181818",
+        "editorGroupHeader.tabsBackground": "#181818",
+        "editorGroupHeader.tabsBorder": "#333a4f",
+        "terminal.background": "#181818",
+        "titleBar.activeBackground": "#181818",
+        "titleBar.border": "#333a4f",
+        "titleBar.inactiveBackground": "#21232a",
+    },
+    // https://github.com/rust-lang/rust-analyzer/blob/master/editors/code/package.json
+    "editor.tokenColorCustomizations": {
+        "strings": "#87d5b1",
+        "[Nord]": {
+            "textMateRules": [
+                {
+                    "name": "[Rust] Entity types",
+                    "scope": "source.rust entity.name.type",
+                    "settings": {
+                        "foreground": "#a0cedf",
+                    }
+                },
+                {
+                    "name": "[Rust] Function",
+                    "scope": "entity.name.function.rust",
+                    "settings": {
+                        "foreground": "#6dbfd5",
+                        // "foreground": "#78c1d5",
+                    }
+                },
+                {
+                    "name": "Keyward",
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#638bbb",
+                    }
+                },
+                {
+                    "name": "Functin parameter",
+                    "scope": "variable.parameter",
+                    "settings": {
+                        "foreground": "#a2e8ed",
+                    }
+                },
+                {
+                    "name": "[Rust] Constant",
+                    "scope": "variable.other.constant.rust",
+                    "settings": {
+                        // "foreground": "#63a1b1",
+                        "foreground": "#a9dbed",
+                    }
+                },
+            ]
+        }
+    },
+}
