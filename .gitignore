@@ -3,6 +3,7 @@
 system/.ssh/id_rsa
 
 config/karabiner/automatic_backups
+config/tracy/**
 
 .vscode/**
 

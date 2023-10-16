@@ -29,10 +29,12 @@
                             "type": "frontmost_application_if",
                             "bundle_identifiers": [
                                 "^com\\.microsoft\\.VSCode$",
+                                "^com\\.vscodium$",
                                 "^com\\.jetbrains\\.CLion$",
                                 "^com\\.jetbrains\\.pycharm$",
                                 "^org\\.godotengine\\.godot$",
-                                "com\\.coteditor\\.CotEditor"
+                                "^dev\\.zed\\.Zed$",
+                                "^com\\.coteditor\\.CotEditor$"
                             ]
                         }
                     ]
@@ -60,10 +62,12 @@
                             "type": "frontmost_application_if",
                             "bundle_identifiers": [
                                 "^com\\.microsoft\\.VSCode$",
+                                "^com\\.vscodium$",
                                 "^com\\.jetbrains\\.CLion$",
                                 "^com\\.jetbrains\\.pycharm$",
                                 "^org\\.godotengine\\.godot$",
-                                "com\\.coteditor\\.CotEditor"
+                                "^dev\\.zed\\.Zed$",
+                                "^com\\.coteditor\\.CotEditor$"
                             ]
                         }
                     ]
@@ -79,7 +83,7 @@
                         "key_code": "grave_accent_and_tilde",
                         "modifiers": {
                             "mandatory": [
-                                "left_shift"  
+                                "left_shift"
                             ],
                             "optional": [
                                 "any"
@@ -96,10 +100,12 @@
                             "type": "frontmost_application_if",
                             "bundle_identifiers": [
                                 "^com\\.microsoft\\.VSCode$",
+                                "^com\\.vscodium$",
                                 "^com\\.jetbrains\\.CLion$",
                                 "^com\\.jetbrains\\.pycharm$",
                                 "^org\\.godotengine\\.godot$",
-                                "com\\.coteditor\\.CotEditor"
+                                "^dev\\.zed\\.Zed$",
+                                "^com\\.coteditor\\.CotEditor$"
                             ]
                         }
                     ]
@@ -124,10 +130,12 @@
                             "type": "frontmost_application_if",
                             "bundle_identifiers": [
                                 "^com\\.microsoft\\.VSCode$",
+                                "^com\\.vscodium$",
                                 "^com\\.jetbrains\\.CLion$",
                                 "^com\\.jetbrains\\.pycharm$",
                                 "^org\\.godotengine\\.godot$",
-                                "com\\.coteditor\\.CotEditor"
+                                "^dev\\.zed\\.Zed$",
+                                "^com\\.coteditor\\.CotEditor$"
                             ]
                         }
                     ]
@@ -143,7 +151,7 @@
                         "key_code": "grave_accent_and_tilde",
                         "modifiers": {
                             "mandatory": [
-                                "left_control"  
+                                "left_control"
                             ],
                             "optional": [
                                 "any"
