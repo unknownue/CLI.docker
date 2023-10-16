@@ -56,8 +56,8 @@ if vim.g.vscode then
     vim.api.nvim_set_keymap('o', 'g', 't', {noremap = true})  -- -> until char
     vim.api.nvim_set_keymap('o', 'G', 'T', {noremap = true})  -- <- until char
     -- Use vscode built-in find instead of neovim forward search
-    vim.api.nvim_set_keymap('n', '/', "<cmd>lua vim.call('VSCodeCall', 'actions.find')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>/', "<cmd>lua vim.call('VSCodeCall', 'editor.action.startFindReplaceAction')<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '/', "a<cmd>lua vim.call('VSCodeCall', 'actions.find')<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>/', "a<cmd>lua vim.call('VSCodeCall', 'editor.action.startFindReplaceAction')<CR>", { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua vim.call('VSCodeCall', 'actions.find')<CR>", { noremap = true, silent = true })  -- Ctrl + f to search in current file
 else
     -- vim.api.nvim_set_keymap('n', 'o', ';', {noremap = true})  -- just to next search
