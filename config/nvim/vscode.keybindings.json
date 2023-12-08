@@ -1,5 +1,4 @@
-// Place your key bindings in this file to override the defaults
-// Place this file in C:\Users\$USERNAME$\AppData\Roaming\Code\User\keybindings.json
+// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "cmd+down",
@@ -14,6 +13,12 @@
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.init",
         "args": "<C-/>"
+    },
+    {
+        "key": "f4",
+        "command": "vscode-neovim.send",
+        "when": "editorFocus && !findWidgetVisible",
+        "args": "<Cmd>lua require('vscode-neovim').action('actions.find', { args = { query = vim.fn.expand('<cword>') } })<CR>"
     },
     {
         "key": "f5",
@@ -39,6 +44,12 @@
         "key": "escape",
         "command": "vscode-neovim.send",
         "when": "editorFocus && findWidgetVisible && !isComposing",
-        "args": "<cmd>lua vim.call('VSCodeCall', 'closeFindWidget')<CR><Esc>"
-    }
+        "args": "<Cmd>lua require('vscode-neovim').action('closeFindWidget')<CR><ESC>"
+    },
+    {
+        "key": "f3",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus",
+        "args": "<Cmd>lua require('vscode-neovim').action('editor.action.addSelectionToNextFindMatch')<CR><ESC><Cmd>lua require('vscode-neovim').action('editor.action.clipboardCopyAction')<CR><ESC>"
+    },
 ]
