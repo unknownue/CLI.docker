@@ -56,9 +56,9 @@ if vim.g.vscode then
     vim.api.nvim_set_keymap('o', 'g', 't', {noremap = true})  -- -> until char
     vim.api.nvim_set_keymap('o', 'G', 'T', {noremap = true})  -- <- until char
     -- Use vscode built-in find instead of neovim forward search
-    vim.api.nvim_set_keymap('n', '/', "a<cmd>lua vim.call('VSCodeCall', 'actions.find')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>/', "a<cmd>lua vim.call('VSCodeCall', 'editor.action.startFindReplaceAction')<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua vim.call('VSCodeCall', 'actions.find')<CR>", { noremap = true, silent = true })  -- Ctrl + f to search in current file
+    vim.api.nvim_set_keymap('n', '/', "a<cmd>lua require('vscode-neovim').action('actions.find')<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>/', "a<cmd>lua require('vscode-neovim').action('editor.action.startFindReplaceAction')<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<C-t>', "<cmd>lua <cmd>lua require('vscode-neovim').action('actions.find')<CR>", { noremap = true, silent = true })  -- Ctrl + f to search in current file
 else
     -- vim.api.nvim_set_keymap('n', 'o', ';', {noremap = true})  -- just to next search
     -- vim.api.nvim_set_keymap('n', 'O', ':', {noremap = true})  -- 
@@ -79,7 +79,7 @@ end
 -- Undo/Redo
 -- Please use cmd + z and cmd + shift + z in macos
 if vim.g.vscode then
-    -- vim.api.nvim_set_keymap('n', 'z', "<cmd>lua vim.call('VSCodeCall', 'undo')<CR>", {noremap = true})  -- too slow to execute
+    -- vim.api.nvim_set_keymap('n', 'z', "<cmd>lua require('vscode-neovim').call('undo')<CR>", {noremap = true})  -- too slow to execute
 else
     vim.api.nvim_set_keymap('n', 'z', 'u', {noremap = true})          -- undo
     vim.api.nvim_set_keymap('n', '<S-z>', '<C-r>', {noremap = true})  -- redo    
@@ -87,7 +87,7 @@ end
 
 -- Use q to save file
 if vim.g.vscode then
-    vim.api.nvim_set_keymap('n', 'q', "<cmd>lua vim.call('VSCodeCall', 'workbench.action.files.save')<CR>", {noremap = true})
+    vim.api.nvim_set_keymap('n', 'q', "<cmd>lua require('vscode-neovim').call('workbench.action.files.save')<CR>", {noremap = true})
 else
     vim.api.nvim_set_keymap('n', 'q', ':w<CR>', {noremap = true})
 end
