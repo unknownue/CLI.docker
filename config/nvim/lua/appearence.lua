@@ -47,21 +47,21 @@ if vim.g.vscode then
             -- 检测当前是否为普通模式
             if mode == 'n' then
                 -- vim.cmd('echom "现在进入普通模式了!"')
-                config["[Nord Deep]"]["statusBar.background"] = "#48557a"
+                config["[Nord]"]["statusBar.background"] = "#343740"
                 vscode.update_config({"workbench.colorCustomizations"}, {config})
             end
 
             -- 检测当前是否为插入模式
             if mode == 'i' or mode == 'ic' or mode == 'ix' then
                 -- vim.cmd('echom "现在进入插入模式了!"')
-                config["[Nord Deep]"]["statusBar.background"] = "#5b74b4"
+                config["[Nord]"]["statusBar.background"] = "#48557a"
                 vscode.update_config({"workbench.colorCustomizations"}, {config})
             end
 
             -- 检测当前是否为可视模式
             if mode == 'v' or mode == 'V' or mode == '' then
                 -- vim.cmd('echom "现在进入可视模式了!"')
-                config["[Nord Deep]"]["statusBar.background"] = "#9d6830"
+                config["[Nord]"]["statusBar.background"] = "#5b74b4"
                 vscode.update_config({"workbench.colorCustomizations"}, {config})
             end
         end
