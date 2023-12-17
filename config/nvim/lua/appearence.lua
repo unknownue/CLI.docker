@@ -33,72 +33,72 @@ vim.o.background = 'light'
 -- end
 
 
-if vim.g.vscode then
-    if vim.loop.os_uname().sysname == "Windows_NT" then
-        vim.api.nvim_create_autocmd("ModeChanged", {
-            pattern = '*',
-            callback = function()
-                local vscode = require('vscode-neovim')
-                local mode_info = vim.api.nvim_get_mode()
-                local mode = mode_info.mode
-
-                local config = vscode.get_config("workbench.colorCustomizations")
-                -- print(config["[Nord Deep]"]["statusBar.background"])
-
-                -- 检测当前是否为普通模式
-                if mode == 'n' then
-                    -- vim.cmd('echom "现在进入普通模式了!"')
-                    config["[Nord]"]["statusBar.background"] = "#343740"
-                    vscode.update_config({"workbench.colorCustomizations"}, {config})
-                end
-
-                -- 检测当前是否为插入模式
-                if mode == 'i' or mode == 'ic' or mode == 'ix' then
-                    -- vim.cmd('echom "现在进入插入模式了!"')
-                    config["[Nord]"]["statusBar.background"] = "#48557a"
-                    vscode.update_config({"workbench.colorCustomizations"}, {config})
-                end
-
-                -- 检测当前是否为可视模式
-                if mode == 'v' or mode == 'V' or mode == '' then
-                    -- vim.cmd('echom "现在进入可视模式了!"')
-                    config["[Nord]"]["statusBar.background"] = "#5b74b4"
-                    vscode.update_config({"workbench.colorCustomizations"}, {config})
-                end
-            end
-        })
-    else
-        vim.api.nvim_create_autocmd("ModeChanged", {
-            pattern = '*',
-            callback = function()
-                local vscode = require('vscode-neovim')
-                local mode_info = vim.api.nvim_get_mode()
-                local mode = mode_info.mode
-
-                local config = vscode.get_config("workbench.colorCustomizations")
-                -- print(config["[Nord Deep]"]["statusBar.background"])
-
-                -- 检测当前是否为普通模式
-                if mode == 'n' then
-                    -- vim.cmd('echom "现在进入普通模式了!"')
-                    config["[Nord Deep]"]["statusBar.background"] = "#343740"
-                    vscode.update_config({"workbench.colorCustomizations"}, {config})
-                end
-
-                -- 检测当前是否为插入模式
-                if mode == 'i' or mode == 'ic' or mode == 'ix' then
-                    -- vim.cmd('echom "现在进入插入模式了!"')
-                    config["[Nord Deep]"]["statusBar.background"] = "#48557a"
-                    vscode.update_config({"workbench.colorCustomizations"}, {config})
-                end
-
-                -- 检测当前是否为可视模式
-                if mode == 'v' or mode == 'V' or mode == '' then
-                    -- vim.cmd('echom "现在进入可视模式了!"')
-                    config["[Nord Deep]"]["statusBar.background"] = "#5b74b4"
-                    vscode.update_config({"workbench.colorCustomizations"}, {config})
-                end
-            end
-        })
-    end
-end
+-- if vim.g.vscode then
+--     if vim.loop.os_uname().sysname == "Windows_NT" then
+--         vim.api.nvim_create_autocmd("ModeChanged", {
+--             pattern = '*',
+--             callback = function()
+--                 local vscode = require('vscode-neovim')
+--                 local mode_info = vim.api.nvim_get_mode()
+--                 local mode = mode_info.mode
+-- 
+--                 local config = vscode.get_config("workbench.colorCustomizations")
+--                 -- print(config["[Nord Deep]"]["statusBar.background"])
+-- 
+--                 -- 检测当前是否为普通模式
+--                 if mode == 'n' then
+--                     -- vim.cmd('echom "现在进入普通模式了!"')
+--                     config["[Nord]"]["statusBar.background"] = "#343740"
+--                     vscode.update_config({"workbench.colorCustomizations"}, {config})
+--                 end
+-- 
+--                 -- 检测当前是否为插入模式
+--                 if mode == 'i' or mode == 'ic' or mode == 'ix' then
+--                     -- vim.cmd('echom "现在进入插入模式了!"')
+--                     config["[Nord]"]["statusBar.background"] = "#48557a"
+--                     vscode.update_config({"workbench.colorCustomizations"}, {config})
+--                 end
+-- 
+--                 -- 检测当前是否为可视模式
+--                 if mode == 'v' or mode == 'V' or mode == '' then
+--                     -- vim.cmd('echom "现在进入可视模式了!"')
+--                     config["[Nord]"]["statusBar.background"] = "#5b74b4"
+--                     vscode.update_config({"workbench.colorCustomizations"}, {config})
+--                 end
+--             end
+--         })
+--     else
+--         vim.api.nvim_create_autocmd("ModeChanged", {
+--             pattern = '*',
+--             callback = function()
+--                 local vscode = require('vscode-neovim')
+--                 local mode_info = vim.api.nvim_get_mode()
+--                 local mode = mode_info.mode
+-- 
+--                 local config = vscode.get_config("workbench.colorCustomizations")
+--                 -- print(config["[Nord Deep]"]["statusBar.background"])
+-- 
+--                 -- 检测当前是否为普通模式
+--                 if mode == 'n' then
+--                     -- vim.cmd('echom "现在进入普通模式了!"')
+--                     config["[Nord Deep]"]["statusBar.background"] = "#343740"
+--                     vscode.update_config({"workbench.colorCustomizations"}, {config})
+--                 end
+-- 
+--                 -- 检测当前是否为插入模式
+--                 if mode == 'i' or mode == 'ic' or mode == 'ix' then
+--                     -- vim.cmd('echom "现在进入插入模式了!"')
+--                     config["[Nord Deep]"]["statusBar.background"] = "#48557a"
+--                     vscode.update_config({"workbench.colorCustomizations"}, {config})
+--                 end
+-- 
+--                 -- 检测当前是否为可视模式
+--                 if mode == 'v' or mode == 'V' or mode == '' then
+--                     -- vim.cmd('echom "现在进入可视模式了!"')
+--                     config["[Nord Deep]"]["statusBar.background"] = "#5b74b4"
+--                     vscode.update_config({"workbench.colorCustomizations"}, {config})
+--                 end
+--             end
+--         })
+--     end
+-- end
