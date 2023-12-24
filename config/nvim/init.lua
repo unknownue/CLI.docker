@@ -32,6 +32,8 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     require('plugs')
     -- Keyboard settings
     require('colemak')
+    -- Macro
+    require('macro')
 else
     -- Add absolute search path
     package.path = package.path .. ";/Users/unknownue/Develop/dotfiles/config/nvim/?.lua;"
@@ -51,6 +53,8 @@ else
     require('lua.plugs')
     -- Keyboard settings
     require('lua.colemak')
+    -- Macro
+    require('macro')
 end
 
 print('Configuration load succeed...')

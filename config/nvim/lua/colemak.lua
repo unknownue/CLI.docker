@@ -99,6 +99,7 @@ end
 --     yaw -> yand a word
 vim.api.nvim_set_keymap('n', 'j', 'y', {noremap = true})    -- switch to yand pending state
 vim.api.nvim_set_keymap('v', 'j', 'y', {noremap = true})    -- copy visual selection
+vim.api.nvim_set_keymap('v', 'u', 'i', {noremap = true})    -- support inner in visual mode
 vim.api.nvim_set_keymap('n', 'J', 'Y', {noremap = true})    -- copy line
 vim.api.nvim_set_keymap('n', 'l', 'p', {noremap = true})    -- paste to next line
 vim.api.nvim_set_keymap('n', 'L', 'P', {noremap = true})    -- paste to preview line
