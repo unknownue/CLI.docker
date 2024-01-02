@@ -15,7 +15,7 @@ ENV PATH="/user/local/cargo/bin/:${PATH}"
 
 RUN apt update && \
     apt install -y --no-install-recommends ca-certificates git wget sudo curl pkg-config neovim \
-    libxorg-dev libwayland-dev libx11-dev libxcursor-dev libxrandr-dev libxi-dev libx11-xcb-dev libx11-xcb-dev \
+    xorg-dev libwayland-dev libx11-dev libxcursor-dev libxrandr-dev libxi-dev libx11-xcb-dev libx11-xcb-dev \
     librust-alsa-sys-dev librust-libudev-sys-dev \
     pulseaudio-utils
 
@@ -31,7 +31,7 @@ USER $DOCKER_USER
 
 # Audio
 # See also https://github.com/TheBiggerGuy/docker-pulseaudio-example/tree/master
-RUN gpasswd -a $DOCKER_USER audio
+RUN sudo gpasswd -a $DOCKER_USER audio
 COPY pulse-client.conf /etc/pulse/client.conf
 
 # Install Vulkan SDK
@@ -57,5 +57,6 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
 #     cargo --version && \
 #     rustc --version
 
-# ln -sr ./target/git/ $HOME/.cargo/git 
-# ln -sr ./target/registry/ $HOME/.cargo/registry
+ADD startup.sh
+CMD ["sh", "-c", "startup.sh"]
+

@@ -1,4 +1,5 @@
 
+# Docker container for bevy development
 docker run -id --rm \
 	-e DISPLAY=unix:0 \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -14,6 +15,16 @@ docker run -id --rm \
 	--shm-size 8G \
 	unknownue/cg:vk1.3.216-rust1.67
 
+# Docker container for LLM models
+docker run -d \
+	--gpus=all \
+	-v ~/Database/ollama:/root/.ollama \
+	-p 11434:11434 \
+	-p 8751:8751 \
+	--name ollama \ \
+	unknownue/ollama:0.1.17
+
+# File server
 cd /home/unknownue/Workspace/utility/static-http-server
 bash launch-filebrowser.sh
 
