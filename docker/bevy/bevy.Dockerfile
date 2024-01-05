@@ -17,7 +17,7 @@ RUN apt update && \
     apt install -y --no-install-recommends ca-certificates git wget sudo curl pkg-config neovim \
     xorg-dev libwayland-dev libx11-dev libxcursor-dev libxrandr-dev libxi-dev libx11-xcb-dev libx11-xcb-dev \
     librust-alsa-sys-dev librust-libudev-sys-dev \
-    pulseaudio-utils
+    pulseaudio-utils python3 \
 
 # Docker user -------------------------------------------------------------------
 # See also http://gbraad.nl/blog/non-root/user/inside-a-docker-container.html
@@ -33,6 +33,15 @@ USER $DOCKER_USER
 # See also https://github.com/TheBiggerGuy/docker-pulseaudio-example/tree/master
 RUN sudo gpasswd -a $DOCKER_USER audio
 COPY pulse-client.conf /etc/pulse/client.conf
+
+# Python deps
+RUN curl https://bootstrap.pypa.io/get-pip.py -sLo get-pip.py && \
+    python3 get-pip.py && \
+    rm get-pip.py
+RUN python3 -m pip install --no-cache-dir pqi && \
+    mkdir -p /home/$DOCKER_USER/.config && \
+    pqi use aliyun && \
+    python3 -m pip install --no-cache-dir pyautogen
 
 # Install Vulkan SDK
 WORKDIR /opt

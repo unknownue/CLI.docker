@@ -18,15 +18,20 @@ docker run -id --rm \
 # Docker container for LLM models
 docker run -d \
 	--gpus=all \
-	-v ~/Database/ollama:/root/.ollama \
+	-v /home/unknownue/Database/ollama:/home/unknownue/.ollama \
+	-v /home/unknownue/Workspace/:/workspace \
 	-p 11434:11434 \
 	-p 8751:8751 \
-	--name ollama \ \
+	-p 8752:8752 \
+	-w /workspace \
+	--name ollama \
 	unknownue/ollama:0.1.17
 
 # File server
 cd /home/unknownue/Workspace/utility/static-http-server
 bash launch-filebrowser.sh
 
-# x0vncserver -rfbauth .vnc/passwd
+# Enable tailscale
+tailscale up
 
+# x0vncserver -rfbauth .vnc/passwd

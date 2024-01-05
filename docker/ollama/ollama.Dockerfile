@@ -28,7 +28,7 @@ RUN pip install --no-cache-dir litellm && \
 
 WORKDIR /workspace
 
-EXPOSE 8751
+# EXPOSE 8751
 
 ADD startup.sh /workspace/startup.sh
 # CMD ["sh", "-c", "/workspace/startup.sh"]
