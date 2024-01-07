@@ -19,10 +19,8 @@ else
         -v /home/unknownue/Database/ollama:/home/unknownue/.ollama \
         -v /home/unknownue/Workspace/:/workspace \
         -p 11434:11434 \
-        -p 8751:8751 \
-        -p 8752:8752 \
+        -p 8751-8760:8751-8760 \
         -w /workspace \
         --name $container_name \
         $image_name
 fi
-

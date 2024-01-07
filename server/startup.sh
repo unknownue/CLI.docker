@@ -10,6 +10,7 @@ docker run -id --rm \
 	--device /dev/nvidiactl \
 	--gpus all \
 	--name cg \
+	-p 8761-8770:8761-8770 \
 	-e NVIDIA_DRIVER_CAPABILITIES=graphics,display,compute,utility \
 	-w /workspace \
 	--shm-size 8G \
@@ -21,8 +22,7 @@ docker run -d \
 	-v /home/unknownue/Database/ollama:/home/unknownue/.ollama \
 	-v /home/unknownue/Workspace/:/workspace \
 	-p 11434:11434 \
-	-p 8751:8751 \
-	-p 8752:8752 \
+	-p 8751-8760:8751-8760 \
 	-w /workspace \
 	--name ollama \
 	unknownue/ollama:0.1.17

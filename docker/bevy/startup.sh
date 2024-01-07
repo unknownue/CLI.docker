@@ -5,11 +5,11 @@ path_to1=$HOME/.cargo/git
 path_to2=$HOME/.cargo/registry
 
 if [ ! -L "$path_from1" ]; then
-	mkdir $path_from1
+	mkdir -p $path_from1
 fi
 
 if [ ! -L "$path_from2" ]; then
-	mkdir $path_from2
+	mkdir -p $path_from2
 fi
 
 if [ ! -L "$path_to1" ]; then

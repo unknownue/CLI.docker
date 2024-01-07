@@ -17,7 +17,7 @@ RUN apt update && \
     apt install -y --no-install-recommends ca-certificates git wget sudo curl pkg-config neovim \
     xorg-dev libwayland-dev libx11-dev libxcursor-dev libxrandr-dev libxi-dev libx11-xcb-dev libx11-xcb-dev \
     librust-alsa-sys-dev librust-libudev-sys-dev \
-    pulseaudio-utils python3 \
+    pulseaudio-utils python3
 
 # Docker user -------------------------------------------------------------------
 # See also http://gbraad.nl/blog/non-root/user/inside-a-docker-container.html
@@ -25,8 +25,8 @@ RUN adduser --disabled-password --gecos '' $DOCKER_USER && \
     adduser $DOCKER_USER sudo && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     echo "[core]editor=nvim" >> ~/.gitconfig && \
-    git config --global user.email unknownue@outlook.com && \
-    git config --global user.name unknownue
+    git config --global user.email $DOCKER_EMAIL && \
+    git config --global user.name $DOCKER_USER
 USER $DOCKER_USER
 
 # Audio
@@ -35,13 +35,15 @@ RUN sudo gpasswd -a $DOCKER_USER audio
 COPY pulse-client.conf /etc/pulse/client.conf
 
 # Python deps
-RUN curl https://bootstrap.pypa.io/get-pip.py -sLo get-pip.py && \
+RUN sudo curl https://bootstrap.pypa.io/get-pip.py -sLo get-pip.py && \
     python3 get-pip.py && \
-    rm get-pip.py
-RUN python3 -m pip install --no-cache-dir pqi && \
-    mkdir -p /home/$DOCKER_USER/.config && \
+    sudo rm get-pip.py && \
+    sudo ln -sf /usr/bin/python3 /usr/bin/python
+RUN python3 -m pip install --user --no-cache-dir pqi && \
+	sudo mkdir -p /home/unknownue/.config/pip && \
+	sudo chmod a+rw /home/unknownue/.config/pip && \
     pqi use aliyun && \
-    python3 -m pip install --no-cache-dir pyautogen
+    python3 -m pip install --user --no-cache-dir pyautogen autogenstudio vllm
 
 # Install Vulkan SDK
 WORKDIR /opt
@@ -66,6 +68,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
 #     cargo --version && \
 #     rustc --version
 
-ADD startup.sh
-CMD ["sh", "-c", "startup.sh"]
-
+ADD startup.sh /opt/startup.sh
+RUN sudo chmod +x /opt/startup.sh
+CMD ["sh", "-c", "/opt/startup.sh"]
+CMD ["tail", "-f", "/dev/null"]
