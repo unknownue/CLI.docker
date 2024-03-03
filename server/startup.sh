@@ -1,20 +1,23 @@
 
 # Docker container for bevy development
-docker run -id --rm \
+docker run -d \
 	-e DISPLAY=unix:0 \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	-v /home/unknownue/Workspace/:/workspace \
 	--device /dev/nvidia0 \
 	--device /dev/nvidia-uvm \
 	--device /dev/nvidia-uvm-tools \
 	--device /dev/nvidiactl \
+	--device /dev/snd \
 	--gpus all \
-	--name cg \
-	-p 8761-8770:8761-8770 \
-	-e NVIDIA_DRIVER_CAPABILITIES=graphics,display,compute,utility \
-	-w /workspace \
+	--name bevy-dev \
 	--shm-size 8G \
-	unknownue/cg:vk1.3.216-rust1.67
+	--runtime=nvidia \
+	-p 8081:8081 \
+	-p 8761-8770:8761-8770 \
+	-w /workspace \
+	-v /home/unknownue/Workspace/:/workspace \
+	-v /home/unknownue/Database/:/database \
+	unknownue/bevy:cuda121
 
 # Docker container for LLM models
 docker run -d \

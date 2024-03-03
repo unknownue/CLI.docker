@@ -3,7 +3,6 @@ FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu22.04
 
 ARG DOCKER_USER=unknownue
 ARG DOCKER_EMAIL=unknownue@outlook.com
-ARG PROJECT_DIRECTORY=myproject
 ARG RUST_TOOLCHAIN=nightly
 ARG VULKAN_VERSION=1.3.216.0
 
@@ -13,11 +12,19 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,graphics,utility,display
 ENV PATH="/home/$DOCKER_USER/.local/bin:${PATH}"
 ENV PATH="/user/local/cargo/bin/:${PATH}"
 
+COPY ubuntu2204-mirror.txt /etc/apt/sources.list
+
 RUN apt update && \
-    apt install -y --no-install-recommends ca-certificates git wget sudo curl pkg-config neovim \
-    xorg-dev libwayland-dev libx11-dev libxcursor-dev libxrandr-dev libxi-dev libx11-xcb-dev libx11-xcb-dev \
-    librust-alsa-sys-dev librust-libudev-sys-dev \
-    pulseaudio-utils python3
+    apt install -y -qq --no-install-recommends software-properties-common openbox xauth \
+    ca-certificates git wget sudo curl pkg-config neovim python3
+
+# Bevy dependencies
+# https://github.com/bevyengine/bevy/issues/11768#issuecomment-1946584150
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -yq libasound2-dev libudev-dev libxkbcommon-x11-0
+RUN apt-get update -y -qq
+RUN add-apt-repository ppa:kisak/turtle -y
+RUN apt-get update
+RUN apt install -y xvfb libegl1-mesa libgl1-mesa-dri libxcb-xfixes0-dev mesa-vulkan-drivers
 
 # Docker user -------------------------------------------------------------------
 # See also http://gbraad.nl/blog/non-root/user/inside-a-docker-container.html
@@ -31,8 +38,8 @@ USER $DOCKER_USER
 
 # Audio
 # See also https://github.com/TheBiggerGuy/docker-pulseaudio-example/tree/master
-RUN sudo gpasswd -a $DOCKER_USER audio
-COPY pulse-client.conf /etc/pulse/client.conf
+# RUN sudo gpasswd -a $DOCKER_USER audio
+# COPY pulse-client.conf /etc/pulse/client.conf
 
 # Python deps
 RUN sudo curl https://bootstrap.pypa.io/get-pip.py -sLo get-pip.py && \
@@ -56,7 +63,7 @@ RUN sudo wget https://sdk.lunarg.com/sdk/download/$VULKAN_VERSION/linux/vulkansd
 WORKDIR /workspace
 
 # Install rust toolchain (https://rust-lang.github.io/rustup/installation/other.html)
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain $RUST_TOOLCHAIN
 # RUN rustup_url="https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-musl/rustup-init" && \
 #     sudo wget "$rustup_url" && \
 #     sudo chmod +x rustup-init && \
