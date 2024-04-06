@@ -194,6 +194,8 @@ end
 -- Disable macro recording
 vim.api.nvim_set_keymap('n', 'Q', "", { noremap = true })
 vim.api.nvim_del_keymap('n', 'Q')
+-- Set macro recording to <leader>q + register
+vim.api.nvim_set_keymap('n', '<leader>m', 'q', { noremap = true })
 
 -- Easy motion
 -- Disable default mappings
