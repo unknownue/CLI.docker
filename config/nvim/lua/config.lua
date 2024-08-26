@@ -7,6 +7,9 @@ vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
 
+-- Force line number show
+vim.opt.number = true
+
 -- Enable transparency for popup-menu
 -- vim.opt.pumblend = 15
 -- set pumblend=15
